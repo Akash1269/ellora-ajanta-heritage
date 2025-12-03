@@ -1,0 +1,5 @@
+{
+  "name": "Aurangabad Tourism Guide",
+  "description": "An elegant web application that serves as a tourism guide for the historic Aurangabad district. It uses the Gemini API to generate rich, detailed information about famous attractions, providing visitors with history, key features, and the best times to visit.",
+  "requestFramePermissions": []
+}
