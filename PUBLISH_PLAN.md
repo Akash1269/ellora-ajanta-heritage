@@ -29,23 +29,23 @@ This document tracks all issues, improvements, and tasks required to make the pr
 
 ## 🟡 Medium Severity (Production Quality)
 
-- [ ] **Add `React.memo()` on card components** — `AttractionCard`, `PlaceCard`, `ItineraryCard` re-render on every parent update.
-- [ ] **Add code splitting with `React.lazy()`** — All 5 pages bundled together. Lazy-load page components for faster initial load.
-- [ ] **Extract magic numbers to constants** — Map center coordinates (`19.8762, 75.3433`), zoom level (`9`) hardcoded inline.
-- [ ] **Standardize error handling** — Inconsistent patterns: some pages show `ErrorMessage`, others just `console.log`.
-- [ ] **Add image fallback/placeholder** — All images from `picsum.photos`; no fallback if CDN is down.
-- [ ] **Fix modal scroll lock edge cases** — Multiple mount/unmount cycles could leave `body.style.overflow` in wrong state.
-- [ ] **Add `useCallback` for event handlers** — Functions passed as props (e.g., `onSelect`) create new references every render.
+- [x] **Add `React.memo()` on card components** — All three card components wrapped with `React.memo()` to prevent unnecessary re-renders.
+- [x] **Add code splitting with `React.lazy()`** — All 5 pages lazy-loaded with `Suspense` fallback. Each page is a separate chunk.
+- [x] **Extract magic numbers to constants** — Map center coordinates and zoom level moved to `constants.ts` (`MAP_CENTER`, `MAP_ZOOM`).
+- [x] **Standardize error handling** — All pages now use `ErrorMessage` component with retry functionality.
+- [x] **Add image fallback/placeholder** — `onError` handler with SVG placeholder on all images. `PLACEHOLDER_IMAGE` constant exported.
+- [x] **Fix modal scroll lock edge cases** — Modals save/restore original `overflow` value instead of hardcoding `'unset'`.
+- [x] **Add `useCallback` for event handlers** — `handleSelect` wrapped with `useCallback` in Attractions and Itineraries pages.
 
 ---
 
 ## 🔵 Low Severity (Polish)
 
 - [x] **Deduplicate inline SVG icons** — All icons consolidated in `src/components/icons/index.tsx`.
-- [ ] **Add loading delay simulation** — Instant data resolution causes UI flicker. Add minimum display time for loading states.
+- [x] **Add loading delay simulation** — 400ms minimum display time for loading state prevents UI flicker.
 - [ ] **Hardcoded strings (i18n)** — All text in English with no translation support.
 - [ ] **No data refresh mechanism** — Data loaded once on mount; stale if app stays open for hours.
-- [ ] **Unused CSS styles** — `.arch-mask`, `.bg-mandala-opacity` defined in `index.html` but potentially unused.
+- [x] **Unused CSS styles** — Removed unused `.bg-mandala-opacity`. `.arch-mask` is used and retained.
 
 ---
 
@@ -53,11 +53,11 @@ This document tracks all issues, improvements, and tasks required to make the pr
 
 ### Infrastructure & Deployment
 
-- [ ] Set up GitHub Actions CI (lint + type-check + build)
+- [x] Set up GitHub Actions CI (lint + type-check + build)
 - [ ] Add build configuration for staging/production environments
 - [ ] Configure deployment target (Vercel, Netlify, GitHub Pages, etc.)
-- [ ] Add `robots.txt` to `/public`
-- [ ] Add basic `sitemap.xml` to `/public`
+- [x] Add `robots.txt` to `/public`
+- [x] Add basic `sitemap.xml` to `/public`
 - [ ] Add security headers (CSP, X-Frame-Options, HSTS) in deployment config
 
 ### Quality Assurance
@@ -72,16 +72,16 @@ This document tracks all issues, improvements, and tasks required to make the pr
 ### Performance Optimization
 
 - [x] Install Tailwind via PostCSS (replace CDN)
-- [ ] Add code splitting for route-level components
-- [ ] Add image lazy loading (`loading="lazy"`)
-- [ ] Optimize font loading (font-display: swap, preconnect)
-- [ ] Add `<link rel="preconnect">` for external CDNs
+- [x] Add code splitting for route-level components
+- [x] Add image lazy loading (`loading="lazy"`)
+- [x] Optimize font loading (font-display: swap, preconnect)
+- [x] Add `<link rel="preconnect">` for external CDNs
 - [ ] Consider self-hosting fonts instead of Google Fonts CDN
 
 ### PWA & Offline
 
-- [ ] Add `manifest.json` for app installation
-- [ ] Add `<meta name="theme-color">` tag
+- [x] Add `manifest.json` for app installation
+- [x] Add `<meta name="theme-color">` tag
 - [ ] Consider service worker for offline caching
 - [ ] Add app icons (192x192, 512x512)
 

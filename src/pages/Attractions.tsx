@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { AttractionCard } from '../components/attractions/AttractionCard';
 import { AttractionDetailModal } from '../components/attractions/AttractionDetailModal';
+import { ErrorMessage } from '../components/common/ErrorMessage';
 import type { Attraction } from '../types';
 
 interface AttractionsPageProps {
@@ -11,6 +12,7 @@ interface AttractionsPageProps {
 
 export const Attractions: React.FC<AttractionsPageProps> = ({ attractions, loading, error }) => {
     const [selectedAttraction, setSelectedAttraction] = useState<Attraction | null>(null);
+    const handleSelect = useCallback((attraction: Attraction) => setSelectedAttraction(attraction), []);
 
     return (
         <div className="bg-heritage-pattern min-h-screen py-16">
@@ -26,14 +28,14 @@ export const Attractions: React.FC<AttractionsPageProps> = ({ attractions, loadi
                 {loading ? (
                     <div className="text-center py-20 text-stone-500 font-serif text-xl animate-pulse">Summoning the spirits of the past...</div>
                 ) : error ? (
-                    <div className="text-center text-red-600 font-serif">{error}</div>
+                    <ErrorMessage message={error} onRetry={() => window.location.reload()} />
                 ) : (
                     <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
                         {attractions.map((attraction) => (
                         <AttractionCard
                             key={attraction.name}
                             attraction={attraction}
-                            onSelect={setSelectedAttraction}
+                            onSelect={handleSelect}
                         />
                         ))}
                     </div>

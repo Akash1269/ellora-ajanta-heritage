@@ -1,11 +1,11 @@
 
-
 import React from 'react';
 import { Hero } from '../components/common/Hero';
 import { MapSection } from '../components/common/MapSection';
 import { Link } from 'react-router-dom';
 import type { HomeContent } from '../types';
 import { PlaneIcon, TrainIcon, BusIcon, WeatherSunIcon, RainIcon } from '../components/icons';
+import { PLACEHOLDER_IMAGE } from '../constants';
 
 interface HomeProps {
   content: HomeContent | null;
@@ -114,7 +114,7 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
               {content.nearbyPlaces.map((place, idx) => (
                   <div key={idx} className="snap-center shrink-0 w-80 bg-white p-3 shadow-xl transform rotate-1 hover:rotate-0 transition-all duration-300 border border-stone-200">
                       <div className="h-48 overflow-hidden mb-4 bg-stone-200">
-                          <img src={`https://picsum.photos/seed/${place.name}/400/300`} alt={place.name} loading="lazy" className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
+                          <img src={`https://picsum.photos/seed/${place.name}/400/300`} alt={place.name} loading="lazy" onError={(e) => { (e.target as HTMLImageElement).src = PLACEHOLDER_IMAGE; }} className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
                       </div>
                       <h3 className="text-2xl font-heading text-stone-800 mb-1">{place.name}</h3>
                       <span className="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-3">{place.distance}</span>
@@ -140,7 +140,7 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
                  {content.foodItems.map((item, idx) => (
                      <div key={idx} className="group">
                          <div className="w-40 h-40 mx-auto rounded-full border-4 border-amber-600/30 overflow-hidden mb-6 group-hover:border-amber-500 transition-colors shadow-2xl">
-                             <img src={`https://picsum.photos/seed/${item.name}food/400/400`} alt={item.name} loading="lazy" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+                             <img src={`https://picsum.photos/seed/${item.name}food/400/400`} alt={item.name} loading="lazy" onError={(e) => { (e.target as HTMLImageElement).src = PLACEHOLDER_IMAGE; }} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
                          </div>
                          <h3 className="text-xl font-heading text-amber-200 mb-2 group-hover:text-amber-400">{item.name}</h3>
                          <p className="text-stone-400 text-sm italic px-4">{item.description}</p>

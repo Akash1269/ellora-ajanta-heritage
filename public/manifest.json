@@ -1,0 +1,21 @@
+{
+  "name": "Ellora Ajanta Heritage",
+  "short_name": "Heritage",
+  "description": "Explore UNESCO World Heritage Sites in Aurangabad — Ellora Caves, Ajanta Caves, and more.",
+  "start_url": "/ellora-ajanta-heritage/",
+  "display": "standalone",
+  "background_color": "#fffaf0",
+  "theme_color": "#b45309",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

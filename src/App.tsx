@@ -1,17 +1,18 @@
 
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
-import { Home } from './pages/Home';
-import { Attractions } from './pages/Attractions';
-import { Itineraries } from './pages/Itineraries';
-import { Places } from './pages/Places';
-import { History } from './pages/History';
-import { NotFound } from './pages/NotFound';
 import { LoadingSpinner } from './components/common/LoadingSpinner';
 import { ErrorBoundary } from './components/common/ErrorBoundary';
 import { useAppData } from './hooks/useAppData';
+
+const Home = lazy(() => import('./pages/Home').then(m => ({ default: m.Home })));
+const Attractions = lazy(() => import('./pages/Attractions').then(m => ({ default: m.Attractions })));
+const Itineraries = lazy(() => import('./pages/Itineraries').then(m => ({ default: m.Itineraries })));
+const Places = lazy(() => import('./pages/Places').then(m => ({ default: m.Places })));
+const History = lazy(() => import('./pages/History').then(m => ({ default: m.History })));
+const NotFound = lazy(() => import('./pages/NotFound').then(m => ({ default: m.NotFound })));
 
 const App: React.FC = () => {
   const { attractions, hotels, restaurants, itineraries, homeContent, loading, error } = useAppData();
@@ -30,6 +31,7 @@ const App: React.FC = () => {
         <div className="min-h-screen flex flex-col bg-heritage-pattern text-stone-800 font-serif">
           <Header />
           <main className="flex-grow">
+            <Suspense fallback={<div className="py-20"><LoadingSpinner /></div>}>
               <Routes>
                   <Route path="/" element={<Home content={homeContent} />} />
                   <Route path="/attractions" element={<Attractions attractions={attractions} loading={attractions.length === 0} error={error} />} />
@@ -38,6 +40,7 @@ const App: React.FC = () => {
                   <Route path="/history" element={<History />} />
                   <Route path="*" element={<NotFound />} />
               </Routes>
+            </Suspense>
           </main>
           <Footer />
         </div>

@@ -14,6 +14,7 @@ export const ItineraryDetailModal: React.FC<ItineraryDetailModalProps> = ({ itin
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     modalRef.current?.focus();
 
@@ -23,7 +24,7 @@ export const ItineraryDetailModal: React.FC<ItineraryDetailModalProps> = ({ itin
     document.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = originalOverflow;
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [onClose]);

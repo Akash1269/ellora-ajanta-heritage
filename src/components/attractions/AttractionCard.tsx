@@ -1,12 +1,13 @@
 import React from 'react';
 import type { Attraction } from '../../types';
+import { PLACEHOLDER_IMAGE } from '../../constants';
 
 interface AttractionCardProps {
   attraction: Attraction;
   onSelect: (attraction: Attraction) => void;
 }
 
-export const AttractionCard: React.FC<AttractionCardProps> = ({ attraction, onSelect }) => {
+export const AttractionCard: React.FC<AttractionCardProps> = React.memo(({ attraction, onSelect }) => {
   return (
     <div 
       className="group relative bg-white pb-6 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer border-heritage"
@@ -18,6 +19,7 @@ export const AttractionCard: React.FC<AttractionCardProps> = ({ attraction, onSe
             src={attraction.imageUrl} 
             alt={attraction.name} 
             loading="lazy"
+            onError={(e) => { (e.target as HTMLImageElement).src = PLACEHOLDER_IMAGE; }}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
             />
             <div className="absolute inset-0 bg-amber-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
@@ -40,4 +42,4 @@ export const AttractionCard: React.FC<AttractionCardProps> = ({ attraction, onSe
       </div>
     </div>
   );
-};
+});

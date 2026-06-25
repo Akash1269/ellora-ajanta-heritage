@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import type { MapLocation } from '../../types';
+import { MAP_CENTER, MAP_ZOOM } from '../../constants';
 
 interface MapSectionProps {
   locations: MapLocation[];
@@ -61,7 +62,7 @@ export const MapSection: React.FC<MapSectionProps> = ({ locations }) => {
 
     // Initialize map if not already created
     if (!leafletMap.current) {
-      const map = L.map(mapRef.current).setView([19.8762, 75.3433], 9);
+      const map = L.map(mapRef.current).setView(MAP_CENTER, MAP_ZOOM);
       leafletMap.current = map;
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

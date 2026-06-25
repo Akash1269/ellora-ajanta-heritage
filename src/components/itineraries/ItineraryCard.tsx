@@ -1,13 +1,14 @@
 
 import React from 'react';
 import type { ItinerarySummary } from '../../types';
+import { PLACEHOLDER_IMAGE } from '../../constants';
 
 interface ItineraryCardProps {
   itinerary: ItinerarySummary;
   onSelect: (itinerary: ItinerarySummary) => void;
 }
 
-export const ItineraryCard: React.FC<ItineraryCardProps> = ({ itinerary, onSelect }) => {
+export const ItineraryCard: React.FC<ItineraryCardProps> = React.memo(({ itinerary, onSelect }) => {
   return (
     <div 
       className="bg-white border-2 border-stone-200 p-1 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group flex flex-col h-full"
@@ -18,6 +19,7 @@ export const ItineraryCard: React.FC<ItineraryCardProps> = ({ itinerary, onSelec
             src={itinerary.imageUrl || `https://picsum.photos/seed/${itinerary.title}/400/300`} 
             alt={itinerary.title}
             loading="lazy"
+            onError={(e) => { (e.target as HTMLImageElement).src = PLACEHOLDER_IMAGE; }}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
         />
         <div className="absolute top-2 right-2 bg-stone-900/80 text-amber-400 text-xs font-bold px-3 py-1 uppercase tracking-widest border border-amber-500">
@@ -45,4 +47,4 @@ export const ItineraryCard: React.FC<ItineraryCardProps> = ({ itinerary, onSelec
       </div>
     </div>
   );
-};
+});

@@ -6,7 +6,7 @@ interface PlaceCardProps {
   place: Place;
 }
 
-export const PlaceCard: React.FC<PlaceCardProps> = ({ place }) => {
+export const PlaceCard: React.FC<PlaceCardProps> = React.memo(({ place }) => {
   return (
     <div className="bg-stone-900 border border-stone-700 p-6 flex flex-col items-start text-left h-full hover:border-amber-600 transition-colors duration-300 shadow-lg group">
       <div className="w-full flex justify-between items-start mb-2">
@@ -23,4 +23,4 @@ export const PlaceCard: React.FC<PlaceCardProps> = ({ place }) => {
       </p>
     </div>
   );
-};
+});

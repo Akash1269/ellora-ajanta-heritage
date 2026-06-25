@@ -11,6 +11,7 @@ export const AttractionDetailModal: React.FC<AttractionDetailModalProps> = ({ at
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     // Focus the modal on open
     modalRef.current?.focus();
@@ -21,7 +22,7 @@ export const AttractionDetailModal: React.FC<AttractionDetailModalProps> = ({ at
     document.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = originalOverflow;
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [onClose]);

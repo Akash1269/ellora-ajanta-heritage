@@ -27,6 +27,8 @@ export function useAppData(): AppData {
       setLoading(true);
       setError(null);
 
+      const minDelay = new Promise((r) => setTimeout(r, 400));
+
       const [homeData, itins, h, r] = await Promise.all([
         fetchHomeContent(),
         fetchItinerarySummaries(),
@@ -51,6 +53,7 @@ export function useAppData(): AppData {
       );
 
       setAttractions(attractionData.filter((a): a is Attraction => a !== null));
+      await minDelay;
       setLoading(false);
     } catch (err) {
       console.error("Error loading data:", err);
