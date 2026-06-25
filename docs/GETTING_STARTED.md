@@ -1,4 +1,4 @@
-# Developer Onboarding
+# Getting Started
 
 ## Prerequisites
 
@@ -102,10 +102,27 @@ npm run build
 
 ## CI/CD
 
-### GitHub Actions
-- **CI** (`.github/workflows/ci.yml`): Runs on every push/PR to `main`
-  - Lint → Type-check → Build
-- **Deploy** (`.github/workflows/deploy.yml`): Deploys to GitHub Pages on push to `main`
+### Pipelines Overview
+
+This project has **two separate GitHub Actions workflows** that serve different purposes:
+
+| Workflow | File | Trigger | Purpose |
+|----------|------|---------|--------|
+| **CI** | `.github/workflows/ci.yml` | Push to `main` + PRs | Quality gate — blocks broken code |
+| **Deploy** | `.github/workflows/deploy.yml` | Push to `main` only | Ships to GitHub Pages |
+
+**Why two?** CI runs on pull requests to catch issues before merge. Deploy only runs after code lands on `main` — it needs Pages write permissions that PRs shouldn't have.
+
+### CI Steps
+1. `npm ci` — Clean install
+2. `npm run lint` — ESLint with flat config (`eslint.config.js`)
+3. `npx tsc --noEmit` — TypeScript strict mode check
+4. `npm run build` — Vite production build
+
+### Deploy Steps
+1. `npm ci` → `npm run build` — Builds the app
+2. Uploads `dist/` as Pages artifact
+3. Deploys to GitHub Pages environment
 
 ### Deployment
 The app deploys to GitHub Pages at:
@@ -113,7 +130,12 @@ The app deploys to GitHub Pages at:
 https://akash1269.github.io/ellora-ajanta-heritage/
 ```
 
-The `base` path in `vite.config.ts` is set to `/ellora-ajanta-heritage/` for this.
+The `base` path in `vite.config.ts` is set to `/ellora-ajanta-heritage/` for correct asset paths.
+
+### Enabling GitHub Pages (one-time setup)
+1. Go to repo **Settings → Pages**
+2. Under Source, select **GitHub Actions**
+3. Save — next push to `main` will trigger deployment
 
 ## Key Files to Know
 

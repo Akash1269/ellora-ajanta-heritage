@@ -7,13 +7,13 @@ This is a **React + TypeScript** tourism web application for the Aurangabad (Chh
 ## Tech Stack
 
 - **React 18.2** with functional components and hooks
-- **TypeScript 5.8** — strict typing required for all new code
-- **Vite 6.2** — build tool and dev server (port 3000)
+- **TypeScript 5.8** — strict mode enabled, zero `any` usage
+- **Vite 6.4** — build tool and dev server (port 5175)
 - **React Router DOM 6.30** — HashRouter for static deployment
 - **Tailwind CSS 4** (via @tailwindcss/vite plugin) — utility-first styling
-- **Leaflet 1.9** — interactive maps
-- **ESLint + Prettier** — code quality and formatting
-- **Google Gemini API** (@google/genai) — AI content generation with static fallback
+- **Leaflet 1.9** — interactive maps (lazy-loaded via dynamic import)
+- **ESLint 10 + Prettier** — flat config format (`eslint.config.js`)
+- **GitHub Actions** — CI pipeline (lint → type-check → build) + GitHub Pages deploy
 
 ## Architecture & Conventions
 
@@ -88,3 +88,39 @@ This is a **React + TypeScript** tourism web application for the Aurangabad (Chh
 - Add shared icons to `src/components/icons/index.tsx`
 - Register new routes in `src/App.tsx`
 - Maintain the heritage visual theme consistently
+
+## CI/CD Pipeline
+
+### Workflows (`.github/workflows/`)
+
+| Workflow | Trigger | Purpose |
+|----------|---------|---------|
+| `ci.yml` | Push to `main` + Pull Requests | Quality gate: lint → type-check → build |
+| `deploy.yml` | Push to `main` only | Build → Deploy to GitHub Pages |
+
+### CI runs these steps:
+1. `npm ci` — Install dependencies
+2. `npm run lint` — ESLint (flat config, `eslint.config.js`)
+3. `npx tsc --noEmit` — TypeScript strict check
+4. `npm run build` — Vite production build
+
+### Deploy:
+- Target: GitHub Pages at `https://akash1269.github.io/ellora-ajanta-heritage/`
+- Base path: `/ellora-ajanta-heritage/` (set in `vite.config.ts`)
+- The `deploy.yml` only runs on `main` branch pushes (not PRs)
+- Uses `actions/upload-pages-artifact` + `actions/deploy-pages`
+
+### Key Config:
+- ESLint config: `eslint.config.js` (flat format, ESLint v10+)
+- Prettier config: `.prettierrc.json`
+- TypeScript: `tsconfig.json` with `strict: true`
+- Vite: `vite.config.ts` with `base: '/ellora-ajanta-heritage/'`
+
+## Performance Patterns
+
+- **Code splitting** — All pages lazy-loaded via `React.lazy()` + `Suspense`
+- **Lazy Leaflet** — Map library loaded on scroll via `IntersectionObserver` + dynamic `import('leaflet')`
+- **React.memo** — Card components memoized to prevent unnecessary re-renders
+- **useCallback** — Event handlers wrapped to maintain stable references
+- **Image fallback** — `onError` handler with SVG placeholder (`PLACEHOLDER_IMAGE` constant)
+- **Min loading delay** — 400ms prevents UI flicker on fast data resolution

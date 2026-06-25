@@ -83,7 +83,7 @@ Open [http://localhost:5175](http://localhost:5175) in your browser.
 |----------|-------------|
 | [Architecture](docs/ARCHITECTURE.md) | Project structure, data flow, performance details |
 | [Features](docs/FEATURES.md) | Feature breakdown and design system |
-| [Onboarding](docs/ONBOARDING.md) | Developer setup guide and conventions |
+| [Getting Started](docs/GETTING_STARTED.md) | Developer setup, conventions, CI/CD guide |
 
 ---
 
