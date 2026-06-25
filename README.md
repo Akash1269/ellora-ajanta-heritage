@@ -1,5 +1,4 @@
 <div align="center">
-<img width="1200" height="475" alt="Aurangabad Tourism Guide Banner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 
 # 🏛️ Aurangabad Tourism Guide
 
@@ -96,8 +95,8 @@ awb-tour/
 
 ```bash
 # Clone the repository
-git clone https://github.com/Akash1269/awb-tour.git
-cd awb-tour
+git clone https://github.com/Akash1269/ellora-ajanta-heritage.git
+cd ellora-ajanta-heritage
 
 # Install dependencies
 npm install
