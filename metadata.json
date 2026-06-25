@@ -1,5 +1,19 @@
 {
   "name": "Aurangabad Tourism Guide",
-  "description": "An elegant web application that serves as a tourism guide for the historic Aurangabad district. It uses the Gemini API to generate rich, detailed information about famous attractions, providing visitors with history, key features, and the best times to visit.",
+  "description": "A heritage-themed tourism web app for the Aurangabad (Chhatrapati Sambhajinagar) district featuring UNESCO World Heritage Sites, interactive maps, curated itineraries, and AI-powered content via Google Gemini API.",
+  "version": "1.0.0",
+  "author": "Akash1269",
+  "repository": "https://github.com/Akash1269/awb-tour",
+  "keywords": [
+    "tourism",
+    "aurangabad",
+    "heritage",
+    "react",
+    "typescript",
+    "vite",
+    "gemini-api",
+    "leaflet",
+    "travel-guide"
+  ],
   "requestFramePermissions": []
 }
