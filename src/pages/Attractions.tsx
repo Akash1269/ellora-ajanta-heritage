@@ -16,7 +16,7 @@ export const Attractions: React.FC<AttractionsPageProps> = ({ attractions, loadi
     const handleSelect = useCallback((attraction: Attraction) => setSelectedAttraction(attraction), []);
 
     return (
-        <div className="bg-parchment min-h-screen py-12 sm:py-20">
+        <div className="bg-parchment min-h-screen py-8 sm:py-12 lg:py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionHeading 
                     title="Architectural Marvels" 
@@ -25,11 +25,11 @@ export const Attractions: React.FC<AttractionsPageProps> = ({ attractions, loadi
                 />
                 
                 {loading ? (
-                    <div className="text-center py-20 text-stone-warm font-serif text-lg">Summoning the spirits of the past...</div>
+                    <div className="text-center py-12 sm:py-20 text-stone-warm text-base sm:text-lg">Summoning the spirits of the past...</div>
                 ) : error ? (
                     <ErrorMessage message={error} onRetry={() => window.location.reload()} />
                 ) : (
-                    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                         {attractions.map((attraction) => (
                         <AttractionCard
                             key={attraction.name}

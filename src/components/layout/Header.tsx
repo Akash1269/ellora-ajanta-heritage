@@ -30,23 +30,23 @@ export const Header: React.FC = () => {
   return (
     <header className="bg-parchment/95 backdrop-blur-md border-b border-gold/20 shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          <NavLink to="/" className="flex items-center space-x-3 group" onClick={closeMenu}>
-             <div className="p-2 border border-gold/40 rounded-full group-hover:border-gold transition-colors duration-300">
-                <LandmarkIcon className="h-6 w-6 text-gold" />
+        <div className="flex items-center justify-between h-16 sm:h-18 lg:h-20">
+          <NavLink to="/" className="flex items-center space-x-2 sm:space-x-3 group" onClick={closeMenu}>
+             <div className="p-1.5 sm:p-2 border border-gold/40 rounded-full group-hover:border-gold transition-colors duration-300">
+                <LandmarkIcon className="h-5 w-5 sm:h-6 sm:w-6 text-gold" />
              </div>
             <div className="flex flex-col">
-                <span className="text-xl sm:text-2xl text-ink font-heading tracking-wide leading-none">
+                <span className="text-lg sm:text-xl lg:text-2xl text-ink font-heading tracking-wide leading-none">
                   Ellora Ajanta
                 </span>
-                <span className="text-gold text-xs uppercase tracking-[0.25em] leading-none mt-1">
+                <span className="text-gold text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] leading-none mt-0.5 sm:mt-1">
                   Heritage
                 </span>
             </div>
           </NavLink>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <NavLink to="/" className={linkClasses}>
                 Home {linkDecorator}
             </NavLink>

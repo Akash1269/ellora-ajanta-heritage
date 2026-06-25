@@ -13,8 +13,8 @@ export const AttractionCard: React.FC<AttractionCardProps> = React.memo(({ attra
       className="group card-heritage overflow-hidden cursor-pointer flex flex-col"
       onClick={() => onSelect(attraction)}
     >
-      <div className="p-4 pb-0">
-        <div className="relative h-56 sm:h-64 overflow-hidden arch-mask bg-parchment-dark">
+      <div className="p-3 sm:p-4 pb-0">
+        <div className="relative h-44 sm:h-52 lg:h-56 overflow-hidden arch-mask bg-parchment-dark">
           <img 
             src={attraction.imageUrl} 
             alt={attraction.name} 
@@ -25,15 +25,15 @@ export const AttractionCard: React.FC<AttractionCardProps> = React.memo(({ attra
         </div>
       </div>
       
-      <div className="pt-5 px-6 pb-6 text-center flex flex-col flex-grow">
-        <h3 className="text-xl sm:text-2xl font-heading text-ink mb-2 group-hover:text-gold transition-colors duration-300">
+      <div className="pt-4 sm:pt-5 px-4 sm:px-6 pb-4 sm:pb-6 text-center flex flex-col flex-grow">
+        <h3 className="text-lg sm:text-xl lg:text-2xl font-heading text-ink mb-1.5 sm:mb-2 group-hover:text-gold transition-colors duration-300">
           {attraction.name}
         </h3>
-        <div className="divider-ornate w-2/3 mx-auto mb-3"><span>◆</span></div>
-        <p className="text-stone-warm line-clamp-3 text-sm leading-relaxed mb-5 font-serif italic flex-grow">
+        <div className="divider-ornate w-2/3 mx-auto mb-2 sm:mb-3"><span>◆</span></div>
+        <p className="text-stone-warm line-clamp-3 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5 italic flex-grow">
           {attraction.description}
         </p>
-        <button className="btn-heritage text-sm py-2 px-6 mx-auto">
+        <button className="btn-heritage text-xs sm:text-sm py-2 px-5 sm:px-6 mx-auto">
           View Details
         </button>
       </div>

@@ -44,18 +44,18 @@ export const ItineraryDetailModal: React.FC<ItineraryDetailModalProps> = ({ itin
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header - Fixed */}
-        <div className="shrink-0 bg-white p-6 flex justify-between items-start border-b border-gold/20 relative">
-           <div className="relative z-10 pr-10">
-               {itinerary && <span className="text-gold uppercase tracking-widest text-xs font-bold mb-1 block">Your Curated Journey</span>}
-               <h2 id="itinerary-modal-title" className="text-2xl sm:text-3xl font-heading text-ink leading-tight">
+        <div className="shrink-0 bg-white p-4 sm:p-6 flex justify-between items-start border-b border-gold/20 relative">
+           <div className="relative z-10 pr-8 sm:pr-10">
+               {itinerary && <span className="text-gold uppercase tracking-widest text-[10px] sm:text-xs font-bold mb-0.5 sm:mb-1 block">Your Curated Journey</span>}
+               <h2 id="itinerary-modal-title" className="text-xl sm:text-2xl md:text-3xl font-heading text-ink leading-tight">
                    {loading ? 'Loading...' : itinerary?.title || 'Details'}
                </h2>
            </div>
            <button 
             onClick={onClose}
-            className="text-stone-warm hover:text-ink transition-colors bg-parchment-dark p-2 rounded-full border border-gold/20"
+            className="text-stone-warm hover:text-ink transition-colors bg-parchment-dark p-1.5 sm:p-2 rounded-full border border-gold/20"
           >
-            <CloseIcon className="w-5 h-5" />
+            <CloseIcon className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
         </div>
         
@@ -70,26 +70,26 @@ export const ItineraryDetailModal: React.FC<ItineraryDetailModalProps> = ({ itin
                 <h3 className="text-xl font-semibold text-red-800 font-serif">Itinerary not found.</h3>
             </div>
           ) : (
-            <div className="p-4 sm:p-8 md:p-10">
+            <div className="p-3 sm:p-6 md:p-10">
                {itinerary.days.map((day, _dayIndex) => (
-                   <div key={day.day} className="mb-12 last:mb-0 relative">
+                   <div key={day.day} className="mb-8 sm:mb-12 last:mb-0 relative">
                        {/* Day Header */}
-                       <div className="flex items-center mb-8 sticky top-0 bg-parchment/95 z-20 py-2 backdrop-blur-sm">
-                           <div className="w-10 h-10 rounded-full bg-gold text-white flex items-center justify-center font-heading text-lg border-3 border-parchment shadow-md shrink-0">
+                       <div className="flex items-center mb-5 sm:mb-8 sticky top-0 bg-parchment/95 z-20 py-2 backdrop-blur-sm">
+                           <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gold text-white flex items-center justify-center font-heading text-sm sm:text-lg border-3 border-parchment shadow-md shrink-0">
                                {day.day}
                            </div>
-                           <div className="ml-4">
-                               <span className="text-xs font-bold text-gold uppercase tracking-wider block">Day {day.day}</span>
-                               <h3 className="text-xl sm:text-2xl font-heading text-ink">{day.title}</h3>
+                           <div className="ml-3 sm:ml-4">
+                               <span className="text-[10px] sm:text-xs font-bold text-gold uppercase tracking-wider block">Day {day.day}</span>
+                               <h3 className="text-lg sm:text-xl md:text-2xl font-heading text-ink">{day.title}</h3>
                            </div>
-                           <div className="flex-grow ml-4 h-px bg-gold/20"></div>
+                           <div className="flex-grow ml-3 sm:ml-4 h-px bg-gold/20"></div>
                        </div>
 
                        {/* Timeline Line */}
                        <div className="absolute left-5 top-12 bottom-0 w-px bg-gold/20 -z-10"></div>
 
                        {/* Activities */}
-                       <div className="space-y-6 pl-12 sm:pl-16 relative">
+                       <div className="space-y-4 sm:space-y-6 pl-10 sm:pl-12 md:pl-16 relative">
                            {day.activities.map((activity, actIndex) => {
                                const isTravel = activity.type === 'travel';
                                const isMeal = activity.type === 'meal';
@@ -98,14 +98,14 @@ export const ItineraryDetailModal: React.FC<ItineraryDetailModalProps> = ({ itin
                                return (
                                    <div key={actIndex} className="relative group">
                                        {/* Timeline Dot/Icon */}
-                                       <div className={`absolute -left-[3.25rem] sm:-left-[4.25rem] w-8 h-8 rounded-full border-2 flex items-center justify-center z-10 
+                                       <div className={`absolute -left-[2.75rem] sm:-left-[3.25rem] md:-left-[4.25rem] w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 flex items-center justify-center z-10 
                                             ${isTravel ? 'bg-parchment-dark border-stone-warm/30 text-stone-warm' : 
                                               isMeal ? 'bg-gold-muted border-gold/30 text-gold' :
                                               'bg-white border-gold/40 text-gold'}`}>
                                            <ActivityIcon type={activity.type} />
                                        </div>
 
-                                       <div className={`flex flex-col sm:flex-row gap-4 p-4 rounded-lg border transition-all hover:shadow-md
+                                       <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg border transition-all hover:shadow-md
                                             ${isTravel ? 'bg-parchment-dark/50 border-stone-warm/20 border-dashed' : 
                                               isMeal ? 'bg-gold-muted/50 border-gold/20' :
                                               isRest ? 'bg-parchment-dark/30 border-gold/10' :
@@ -113,20 +113,20 @@ export const ItineraryDetailModal: React.FC<ItineraryDetailModalProps> = ({ itin
                                             
                                             {/* Time & Title Column */}
                                             <div className="flex-1">
-                                                <div className="flex items-center text-xs font-bold tracking-wide mb-1">
-                                                    <span className={`px-2 py-0.5 rounded-full ${isTravel ? 'bg-parchment-dark text-stone-warm' : 'bg-gold-muted text-gold'}`}>
+                                                <div className="flex items-center text-[10px] sm:text-xs font-bold tracking-wide mb-1">
+                                                    <span className={`px-1.5 sm:px-2 py-0.5 rounded-full ${isTravel ? 'bg-parchment-dark text-stone-warm' : 'bg-gold-muted text-gold'}`}>
                                                         {activity.time}
                                                     </span>
                                                     {activity.duration && (
-                                                        <span className="ml-2 text-stone-400 font-normal italic">
+                                                        <span className="ml-1.5 sm:ml-2 text-stone-400 font-normal italic">
                                                             {activity.duration}
                                                         </span>
                                                     )}
                                                 </div>
-                                                <h4 className={`text-lg font-heading mb-2 ${isMeal ? 'text-gold' : 'text-ink'}`}>
+                                                <h4 className={`text-base sm:text-lg font-heading mb-1 sm:mb-2 ${isMeal ? 'text-gold' : 'text-ink'}`}>
                                                     {activity.title}
                                                 </h4>
-                                                <p className="text-stone-600 text-sm font-serif leading-relaxed">
+                                                <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
                                                     {activity.description}
                                                 </p>
                                             </div>

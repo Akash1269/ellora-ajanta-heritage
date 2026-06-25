@@ -83,17 +83,17 @@ export const AttractionDetailModal: React.FC<AttractionDetailModalProps> = ({ at
               </button>
            </div>
 
-           <div className="px-6 pb-12 md:px-10 md:pt-2 md:pb-16 -mt-12 md:mt-0 relative z-0">
+           <div className="px-4 sm:px-6 pb-8 sm:pb-12 md:px-10 md:pt-2 md:pb-16 -mt-12 md:mt-0 relative z-0">
                {/* Title Section */}
-               <div className="mb-8">
-                   <h2 id="attraction-modal-title" className="text-3xl md:text-5xl font-heading text-ink mb-3 leading-tight">
+               <div className="mb-6 sm:mb-8">
+                   <h2 id="attraction-modal-title" className="text-2xl sm:text-3xl md:text-5xl font-heading text-ink mb-2 sm:mb-3 leading-tight">
                     {attraction.name}
                    </h2>
-                   <div className="h-0.5 w-20 bg-gold rounded-full mb-6"></div>
+                   <div className="h-0.5 w-16 sm:w-20 bg-gold rounded-full mb-4 sm:mb-6"></div>
                    
                    {/* Description with Drop Cap */}
-                   <p className="text-base sm:text-lg text-ink/80 font-serif leading-relaxed italic">
-                    <span className="float-left text-5xl font-heading text-gold mr-2 mt-[-6px] leading-none">
+                   <p className="text-sm sm:text-base md:text-lg text-ink/80 leading-relaxed italic">
+                    <span className="float-left text-4xl sm:text-5xl font-heading text-gold mr-2 mt-[-4px] sm:mt-[-6px] leading-none">
                         {attraction.description.charAt(0)}
                     </span>
                     {attraction.description.slice(1)}
@@ -128,16 +128,16 @@ export const AttractionDetailModal: React.FC<AttractionDetailModalProps> = ({ at
                </div>
 
                {/* Highlights Section */}
-               <div className="bg-parchment-dark p-6 md:p-8 rounded-lg border border-gold/15 relative overflow-hidden">
-                   <h3 className="text-xl font-heading text-ink mb-5 flex items-center">
-                       <CompassIcon className="w-5 h-5 mr-3 text-gold" /> Key Highlights
+               <div className="bg-parchment-dark p-4 sm:p-6 md:p-8 rounded-lg border border-gold/15 relative overflow-hidden">
+                   <h3 className="text-lg sm:text-xl font-heading text-ink mb-3 sm:mb-5 flex items-center">
+                       <CompassIcon className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3 text-gold" /> Key Highlights
                    </h3>
                    
-                   <ul className="grid sm:grid-cols-2 gap-3">
+                   <ul className="grid sm:grid-cols-2 gap-2 sm:gap-3">
                        {attraction.keyFeatures.map((feature, idx) => (
-                           <li key={idx} className="flex items-start text-sm md:text-base group">
+                           <li key={idx} className="flex items-start text-xs sm:text-sm md:text-base group">
                                <span className="text-gold mr-2 mt-0.5">◆</span>
-                               <span className="text-ink/80 font-serif">{feature}</span>
+                               <span className="text-ink/80">{feature}</span>
                            </li>
                        ))}
                    </ul>

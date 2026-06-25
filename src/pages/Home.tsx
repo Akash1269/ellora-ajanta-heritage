@@ -22,7 +22,7 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
       <Hero />
       
       {/* 1. Timeline Section */}
-      <section className="py-16 sm:py-24 px-4 bg-parchment">
+      <section className="py-12 sm:py-16 lg:py-24 px-4 bg-parchment">
         <div className="max-w-5xl mx-auto">
           <SectionHeading 
             title="Echoes of Time" 
@@ -34,15 +34,15 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
             <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gold/30 sm:left-1/2 sm:-ml-px"></div>
 
             {content.historyTimeline.map((event, idx) => (
-              <div key={idx} className={`relative pl-8 sm:pl-0 flex flex-col sm:flex-row items-start sm:items-center mb-12 last:mb-0 ${idx % 2 === 0 ? 'sm:flex-row-reverse' : ''}`}>
+              <div key={idx} className={`relative pl-7 sm:pl-0 flex flex-col sm:flex-row items-start sm:items-center mb-10 sm:mb-12 last:mb-0 ${idx % 2 === 0 ? 'sm:flex-row-reverse' : ''}`}>
                 {/* Dot - mobile (left) and desktop (center) */}
                 <div className="absolute left-[-5px] top-1 sm:top-auto sm:left-1/2 sm:-ml-[7px] w-3.5 h-3.5 bg-gold rounded-full border-2 border-parchment z-10"></div>
                 
                 {/* Content */}
                 <div className={`w-full sm:w-[45%] ${idx % 2 === 0 ? 'sm:pl-10 text-left' : 'sm:pr-10 sm:text-right'}`}>
-                  <span className="inline-block px-3 py-1 bg-gold-muted text-gold font-bold text-sm rounded-full mb-2">{event.year}</span>
-                  <h3 className="text-xl font-heading text-ink mb-2">{event.title}</h3>
-                  <p className="text-stone-warm text-sm leading-relaxed font-serif">{event.description}</p>
+                  <span className="inline-block px-2.5 py-0.5 bg-gold-muted text-gold font-bold text-xs sm:text-sm rounded-full mb-1.5 sm:mb-2">{event.year}</span>
+                  <h3 className="text-lg sm:text-xl font-heading text-ink mb-1.5 sm:mb-2">{event.title}</h3>
+                  <p className="text-stone-warm text-xs sm:text-sm leading-relaxed">{event.description}</p>
                 </div>
                 {/* Spacer for center column */}
                 <div className="hidden sm:block sm:w-[10%]"></div>
@@ -50,7 +50,7 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
               </div>
             ))}
           </div>
-          <div className="text-center mt-12">
+          <div className="text-center mt-10 sm:mt-12">
             <HeritageButton to="/history">Read Full History</HeritageButton>
           </div>
         </div>
@@ -59,7 +59,7 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
       <SectionDivider />
 
       {/* 2. Best Time & Travel */}
-      <section className="py-16 sm:py-24 bg-parchment-dark">
+      <section className="py-12 sm:py-16 lg:py-24 bg-parchment-dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading 
             title="Plan Your Visit" 
@@ -67,30 +67,30 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
           />
 
           {/* Weather Seasons */}
-          <div className="mb-16">
-            <h3 className="text-2xl font-heading text-ink mb-8 flex items-center gap-3">
-              <span className="w-1 h-8 bg-gold rounded-full"></span>
+          <div className="mb-12 sm:mb-16">
+            <h3 className="text-xl sm:text-2xl font-heading text-ink mb-5 sm:mb-8 flex items-center gap-2 sm:gap-3">
+              <span className="w-1 h-6 sm:h-8 bg-gold rounded-full"></span>
               Best Time to Visit
             </h3>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
               {content.seasons.map((season, idx) => (
-                <div key={idx} className="card-heritage p-6 group">
-                  <div className="flex justify-between items-start mb-4">
-                    <div className="p-3 bg-parchment-dark rounded-full">
+                <div key={idx} className="card-heritage p-4 sm:p-6 group">
+                  <div className="flex justify-between items-start mb-3 sm:mb-4">
+                    <div className="p-2 sm:p-3 bg-parchment-dark rounded-full">
                       {season.name === 'Winter' && <WeatherSunIcon />}
                       {season.name === 'Monsoon' && <RainIcon />}
-                      {season.name === 'Summer' && <span className="text-2xl">☀️</span>}
+                      {season.name === 'Summer' && <span className="text-xl sm:text-2xl">☀️</span>}
                     </div>
-                    <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider 
+                    <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider 
                       ${season.type.includes('Peak') ? 'bg-gold/15 text-gold border border-gold/30' : 
                         season.type.includes('Shoulder') ? 'bg-terracotta/10 text-terracotta border border-terracotta/30' : 
                         'bg-stone-warm/10 text-stone-warm border border-stone-warm/30'}`}>
                       {season.type}
                     </span>
                   </div>
-                  <h4 className="text-xl font-heading text-ink mb-1">{season.name}</h4>
-                  <p className="text-xs text-stone-warm uppercase tracking-wider mb-3">{season.months} • {season.temperature}</p>
-                  <p className="text-ink/80 text-sm leading-relaxed font-serif">
+                  <h4 className="text-lg sm:text-xl font-heading text-ink mb-1">{season.name}</h4>
+                  <p className="text-[10px] sm:text-xs text-stone-warm uppercase tracking-wider mb-2 sm:mb-3">{season.months} • {season.temperature}</p>
+                  <p className="text-ink/80 text-xs sm:text-sm leading-relaxed">
                     {season.description}
                   </p>
                 </div>
@@ -100,20 +100,20 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
 
           {/* How to Reach */}
           <div>
-            <h3 className="text-2xl font-heading text-ink mb-8 flex items-center gap-3">
-              <span className="w-1 h-8 bg-gold rounded-full"></span>
+            <h3 className="text-xl sm:text-2xl font-heading text-ink mb-5 sm:mb-8 flex items-center gap-2 sm:gap-3">
+              <span className="w-1 h-6 sm:h-8 bg-gold rounded-full"></span>
               How to Reach
             </h3>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
               {content.travelInfo.map((info, idx) => (
-                <div key={idx} className="card-heritage p-6 border-t-3 border-t-gold/40 hover:border-t-gold group">
-                  <div className="text-gold mb-4">
+                <div key={idx} className="card-heritage p-4 sm:p-6 border-t-3 border-t-gold/40 hover:border-t-gold group">
+                  <div className="text-gold mb-3 sm:mb-4">
                     {info.mode.toLowerCase().includes('flight') && <PlaneIcon />}
                     {info.mode.toLowerCase().includes('train') && <TrainIcon />}
                     {info.mode.toLowerCase().includes('road') && <BusIcon />}
                   </div>
-                  <h4 className="text-lg font-heading text-ink mb-2">{info.mode}</h4>
-                  <p className="text-stone-warm text-sm leading-relaxed font-serif">{info.details}</p>
+                  <h4 className="text-base sm:text-lg font-heading text-ink mb-1.5 sm:mb-2">{info.mode}</h4>
+                  <p className="text-stone-warm text-xs sm:text-sm leading-relaxed">{info.details}</p>
                 </div>
               ))}
             </div>
@@ -124,18 +124,18 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
       <SectionDivider />
 
       {/* 3. Nearby Attractions */}
-      <section className="py-16 sm:py-24 bg-parchment overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 mb-10">
+      <section className="py-12 sm:py-16 lg:py-24 bg-parchment overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 mb-6 sm:mb-10">
           <SectionHeading 
             title="Excursions Nearby" 
             subtitle="Beyond the city gates lies a world of wonders."
           />
         </div>
         
-        <div className="flex overflow-x-auto pb-8 px-4 sm:px-8 gap-6 snap-x hide-scrollbar">
+        <div className="flex overflow-x-auto pb-6 sm:pb-8 px-4 sm:px-8 gap-4 sm:gap-6 snap-x hide-scrollbar">
           {content.nearbyPlaces.map((place, idx) => (
-            <div key={idx} className="snap-center shrink-0 w-72 sm:w-80 card-heritage overflow-hidden">
-              <div className="h-48 overflow-hidden bg-parchment-dark">
+            <div key={idx} className="snap-center shrink-0 w-64 sm:w-72 lg:w-80 card-heritage overflow-hidden">
+              <div className="h-36 sm:h-44 lg:h-48 overflow-hidden bg-parchment-dark">
                 <img 
                   src={`https://picsum.photos/seed/${place.name}/400/300`} 
                   alt={place.name} 
@@ -144,10 +144,10 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
                   className="w-full h-full object-cover img-heritage transition-transform duration-700 hover:scale-105" 
                 />
               </div>
-              <div className="p-5">
-                <h3 className="text-xl font-heading text-ink mb-1">{place.name}</h3>
-                <span className="text-xs font-medium text-gold uppercase tracking-wider block mb-3">{place.distance}</span>
-                <p className="text-stone-warm text-sm leading-relaxed font-serif">
+              <div className="p-4 sm:p-5">
+                <h3 className="text-lg sm:text-xl font-heading text-ink mb-1">{place.name}</h3>
+                <span className="text-[10px] sm:text-xs font-medium text-gold uppercase tracking-wider block mb-2 sm:mb-3">{place.distance}</span>
+                <p className="text-stone-warm text-xs sm:text-sm leading-relaxed">
                   {place.description}
                 </p>
               </div>
@@ -164,7 +164,7 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
       <SectionDivider />
 
       {/* 5. Culinary Delights */}
-      <section className="py-16 sm:py-24 bg-parchment-dark text-center">
+      <section className="py-12 sm:py-16 lg:py-24 bg-parchment-dark text-center">
         <div className="max-w-5xl mx-auto px-4">
           <SectionHeading 
             title="The Taste of Aurangabad" 
@@ -172,10 +172,10 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
             symbol="❋"
           />
           
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {content.foodItems.map((item, idx) => (
               <div key={idx} className="group">
-                <div className="w-28 h-28 sm:w-36 sm:h-36 mx-auto rounded-full border-3 border-gold/30 overflow-hidden mb-4 group-hover:border-gold transition-colors duration-300 shadow-lg">
+                <div className="w-20 h-20 sm:w-28 sm:h-28 lg:w-36 lg:h-36 mx-auto rounded-full border-2 sm:border-3 border-gold/30 overflow-hidden mb-3 sm:mb-4 group-hover:border-gold transition-colors duration-300 shadow-md sm:shadow-lg">
                   <img 
                     src={`https://picsum.photos/seed/${item.name}food/400/400`} 
                     alt={item.name} 
@@ -184,8 +184,8 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
                     className="w-full h-full object-cover img-heritage" 
                   />
                 </div>
-                <h3 className="text-lg font-heading text-ink mb-1 group-hover:text-gold transition-colors duration-300">{item.name}</h3>
-                <p className="text-stone-warm text-sm italic font-serif px-2">{item.description}</p>
+                <h3 className="text-base sm:text-lg font-heading text-ink mb-0.5 sm:mb-1 group-hover:text-gold transition-colors duration-300">{item.name}</h3>
+                <p className="text-stone-warm text-xs sm:text-sm italic px-1 sm:px-2 leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
@@ -214,34 +214,34 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
       </section>
 
       {/* Navigation Cards */}
-      <section className="py-16 sm:py-24 px-4 max-w-7xl mx-auto bg-parchment">
+      <section className="py-12 sm:py-16 lg:py-24 px-4 max-w-7xl mx-auto bg-parchment">
         <SectionHeading title="Plan Your Journey" />
         
-        <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
-          <Link to="/attractions" className="group relative overflow-hidden rounded-xl shadow-lg aspect-[3/4]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+          <Link to="/attractions" className="group relative overflow-hidden rounded-xl shadow-lg aspect-[4/3] sm:aspect-[3/4]">
             <img src="https://picsum.photos/seed/bibi-maqbara/600/800" alt="Attractions" loading="lazy" className="w-full h-full object-cover img-heritage transition-transform duration-700 group-hover:scale-105"/>
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent flex items-end p-6">
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent flex items-end p-4 sm:p-6">
               <div>
-                <h3 className="text-2xl text-gold-light font-heading mb-2">Monuments</h3>
-                <p className="text-white/80 text-sm font-serif">Explore the architectural marvels.</p>
+                <h3 className="text-xl sm:text-2xl text-gold-light font-heading mb-1 sm:mb-2">Monuments</h3>
+                <p className="text-white/80 text-xs sm:text-sm">Explore the architectural marvels.</p>
               </div>
             </div>
           </Link>
-          <Link to="/itineraries" className="group relative overflow-hidden rounded-xl shadow-lg aspect-[3/4]">
+          <Link to="/itineraries" className="group relative overflow-hidden rounded-xl shadow-lg aspect-[4/3] sm:aspect-[3/4]">
             <img src="https://picsum.photos/seed/ajanta-paintings/600/800" alt="Itineraries" loading="lazy" className="w-full h-full object-cover img-heritage transition-transform duration-700 group-hover:scale-105"/>
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent flex items-end p-6">
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent flex items-end p-4 sm:p-6">
               <div>
-                <h3 className="text-2xl text-gold-light font-heading mb-2">Curated Trips</h3>
-                <p className="text-white/80 text-sm font-serif">Plans crafted for your perfect journey.</p>
+                <h3 className="text-xl sm:text-2xl text-gold-light font-heading mb-1 sm:mb-2">Curated Trips</h3>
+                <p className="text-white/80 text-xs sm:text-sm">Plans crafted for your perfect journey.</p>
               </div>
             </div>
           </Link>
-          <Link to="/places" className="group relative overflow-hidden rounded-xl shadow-lg aspect-[3/4]">
+          <Link to="/places" className="group relative overflow-hidden rounded-xl shadow-lg aspect-[4/3] sm:aspect-[3/4] sm:col-span-2 md:col-span-1">
             <img src="https://picsum.photos/seed/aurangabad-hotel/600/800" alt="Stay and Dine" loading="lazy" className="w-full h-full object-cover img-heritage transition-transform duration-700 group-hover:scale-105"/>
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent flex items-end p-6">
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent flex items-end p-4 sm:p-6">
               <div>
-                <h3 className="text-2xl text-gold-light font-heading mb-2">Royal Stays</h3>
-                <p className="text-white/80 text-sm font-serif">Luxury hotels and authentic cuisine.</p>
+                <h3 className="text-xl sm:text-2xl text-gold-light font-heading mb-1 sm:mb-2">Royal Stays</h3>
+                <p className="text-white/80 text-xs sm:text-sm">Luxury hotels and authentic cuisine.</p>
               </div>
             </div>
           </Link>
