@@ -2,9 +2,10 @@
 
 # 🏛️ Ellora Ajanta Heritage
 
-**A digital tourism platform for the historic Aurangabad (Chhatrapati Sambhajinagar) district**
+**An interactive tourism web app exploring Aurangabad's UNESCO heritage — built with React, TypeScript, and a custom heritage-inspired design system**
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-b45309?style=for-the-badge)](https://akash1269.github.io/ellora-ajanta-heritage/)
+[![CI](https://github.com/Akash1269/ellora-ajanta-heritage/actions/workflows/ci.yml/badge.svg)](https://github.com/Akash1269/ellora-ajanta-heritage/actions/workflows/ci.yml)
 [![React](https://img.shields.io/badge/React-18.2-61DAFB?logo=react&logoColor=white)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-6.4-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
@@ -16,9 +17,11 @@
 
 ## About
 
-Ellora Ajanta Heritage showcases the UNESCO World Heritage Sites, historic monuments, curated travel itineraries, and local hospitality of the Aurangabad district in Maharashtra, India.
+This app brings the historic Aurangabad (Chhatrapati Sambhajinagar) district to life — showcasing Ellora Caves, Ajanta Caves, Bibi Ka Maqbara, Daulatabad Fort, and more through interactive maps, curated multi-day itineraries, and a visual language inspired by Mughal-era Jaali lattice screens.
 
-Whether you're planning a trip or exploring from afar, the app provides everything you need — interactive maps, detailed attraction info, multi-day itineraries, hotel/restaurant guides, and a rich historical narrative.
+Built with a component-driven architecture, strict TypeScript, and performance-first patterns like code splitting and lazy-loaded maps.
+
+> **[→ View Live Demo](https://akash1269.github.io/ellora-ajanta-heritage/)**
 
 ---
 
@@ -51,16 +54,25 @@ Whether you're planning a trip or exploring from afar, the app provides everythi
 
 ## Highlights
 
-- **Strict TypeScript** — Full `strict: true` with zero `any` usage across the codebase
-- **Route-level code splitting** — Every page lazy-loaded via `React.lazy()` + `Suspense`, producing separate chunks
-- **Lazy Leaflet** — The 150KB map library loads only when the map section scrolls into viewport (IntersectionObserver)
-- **XSS-safe map popups** — DOM `createElement` + `textContent` instead of innerHTML templates
-- **Heritage design system** — Custom Jaali lattice patterns, arch clip-paths, ornamental dividers, and warm amber palette — all in Tailwind utility classes
-- **Resilient images** — All images have `loading="lazy"` + `onError` fallback to inline SVG placeholder
-- **Memoized components** — Card components wrapped in `React.memo()` with `useCallback` handlers to minimize re-renders
-- **Accessible modals** — ARIA roles, keyboard navigation (ESC close), focus management, scroll lock with proper restore
-- **Zero external API dependency** — Ships with comprehensive static fallback data; works fully offline
-- **CI pipeline** — Every push runs lint → type-check → build before deploy
+- **Strict TypeScript** — `strict: true`, zero `any` usage
+- **Route-level code splitting** — Pages lazy-loaded via `React.lazy()` + `Suspense`
+- **Lazy Leaflet** — 150KB map library loads only when scrolled into view (IntersectionObserver + dynamic import)
+- **XSS-safe map popups** — DOM `createElement` + `textContent` instead of innerHTML
+- **Heritage design system** — Jaali lattice patterns, arch clip-paths, ornamental dividers, warm amber palette — all Tailwind utility classes
+- **Resilient images** — `loading="lazy"` + `onError` fallback to SVG placeholder
+- **Memoized rendering** — `React.memo()` on cards + `useCallback` for stable handler references
+- **Accessible modals** — ARIA roles, ESC close, focus management, scroll lock with restore
+- **Offline-ready** — Comprehensive static fallback data, no external API required
+- **CI/CD** — Lint → type-check → build on every push; auto-deploy to GitHub Pages
+
+### Bundle Output
+
+```
+index.js       200 KB (React + Router core)
+leaflet.js     150 KB (loaded on scroll only)
+Home.js         17 KB (page content)
+Other pages   2-8 KB each (code-split)
+```
 
 ---
 
@@ -87,18 +99,39 @@ Open [http://localhost:5175](http://localhost:5175) in your browser.
 
 ---
 
-## Contributing
+## What I Learned
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes
-4. Push and open a Pull Request
+This project was a deep dive into:
+
+- **Component architecture** — Feature-based folder structure, shared primitives, and clean data flow (hooks → services → components)
+- **Performance budgeting** — Measuring bundle size impact and optimizing with code splitting, dynamic imports, and viewport-triggered loading
+- **Accessibility in practice** — Focus management, scroll lock lifecycle, and keyboard nav that survives mount/unmount cycles
+- **Design systems in Tailwind** — Building a cohesive visual identity (patterns, clip-paths, layered backgrounds) without a component library
+- **CI/CD for frontend** — Reliable pipeline catching type errors, lint issues, and build failures before deploy
+- **Client-side security** — XSS prevention in dynamic content, safe image handling, and keeping secrets out of bundles
 
 ---
 
-## License
+## Contributing
 
-This project is private. All rights reserved.
+Contributions are welcome! Whether it's fixing a bug, adding a feature, improving documentation, or suggesting ideas — all help is appreciated.
+
+### How to contribute
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/your-feature`)
+3. Make your changes and commit
+4. Push to your fork and open a Pull Request
+
+### Want to discuss something first?
+
+Open an [issue](https://github.com/Akash1269/ellora-ajanta-heritage/issues) to propose changes, report bugs, or ask questions. For larger features, it's best to discuss in an issue before starting work so we can align on approach.
+
+---
+
+## Author
+
+**Akash** — [GitHub](https://github.com/Akash1269)
 
 ---
 
