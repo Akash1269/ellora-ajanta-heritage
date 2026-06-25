@@ -1,7 +1,7 @@
 
 
-import React, { useEffect, useRef } from 'react';
-import L from 'leaflet';
+import React, { useEffect, useRef, useState } from 'react';
+import type L from 'leaflet';
 import type { MapLocation } from '../../types';
 import { MAP_CENTER, MAP_ZOOM } from '../../constants';
 
@@ -56,45 +56,64 @@ export const MapSection: React.FC<MapSectionProps> = ({ locations }) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const leafletMap = useRef<L.Map | null>(null);
   const markersRef = useRef<L.Marker[]>([]);
+  const [isVisible, setIsVisible] = useState(false);
 
+  // Intersection Observer: only load Leaflet when map container is in viewport
   useEffect(() => {
     if (!mapRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setIsVisible(true); observer.disconnect(); } },
+      { rootMargin: '200px' }
+    );
+    observer.observe(mapRef.current);
+    return () => observer.disconnect();
+  }, []);
 
-    // Initialize map if not already created
-    if (!leafletMap.current) {
-      const map = L.map(mapRef.current).setView(MAP_CENTER, MAP_ZOOM);
-      leafletMap.current = map;
+  useEffect(() => {
+    if (!isVisible || !mapRef.current) return;
 
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
-    }
+    let cancelled = false;
 
-    const map = leafletMap.current;
+    import('leaflet').then((leaflet) => {
+      if (cancelled || !mapRef.current) return;
+      const L = leaflet.default;
 
-    // Clear existing markers before adding new ones
-    markersRef.current.forEach((marker) => marker.remove());
-    markersRef.current = [];
+      // Initialize map if not already created
+      if (!leafletMap.current) {
+        const map = L.map(mapRef.current).setView(MAP_CENTER, MAP_ZOOM);
+        leafletMap.current = map;
 
-    const defaultIcon = L.icon({
-      iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-      iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-      shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-      iconSize: [25, 41],
-      iconAnchor: [12, 41],
-      popupAnchor: [1, -34],
-      shadowSize: [41, 41]
-    });
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+      }
 
-    // Add markers using DOM-based popups (XSS-safe)
-    locations.forEach((loc) => {
-      const marker = L.marker([loc.lat, loc.lng], { icon: defaultIcon }).addTo(map);
-      marker.bindPopup(createPopupContent(loc));
-      markersRef.current.push(marker);
+      const map = leafletMap.current;
+
+      // Clear existing markers before adding new ones
+      markersRef.current.forEach((marker) => marker.remove());
+      markersRef.current = [];
+
+      const defaultIcon = L.icon({
+        iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+        iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+        shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+      });
+
+      // Add markers using DOM-based popups (XSS-safe)
+      locations.forEach((loc) => {
+        const marker = L.marker([loc.lat, loc.lng], { icon: defaultIcon }).addTo(map);
+        marker.bindPopup(createPopupContent(loc));
+        markersRef.current.push(marker);
+      });
     });
 
     return () => {
-      // Clean up markers on unmount or location change
+      cancelled = true;
       markersRef.current.forEach((marker) => marker.remove());
       markersRef.current = [];
       if (leafletMap.current) {
@@ -102,7 +121,7 @@ export const MapSection: React.FC<MapSectionProps> = ({ locations }) => {
         leafletMap.current = null;
       }
     };
-  }, [locations]);
+  }, [isVisible, locations]);
 
   return (
     <section className="py-20 bg-[#fffaf0] border-t-2 border-stone-200">

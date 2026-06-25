@@ -43,9 +43,14 @@ This document tracks all issues, improvements, and tasks required to make the pr
 
 - [x] **Deduplicate inline SVG icons** — All icons consolidated in `src/components/icons/index.tsx`.
 - [x] **Add loading delay simulation** — 400ms minimum display time for loading state prevents UI flicker.
-- [ ] **Hardcoded strings (i18n)** — All text in English with no translation support.
-- [ ] **No data refresh mechanism** — Data loaded once on mount; stale if app stays open for hours.
 - [x] **Unused CSS styles** — Removed unused `.bg-mandala-opacity`. `.arch-mask` is used and retained.
+
+---
+
+## 🔮 Future Plans (Post-Release)
+
+- [ ] **i18n / Translations** — Add Marathi/Hindi support with react-i18next or similar
+- [ ] **Data refresh mechanism** — Auto-refresh or manual trigger for long-lived sessions
 
 ---
 
@@ -55,19 +60,19 @@ This document tracks all issues, improvements, and tasks required to make the pr
 
 - [x] Set up GitHub Actions CI (lint + type-check + build)
 - [ ] Add build configuration for staging/production environments
-- [ ] Configure deployment target (Vercel, Netlify, GitHub Pages, etc.)
+- [x] Configure deployment target (Vercel, Netlify, GitHub Pages, etc.)
 - [x] Add `robots.txt` to `/public`
 - [x] Add basic `sitemap.xml` to `/public`
-- [ ] Add security headers (CSP, X-Frame-Options, HSTS) in deployment config
+- [x] Add security headers (CSP, X-Frame-Options, HSTS) in deployment config
 
 ### Quality Assurance
 
 - [x] Add ESLint configuration (`.eslintrc.json`)
 - [x] Add Prettier configuration (`.prettierrc`)
-- [ ] Add pre-commit hooks (Husky + lint-staged)
+- [x] Add pre-commit hooks (Husky + lint-staged)
 - [ ] Set up Vitest with basic component tests
 - [ ] Add Lighthouse CI performance budgets
-- [ ] Enable strict TypeScript (`strict: true` in tsconfig)
+- [x] Enable strict TypeScript (`strict: true` in tsconfig)
 
 ### Performance Optimization
 
@@ -93,40 +98,6 @@ This document tracks all issues, improvements, and tasks required to make the pr
 
 ---
 
-## 🎯 Recommended Implementation Order
-
-### Phase 1: Critical Fixes (Do First)
-1. Add mobile hamburger menu (blocks all mobile users)
-2. Add React Error Boundary + 404 page
-3. Remove API key from client bundle
-4. Fix map XSS vulnerability & memory leak
-
-### Phase 2: Production Build
-5. Install Tailwind via PostCSS (replace CDN)
-6. Add SEO meta tags + Open Graph
-7. Add ESLint + Prettier config
-8. Add `.env.example`
-
-### Phase 3: Accessibility & UX
-9. Fix modal accessibility (ARIA, ESC, focus trap)
-10. Add image lazy loading
-11. Fix error handling consistency
-12. Add loading states & retry mechanisms
-
-### Phase 4: Performance
-13. Add `React.lazy()` code splitting
-14. Add `React.memo()` to card components
-15. Optimize fonts and preconnect hints
-16. Add Lighthouse CI budgets
-
-### Phase 5: DevOps & Polish
-17. Set up GitHub Actions CI pipeline
-18. Configure deployment (Vercel/Netlify)
-19. Add Vitest with basic tests
-20. Add PWA manifest + icons
-
----
-
 ## ✅ Already Done
 
 - [x] Comprehensive fallback data (offline-ready content)
@@ -139,3 +110,33 @@ This document tracks all issues, improvements, and tasks required to make the pr
 - [x] Multi-page routing with React Router
 - [x] README documentation
 - [x] Copilot instructions & AGENTS.md
+
+---
+
+## 🧑‍💻 Manual Tasks (Requires Developer Action)
+
+These items cannot be fully completed by AI and need human decisions, credentials, or external setup.
+
+### Account & Service Setup
+- [ ] **Create Sentry project** — Sign up at sentry.io, create a React project, add DSN to `.env`
+- [ ] **Set up analytics** — Choose provider (Google Analytics / Plausible / Umami), create property, add tracking snippet
+- [ ] **Enable GitHub Pages** — Go to repo Settings → Pages → Source: GitHub Actions
+
+### Design Assets
+- [ ] **Create app icons** — Design 192x192 and 512x512 PNG icons for PWA manifest (place in `public/icons/`)
+- [ ] **Replace placeholder favicon** — Replace `vite.svg` with a custom heritage-themed favicon
+- [ ] **Replace picsum.photos images** — Upload real photographs of Ellora/Ajanta to avoid CDN dependency
+
+### Product Decisions
+- [ ] **Self-host fonts vs CDN** — Weigh offline support (self-host) vs caching benefits (Google Fonts CDN)
+- [ ] **Service worker scope** — Decide caching strategy (cache-first, network-first) before implementing
+
+### Testing & Monitoring
+- [ ] **Write Vitest test cases** — Decide what to test (component rendering, hook logic, service functions)
+- [ ] **Define Lighthouse budgets** — Set target scores (e.g., Performance > 90, Accessibility = 100)
+- [ ] **Set up performance monitoring** — Choose tool (Web Vitals, Sentry Performance, Datadog RUM)
+
+### Infrastructure
+- [ ] **Staging environment** — Decide if needed; configure separate deployment branch/preview URLs
+- [ ] **Custom domain** — Purchase and configure DNS if not using `*.github.io`
+- [ ] **Gemini API integration** — If re-enabling AI features, set up API key management and rate limiting

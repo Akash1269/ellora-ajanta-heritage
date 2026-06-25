@@ -2,177 +2,101 @@
 
 # 🏛️ Ellora Ajanta Heritage
 
-**An elegant, heritage-themed web application for exploring the historic Aurangabad (Chhatrapati Sambhajinagar) district**
+**A digital tourism platform for the historic Aurangabad (Chhatrapati Sambhajinagar) district**
 
+[![Live Demo](https://img.shields.io/badge/Live-Demo-b45309?style=for-the-badge)](https://akash1269.github.io/ellora-ajanta-heritage/)
 [![React](https://img.shields.io/badge/React-18.2-61DAFB?logo=react&logoColor=white)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Vite](https://img.shields.io/badge/Vite-6.2-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![Leaflet](https://img.shields.io/badge/Leaflet-1.9-199900?logo=leaflet&logoColor=white)](https://leafletjs.com/)
+[![Vite](https://img.shields.io/badge/Vite-6.4-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 
 </div>
 
 ---
 
-## 📖 About
+## About
 
-Ellora Ajanta Heritage is a comprehensive digital tourism platform showcasing UNESCO World Heritage Sites, historic monuments, curated travel itineraries, and local hospitality of the Aurangabad district in Maharashtra, India. It features AI-powered content generation via the Google Gemini API with graceful fallback to pre-built static data.
+Ellora Ajanta Heritage showcases the UNESCO World Heritage Sites, historic monuments, curated travel itineraries, and local hospitality of the Aurangabad district in Maharashtra, India.
 
-### ✨ Key Features
-
-- **6 Heritage Attractions** — Bibi Ka Maqbara, Ajanta Caves, Ellora Caves, Daulatabad Fort, Grishneshwar Temple, Panchakki
-- **Interactive Map** — Leaflet-powered map with markers, timings, and coordinates for all sites
-- **Curated Itineraries** — 4 multi-day travel plans with hourly timelines and activity types
-- **Places Directory** — Hotels and restaurants with descriptions and specialties
-- **Rich History** — Detailed historical narrative spanning Ancient to Modern eras
-- **Heritage UI** — Custom Jaali patterns, Rozha One & Lora typography, warm amber palette
-- **Responsive Design** — Mobile-first layout adapting to all screen sizes
-- **Offline Ready** — Comprehensive fallback data ensures full functionality without API
+Whether you're planning a trip or exploring from afar, the app provides everything you need — interactive maps, detailed attraction info, multi-day itineraries, hotel/restaurant guides, and a rich historical narrative.
 
 ---
 
-## 🛠️ Tech Stack
+## What You'll Find
+
+- **6 Heritage Attractions** — Bibi Ka Maqbara, Ajanta Caves, Ellora Caves, Daulatabad Fort, Grishneshwar Temple, Panchakki
+- **Interactive Map** — Explore all sites with markers, directions, and timings
+- **Curated Itineraries** — 4 multi-day travel plans with activity timelines
+- **Places Directory** — Recommended hotels and restaurants
+- **Rich History** — From ancient dynasties to the modern era
+- **Works Offline** — Full content available without internet
+
+---
+
+## Tech Stack
 
 | Category | Technology |
 |----------|-----------|
-| **UI Library** | React 18.2 |
-| **Language** | TypeScript 5.8 |
-| **Build Tool** | Vite 6.2 |
-| **Routing** | React Router DOM 6.22 (HashRouter) |
-| **Styling** | Tailwind CSS (CDN) |
-| **Maps** | Leaflet 1.9 |
-| **AI/Content** | Google Gemini API (@google/genai) |
-| **Fonts** | Google Fonts (Rozha One, Lora) |
+| UI Library | React 18.2 (functional components + hooks) |
+| Language | TypeScript 5.8 (strict mode) |
+| Build Tool | Vite 6.4 |
+| Routing | React Router DOM 6.30 (HashRouter) |
+| Styling | Tailwind CSS 4 (@tailwindcss/vite plugin) |
+| Maps | Leaflet 1.9 (lazy-loaded) |
+| Fonts | Google Fonts (Rozha One + Lora) |
+| CI/CD | GitHub Actions → GitHub Pages |
+| Linting | ESLint + Prettier |
 
 ---
 
-## 📁 Project Structure
+## Highlights
 
-```
-awb-tour/
-├── index.html              # Entry point with meta tags & theme styles
-├── index.tsx               # React DOM mount
-├── App.tsx                 # Root component with routing & global state
-├── types.ts                # TypeScript interfaces & types
-├── constants.ts            # Attraction names & app constants
-├── vite.config.ts          # Vite configuration (port 3000, aliases)
-├── components/
-│   ├── Header.tsx          # Navigation bar with active states
-│   ├── Footer.tsx          # Footer with links & ornaments
-│   ├── Hero.tsx            # Landing hero section
-│   ├── LoadingSpinner.tsx  # Loading indicator
-│   ├── ErrorMessage.tsx    # Error display with retry
-│   ├── AttractionCard.tsx  # Attraction summary card
-│   ├── AttractionDetailModal.tsx  # Full attraction details modal
-│   ├── PlaceCard.tsx       # Hotel/restaurant card
-│   ├── PlacesSection.tsx   # Places grid layout
-│   ├── MapSection.tsx      # Interactive Leaflet map
-│   ├── ItinerariesSection.tsx  # Itinerary grid
-│   ├── ItineraryCard.tsx   # Itinerary summary card
-│   ├── ItineraryDetailModal.tsx  # Multi-day timeline modal
-│   └── pages/
-│       ├── Home.tsx        # Homepage (hero, timeline, map, food, gallery)
-│       ├── Attractions.tsx # Attractions gallery
-│       ├── Itineraries.tsx # All travel plans
-│       ├── Places.tsx      # Hotels & restaurants
-│       └── History.tsx     # Historical narrative
-├── services/
-│   └── geminiService.ts    # AI content service (Gemini API + fallback)
-└── data/
-    └── fallbackData.ts     # Comprehensive static content
-```
+- **Strict TypeScript** — Full `strict: true` with zero `any` usage across the codebase
+- **Route-level code splitting** — Every page lazy-loaded via `React.lazy()` + `Suspense`, producing separate chunks
+- **Lazy Leaflet** — The 150KB map library loads only when the map section scrolls into viewport (IntersectionObserver)
+- **XSS-safe map popups** — DOM `createElement` + `textContent` instead of innerHTML templates
+- **Heritage design system** — Custom Jaali lattice patterns, arch clip-paths, ornamental dividers, and warm amber palette — all in Tailwind utility classes
+- **Resilient images** — All images have `loading="lazy"` + `onError` fallback to inline SVG placeholder
+- **Memoized components** — Card components wrapped in `React.memo()` with `useCallback` handlers to minimize re-renders
+- **Accessible modals** — ARIA roles, keyboard navigation (ESC close), focus management, scroll lock with proper restore
+- **Zero external API dependency** — Ships with comprehensive static fallback data; works fully offline
+- **CI pipeline** — Every push runs lint → type-check → build before deploy
 
 ---
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-- **Node.js** (v18 or later recommended)
-- **npm** or **yarn**
-
-### Installation
+## Quick Start
 
 ```bash
-# Clone the repository
 git clone https://github.com/Akash1269/ellora-ajanta-heritage.git
 cd ellora-ajanta-heritage
-
-# Install dependencies
 npm install
-```
-
-### Environment Setup
-
-Create a `.env.local` file in the project root:
-
-```env
-GEMINI_API_KEY=your_google_gemini_api_key_here
-```
-
-> **Note:** The app works fully without an API key using built-in fallback data.
-
-### Development
-
-```bash
-# Start development server (http://localhost:3000)
 npm run dev
 ```
 
-### Production Build
-
-```bash
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-```
+Open [http://localhost:5175](http://localhost:5175) in your browser.
 
 ---
 
-## 🗺️ Pages & Routes
+## Documentation
 
-| Route | Page | Description |
-|-------|------|-------------|
-| `/` | Home | Landing page with hero, historical timeline, map, food culture |
-| `/attractions` | Attractions | Gallery of 6 UNESCO & heritage sites |
-| `/itineraries` | Itineraries | 4 curated multi-day travel plans |
-| `/places` | Places | Hotels and restaurants directory |
-| `/history` | History | Detailed historical narrative |
+| Document | Description |
+|----------|-------------|
+| [Architecture](docs/ARCHITECTURE.md) | Project structure, data flow, performance details |
+| [Features](docs/FEATURES.md) | Feature breakdown and design system |
+| [Onboarding](docs/ONBOARDING.md) | Developer setup guide and conventions |
 
 ---
 
-## 🎨 Design System
-
-- **Color Palette:** Floral White (`#fffaf0`), Amber 700 (`#b45309`), Warm Brown (`#431407`)
-- **Typography:** Rozha One (headings), Lora (body text)
-- **Patterns:** Heritage Jaali lattice backgrounds, decorative corner borders
-- **Components:** Card system, modal architecture, timeline layouts
-
----
-
-## 📦 Scripts
-
-| Script | Command | Description |
-|--------|---------|-------------|
-| Dev | `npm run dev` | Start Vite dev server on port 3000 |
-| Build | `npm run build` | Production build |
-| Preview | `npm run preview` | Preview production build |
-
----
-
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+3. Commit your changes
+4. Push and open a Pull Request
 
 ---
 
-## 📄 License
+## License
 
 This project is private. All rights reserved.
 
@@ -181,7 +105,5 @@ This project is private. All rights reserved.
 <div align="center">
 
 **Built with ❤️ for the heritage of Aurangabad**
-
-*Exploring centuries of history through modern technology*
 
 </div>

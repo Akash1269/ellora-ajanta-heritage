@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
+  base: '/ellora-ajanta-heritage/',
   server: {
     port: 5175,
     host: '0.0.0.0',
