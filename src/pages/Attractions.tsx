@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { AttractionCard } from '../AttractionCard';
-import { AttractionDetailModal } from '../AttractionDetailModal';
-import type { Attraction } from '../../types';
+import { AttractionCard } from '../components/attractions/AttractionCard';
+import { AttractionDetailModal } from '../components/attractions/AttractionDetailModal';
+import type { Attraction } from '../types';
 
 interface AttractionsPageProps {
   attractions: Attraction[];

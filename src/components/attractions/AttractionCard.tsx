@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Attraction } from '../types';
+import type { Attraction } from '../../types';
 
 interface AttractionCardProps {
   attraction: Attraction;

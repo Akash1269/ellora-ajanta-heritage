@@ -1,6 +1,6 @@
 import React from 'react';
-import { PlaceCard } from '../PlaceCard';
-import type { Place } from '../../types';
+import { PlaceCard } from '../components/places/PlaceCard';
+import type { Place } from '../types';
 
 interface PlacesPageProps {
     hotels: Place[];

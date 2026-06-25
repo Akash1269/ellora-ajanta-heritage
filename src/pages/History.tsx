@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { fetchHistory } from '../../services/geminiService';
-import type { HistoryContent } from '../../types';
-import { LoadingSpinner } from '../LoadingSpinner';
-import { ErrorMessage } from '../ErrorMessage';
+import { fetchHistory } from '../services/dataService';
+import type { HistoryContent } from '../types';
+import { LoadingSpinner } from '../components/common/LoadingSpinner';
+import { ErrorMessage } from '../components/common/ErrorMessage';
 
 export const History: React.FC = () => {
   const [history, setHistory] = useState<HistoryContent | null>(null);

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
-import type { MapLocation } from '../types';
+import type { MapLocation } from '../../types';
 
 interface MapSectionProps {
   locations: MapLocation[];

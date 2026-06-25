@@ -1,26 +1,15 @@
 
 
 import React from 'react';
-import { Hero } from '../Hero';
-import { MapSection } from '../MapSection';
+import { Hero } from '../components/common/Hero';
+import { MapSection } from '../components/common/MapSection';
 import { Link } from 'react-router-dom';
-import type { HomeContent } from '../../types';
+import type { HomeContent } from '../types';
+import { PlaneIcon, TrainIcon, BusIcon, WeatherSunIcon, RainIcon } from '../components/icons';
 
 interface HomeProps {
   content: HomeContent | null;
 }
-
-// Simple icons
-const PlaneIcon = () => <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>;
-const TrainIcon = () => <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>; // Fallback lightning for speed/train, simple path
-const BusIcon = () => <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>; // Exchange icon for connections
-
-// Weather Icons
-const SunIcon = () => <svg className="w-10 h-10 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>;
-const RainIcon = () => <svg className="w-10 h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 21v-3m0 0v-3m0 3h-3m3 0h3"></path></svg>; // Cloud with rough rain lines idea, simplified as cloud here. Let's use standard cloud for simplicity or improved SVG
-const CloudIcon = () => <svg className="w-10 h-10 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>;
-const SnowflakeIcon = () => <svg className="w-10 h-10 text-cyan-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v18m9-9H3m15.364-6.364L5.636 19.364m12.728 12.728L5.636 4.636"></path></svg>;
-
 
 export const Home: React.FC<HomeProps> = ({ content }) => {
   if (!content) return <Hero />; // Fallback if data not loaded yet
@@ -73,7 +62,7 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
                         <div key={idx} className="bg-white/5 border border-white/10 p-6 rounded-lg backdrop-blur-sm hover:bg-white/10 transition-colors">
                             <div className="flex justify-between items-start mb-4">
                                 <div className="p-3 bg-stone-800 rounded-full border border-amber-500/30">
-                                   {season.name === 'Winter' && <SunIcon />}
+                                   {season.name === 'Winter' && <WeatherSunIcon />}
                                    {season.name === 'Monsoon' && <RainIcon />}
                                    {season.name === 'Summer' && <span className="text-3xl">♨️</span>}
                                 </div>

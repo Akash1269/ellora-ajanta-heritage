@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { ItineraryCard } from '../ItineraryCard';
-import { ItineraryDetailModal } from '../ItineraryDetailModal';
-import { fetchItineraryDetails } from '../../services/geminiService';
-import type { ItinerarySummary, ItineraryDetail } from '../../types';
+import { ItineraryCard } from '../components/itineraries/ItineraryCard';
+import { ItineraryDetailModal } from '../components/itineraries/ItineraryDetailModal';
+import { fetchItineraryDetails } from '../services/dataService';
+import type { ItinerarySummary, ItineraryDetail } from '../types';
 
 interface ItinerariesPageProps {
   itineraries: ItinerarySummary[];

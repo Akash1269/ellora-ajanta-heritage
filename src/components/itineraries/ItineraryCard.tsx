@@ -1,6 +1,6 @@
 
 import React from 'react';
-import type { ItinerarySummary } from '../types';
+import type { ItinerarySummary } from '../../types';
 
 interface ItineraryCardProps {
   itinerary: ItinerarySummary;
