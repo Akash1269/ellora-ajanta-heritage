@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
-import { LandmarkIcon } from '../icons';
+import { LandmarkIcon, HomeIcon, ScrollIcon, ColumnsIcon, RouteIcon, UtensilsIcon } from '../icons';
 
 export const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -48,19 +48,19 @@ export const Header: React.FC = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <NavLink to="/" className={linkClasses}>
-                Home {linkDecorator}
+                <HomeIcon className="w-3.5 h-3.5 inline-block mr-1.5 -mt-0.5 opacity-70" />Home {linkDecorator}
             </NavLink>
             <NavLink to="/history" className={linkClasses}>
-                History {linkDecorator}
+                <ScrollIcon className="w-3.5 h-3.5 inline-block mr-1.5 -mt-0.5 opacity-70" />History {linkDecorator}
             </NavLink>
             <NavLink to="/attractions" className={linkClasses}>
-                Attractions {linkDecorator}
+                <ColumnsIcon className="w-3.5 h-3.5 inline-block mr-1.5 -mt-0.5 opacity-70" />Attractions {linkDecorator}
             </NavLink>
             <NavLink to="/itineraries" className={linkClasses}>
-                Itineraries {linkDecorator}
+                <RouteIcon className="w-3.5 h-3.5 inline-block mr-1.5 -mt-0.5 opacity-70" />Itineraries {linkDecorator}
             </NavLink>
             <NavLink to="/places" className={linkClasses}>
-                Stay & Dine {linkDecorator}
+                <UtensilsIcon className="w-3.5 h-3.5 inline-block mr-1.5 -mt-0.5 opacity-70" />Stay & Dine {linkDecorator}
             </NavLink>
           </nav>
 
@@ -87,11 +87,11 @@ export const Header: React.FC = () => {
       {/* Mobile Navigation Menu */}
       {mobileMenuOpen && (
         <nav className="md:hidden bg-parchment border-t border-gold/10 pb-2">
-          <NavLink to="/" className={mobileLinkClasses} onClick={closeMenu}>Home</NavLink>
-          <NavLink to="/history" className={mobileLinkClasses} onClick={closeMenu}>History</NavLink>
-          <NavLink to="/attractions" className={mobileLinkClasses} onClick={closeMenu}>Attractions</NavLink>
-          <NavLink to="/itineraries" className={mobileLinkClasses} onClick={closeMenu}>Itineraries</NavLink>
-          <NavLink to="/places" className={mobileLinkClasses} onClick={closeMenu}>Stay & Dine</NavLink>
+          <NavLink to="/" className={mobileLinkClasses} onClick={closeMenu}><HomeIcon className="w-4 h-4 inline-block mr-3 opacity-70" />Home</NavLink>
+          <NavLink to="/history" className={mobileLinkClasses} onClick={closeMenu}><ScrollIcon className="w-4 h-4 inline-block mr-3 opacity-70" />History</NavLink>
+          <NavLink to="/attractions" className={mobileLinkClasses} onClick={closeMenu}><ColumnsIcon className="w-4 h-4 inline-block mr-3 opacity-70" />Attractions</NavLink>
+          <NavLink to="/itineraries" className={mobileLinkClasses} onClick={closeMenu}><RouteIcon className="w-4 h-4 inline-block mr-3 opacity-70" />Itineraries</NavLink>
+          <NavLink to="/places" className={mobileLinkClasses} onClick={closeMenu}><UtensilsIcon className="w-4 h-4 inline-block mr-3 opacity-70" />Stay & Dine</NavLink>
         </nav>
       )}
     </header>

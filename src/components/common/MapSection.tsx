@@ -94,14 +94,21 @@ export const MapSection: React.FC<MapSectionProps> = ({ locations }) => {
       markersRef.current.forEach((marker) => marker.remove());
       markersRef.current = [];
 
-      const defaultIcon = L.icon({
-        iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-        iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-        shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowSize: [41, 41]
+      const defaultIcon = L.divIcon({
+        className: 'custom-heritage-marker',
+        html: `<svg width="36" height="44" viewBox="0 0 36 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 0C8.06 0 0 8.06 0 18c0 13.5 18 26 18 26s18-12.5 18-26C36 8.06 27.94 0 18 0z" fill="#b8860b"/>
+          <path d="M18 2C9.16 2 2 9.16 2 18c0 12 16 23.5 16 23.5S34 30 34 18C34 9.16 26.84 2 18 2z" fill="#d4a84b"/>
+          <rect x="10" y="12" width="3" height="14" rx="1.5" fill="#2c1810"/>
+          <rect x="23" y="12" width="3" height="14" rx="1.5" fill="#2c1810"/>
+          <path d="M10 14 C10 9, 18 7, 18 7 C18 7, 26 9, 26 14" stroke="#2c1810" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <rect x="14" y="18" width="8" height="8" rx="0.5" fill="none" stroke="#2c1810" stroke-width="1.5"/>
+          <path d="M18 18v8" stroke="#2c1810" stroke-width="1"/>
+          <path d="M14 22h8" stroke="#2c1810" stroke-width="1"/>
+        </svg>`,
+        iconSize: [36, 44],
+        iconAnchor: [18, 44],
+        popupAnchor: [0, -40]
       });
 
       // Add markers using DOM-based popups (XSS-safe)
@@ -124,22 +131,22 @@ export const MapSection: React.FC<MapSectionProps> = ({ locations }) => {
   }, [isVisible, locations]);
 
   return (
-    <section className="py-16 sm:py-24 bg-parchment">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-10">
+    <section className="py-12 sm:py-16 lg:py-24 bg-parchment">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-8 sm:mb-10">
                 <span className="text-gold uppercase tracking-widest text-xs font-bold">Orientation</span>
-                <h2 className="text-3xl sm:text-4xl font-heading text-ink mt-2">Map of Wonders</h2>
-                <div className="flex items-center justify-center gap-3 mt-4">
-                    <span className="h-px w-10 bg-gold/30"></span>
-                    <span className="text-gold/50 text-sm">◆</span>
-                    <span className="h-px w-10 bg-gold/30"></span>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading text-ink mt-2">Map of Wonders</h2>
+                <div className="flex items-center justify-center gap-3 mt-3 sm:mt-4">
+                    <span className="h-px w-8 sm:w-10 bg-gold/30"></span>
+                    <span className="text-gold/50 text-xs sm:text-sm">◆</span>
+                    <span className="h-px w-8 sm:w-10 bg-gold/30"></span>
                 </div>
             </div>
             
             <div className="relative p-1.5 bg-white border border-gold/20 shadow-lg rounded-xl overflow-hidden">
                 <div 
                     ref={mapRef} 
-                    className="w-full h-[400px] sm:h-[500px] z-0 rounded-lg" 
+                    className="w-full aspect-square sm:aspect-[4/3] z-0 rounded-lg" 
                     style={{ filter: 'sepia(20%) contrast(102%)' }}
                 ></div>
             </div>

@@ -45,12 +45,29 @@ export interface ItineraryDetail {
   days: ItineraryDay[];
 }
 
+export interface HistoryEra {
+  era: string;
+  period: string;
+  title: string;
+  summary: string;
+  details: string[];
+  keyFigures?: string[];
+  monuments?: string[];
+}
+
 export interface HistoryContent {
   title: string;
-  sections: {
-    heading: string;
+  introduction: string;
+  eras: HistoryEra[];
+  culinaryHistory: {
+    title: string;
+    description: string;
+    influences: { name: string; detail: string }[];
+  };
+  legacy: {
+    title: string;
     content: string;
-  }[];
+  };
 }
 
 /* --- New Home Page Types --- */
