@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import type { Attraction } from '../../types';
-import { CloseIcon, HistoryIcon, SunIcon, CompassIcon } from '../icons';
+import { CloseIcon, SunIcon, CompassIcon } from '../icons';
 
 interface AttractionDetailModalProps {
   attraction: Attraction;
