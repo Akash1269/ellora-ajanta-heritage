@@ -1,4 +1,4 @@
-# 🚀 Publish Plan — Aurangabad Tourism Guide
+# 🚀 Publish Plan — Ellora Ajanta Heritage
 
 This document tracks all issues, improvements, and tasks required to make the project production-ready.
 

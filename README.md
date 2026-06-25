@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🏛️ Aurangabad Tourism Guide
+# 🏛️ Ellora Ajanta Heritage
 
 **An elegant, heritage-themed web application for exploring the historic Aurangabad (Chhatrapati Sambhajinagar) district**
 
@@ -16,7 +16,7 @@
 
 ## 📖 About
 
-The Aurangabad Tourism Guide is a comprehensive digital tourism platform showcasing UNESCO World Heritage Sites, historic monuments, curated travel itineraries, and local hospitality of the Aurangabad district in Maharashtra, India. It features AI-powered content generation via the Google Gemini API with graceful fallback to pre-built static data.
+Ellora Ajanta Heritage is a comprehensive digital tourism platform showcasing UNESCO World Heritage Sites, historic monuments, curated travel itineraries, and local hospitality of the Aurangabad district in Maharashtra, India. It features AI-powered content generation via the Google Gemini API with graceful fallback to pre-built static data.
 
 ### ✨ Key Features
 

@@ -1,4 +1,4 @@
-# AGENTS.md — Aurangabad Tourism Guide
+# AGENTS.md — Ellora Ajanta Heritage
 
 This file defines specialized agent modes for working with this project.
 

@@ -1,4 +1,4 @@
-# Copilot Instructions — Aurangabad Tourism Guide
+# Copilot Instructions — Ellora Ajanta Heritage
 
 ## Project Overview
 

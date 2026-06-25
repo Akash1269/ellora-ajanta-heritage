@@ -22,10 +22,10 @@ export const Header: React.FC = () => {
              </div>
             <div className="flex flex-col">
                 <span className="text-2xl sm:text-3xl text-amber-50 font-heading tracking-wide leading-none">
-                  Aurangabad
+                  Ellora Ajanta
                 </span>
                 <span className="text-amber-500 text-sm uppercase tracking-[0.3em] leading-none mt-1">
-                  Heritage Guide
+                  Heritage
                 </span>
             </div>
           </NavLink>
