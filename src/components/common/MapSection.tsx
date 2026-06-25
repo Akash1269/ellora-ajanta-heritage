@@ -11,7 +11,7 @@ interface MapSectionProps {
 
 function createPopupContent(loc: MapLocation): HTMLDivElement {
   const container = document.createElement('div');
-  container.style.fontFamily = "'Lora', serif";
+  container.style.fontFamily = "'Spectral', serif";
   container.style.width = '200px';
 
   if (loc.imageUrl) {
@@ -27,7 +27,7 @@ function createPopupContent(loc: MapLocation): HTMLDivElement {
 
   const title = document.createElement('h3');
   title.textContent = loc.name;
-  title.style.cssText = "color: #b45309; font-size: 16px; margin: 0 0 4px 0; font-family: 'Rozha One', serif;";
+  title.style.cssText = "color: #b8860b; font-size: 16px; margin: 0 0 4px 0; font-family: 'Cormorant Garamond', serif; font-weight: 600;";
   container.appendChild(title);
 
   if (loc.timings) {
@@ -46,7 +46,7 @@ function createPopupContent(loc: MapLocation): HTMLDivElement {
   link.target = '_blank';
   link.rel = 'noopener noreferrer';
   link.textContent = 'Get Directions';
-  link.style.cssText = 'display: block; text-align: center; background-color: #b45309; color: white; padding: 6px 12px; text-decoration: none; border-radius: 2px; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;';
+  link.style.cssText = 'display: block; text-align: center; background-color: #b8860b; color: white; padding: 6px 12px; text-decoration: none; border-radius: 9999px; font-size: 12px; font-weight: 500; letter-spacing: 0.5px;';
   container.appendChild(link);
 
   return container;
@@ -124,27 +124,24 @@ export const MapSection: React.FC<MapSectionProps> = ({ locations }) => {
   }, [isVisible, locations]);
 
   return (
-    <section className="py-20 bg-[#fffaf0] border-t-2 border-stone-200">
+    <section className="py-16 sm:py-24 bg-parchment">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-                <span className="text-amber-600 uppercase tracking-widest text-xs font-bold">Orientation</span>
-                <h2 className="text-3xl sm:text-4xl font-heading text-stone-900 mt-2">Map of Wonders</h2>
-                <div className="w-16 h-px bg-amber-500 mx-auto mt-4"></div>
+            <div className="text-center mb-10">
+                <span className="text-gold uppercase tracking-widest text-xs font-bold">Orientation</span>
+                <h2 className="text-3xl sm:text-4xl font-heading text-ink mt-2">Map of Wonders</h2>
+                <div className="flex items-center justify-center gap-3 mt-4">
+                    <span className="h-px w-10 bg-gold/30"></span>
+                    <span className="text-gold/50 text-sm">◆</span>
+                    <span className="h-px w-10 bg-gold/30"></span>
+                </div>
             </div>
             
-            <div className="relative p-2 bg-white border-2 border-stone-300 shadow-xl rounded-sm">
-                {/* Map Container with Sepia filter for heritage look */}
+            <div className="relative p-1.5 bg-white border border-gold/20 shadow-lg rounded-xl overflow-hidden">
                 <div 
                     ref={mapRef} 
-                    className="w-full h-[500px] z-0" 
-                    style={{ filter: 'sepia(30%) contrast(105%)' }}
+                    className="w-full h-[400px] sm:h-[500px] z-0 rounded-lg" 
+                    style={{ filter: 'sepia(20%) contrast(102%)' }}
                 ></div>
-                
-                {/* Decorative corners */}
-                <div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-amber-800 -mt-1 -ml-1"></div>
-                <div className="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-amber-800 -mt-1 -mr-1"></div>
-                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-amber-800 -mb-1 -ml-1"></div>
-                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-amber-800 -mb-1 -mr-1"></div>
             </div>
         </div>
     </section>

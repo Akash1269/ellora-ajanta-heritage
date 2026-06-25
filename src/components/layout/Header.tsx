@@ -14,32 +14,32 @@ export const Header: React.FC = () => {
   }, []);
 
   const linkClasses = ({ isActive }: { isActive: boolean }) =>
-    `text-lg tracking-wide font-serif transition-colors duration-300 relative group py-2 ${
-      isActive ? 'text-amber-500' : 'text-stone-300 hover:text-amber-400'
+    `text-sm tracking-wide font-serif transition-colors duration-300 relative group py-2 uppercase tracking-wider ${
+      isActive ? 'text-gold' : 'text-ink/70 hover:text-gold'
     }`;
 
   const mobileLinkClasses = ({ isActive }: { isActive: boolean }) =>
-    `block px-4 py-3 text-lg font-serif border-b border-stone-700 transition-colors ${
-      isActive ? 'text-amber-500 bg-stone-800' : 'text-stone-200 hover:text-amber-400 hover:bg-stone-800'
+    `block px-6 py-4 text-base font-serif transition-colors ${
+      isActive ? 'text-gold bg-parchment-dark' : 'text-ink/70 hover:text-gold hover:bg-parchment-dark'
     }`;
 
   const linkDecorator = (
-    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-500 transition-all duration-300 group-hover:w-full"></span>
+    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full rounded-full"></span>
   );
 
   return (
-    <header className="bg-stone-900 border-b-4 border-amber-600 shadow-xl sticky top-0 z-50">
+    <header className="bg-parchment/95 backdrop-blur-md border-b border-gold/20 shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-24">
+        <div className="flex items-center justify-between h-20">
           <NavLink to="/" className="flex items-center space-x-3 group" onClick={closeMenu}>
-             <div className="p-2 border-2 border-amber-500 rounded-full group-hover:bg-stone-800 transition-colors">
-                <LandmarkIcon className="h-8 w-8 text-amber-500" />
+             <div className="p-2 border border-gold/40 rounded-full group-hover:border-gold transition-colors duration-300">
+                <LandmarkIcon className="h-6 w-6 text-gold" />
              </div>
             <div className="flex flex-col">
-                <span className="text-2xl sm:text-3xl text-amber-50 font-heading tracking-wide leading-none">
+                <span className="text-xl sm:text-2xl text-ink font-heading tracking-wide leading-none">
                   Ellora Ajanta
                 </span>
-                <span className="text-amber-500 text-sm uppercase tracking-[0.3em] leading-none mt-1">
+                <span className="text-gold text-xs uppercase tracking-[0.25em] leading-none mt-1">
                   Heritage
                 </span>
             </div>
@@ -66,18 +66,18 @@ export const Header: React.FC = () => {
 
           {/* Mobile Hamburger Button */}
           <button
-            className="md:hidden p-2 text-amber-500 hover:text-amber-400 transition-colors"
+            className="md:hidden p-2 text-gold hover:text-gold-light transition-colors"
             onClick={toggleMenu}
             aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? (
-              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M6 18L18 6M6 6l12 12" />
               </svg>
             ) : (
-              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             )}
           </button>
@@ -86,7 +86,7 @@ export const Header: React.FC = () => {
 
       {/* Mobile Navigation Menu */}
       {mobileMenuOpen && (
-        <nav className="md:hidden bg-stone-900 border-t border-stone-700 pb-4">
+        <nav className="md:hidden bg-parchment border-t border-gold/10 pb-2">
           <NavLink to="/" className={mobileLinkClasses} onClick={closeMenu}>Home</NavLink>
           <NavLink to="/history" className={mobileLinkClasses} onClick={closeMenu}>History</NavLink>
           <NavLink to="/attractions" className={mobileLinkClasses} onClick={closeMenu}>Attractions</NavLink>

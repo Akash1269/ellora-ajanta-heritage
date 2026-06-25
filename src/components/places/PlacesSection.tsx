@@ -11,27 +11,28 @@ interface PlacesSectionProps {
 
 export const PlacesSection: React.FC<PlacesSectionProps> = ({ hotels, restaurants }) => {
     return (
-        <section id="places" className="py-16 sm:py-24 bg-stone-800 text-stone-100 relative overflow-hidden">
-            {/* Decorative background element */}
-            <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" style={{ backgroundImage: "radial-gradient(#d6d3d1 1px, transparent 1px)", backgroundSize: "30px 30px" }}></div>
-
+        <section id="places" className="py-16 sm:py-24 bg-parchment-dark relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center mb-16">
-                     <span className="text-amber-500 uppercase tracking-widest text-sm font-bold">Hospitality</span>
-                    <h2 className="text-3xl sm:text-4xl font-heading text-amber-50 mt-2">
+                     <span className="text-gold uppercase tracking-widest text-xs font-bold">Hospitality</span>
+                    <h2 className="text-3xl sm:text-4xl font-heading text-ink mt-2">
                         Royal Stays & Culinary Delights
                     </h2>
-                     <div className="w-16 h-px bg-amber-500 mx-auto mt-6"></div>
+                    <div className="flex items-center justify-center gap-3 mt-4">
+                        <span className="h-px w-10 bg-gold/30"></span>
+                        <span className="text-gold/50 text-sm">◆</span>
+                        <span className="h-px w-10 bg-gold/30"></span>
+                    </div>
                 </div>
 
-                <div className="space-y-20">
+                <div className="space-y-16">
                     {hotels.length > 0 && (
                         <div>
                             <div className="flex items-center mb-8">
-                                <span className="p-2 border border-amber-500/50 rounded-full bg-stone-700 mr-4">
-                                    <BedIcon className="w-6 h-6 text-amber-400"/>
+                                <span className="p-2 border border-gold/30 rounded-full bg-white mr-4">
+                                    <BedIcon className="w-5 h-5 text-gold"/>
                                 </span>
-                                <h3 className="text-2xl font-serif text-amber-100">Heritage Hotels & Luxury Stays</h3>
+                                <h3 className="text-2xl font-heading text-ink">Heritage Hotels & Luxury Stays</h3>
                             </div>
                             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                                 {hotels.map((hotel) => (
@@ -44,10 +45,10 @@ export const PlacesSection: React.FC<PlacesSectionProps> = ({ hotels, restaurant
                     {restaurants.length > 0 && (
                         <div>
                             <div className="flex items-center mb-8">
-                                 <span className="p-2 border border-amber-500/50 rounded-full bg-stone-700 mr-4">
-                                    <UtensilsIcon className="w-6 h-6 text-amber-400"/>
+                                 <span className="p-2 border border-gold/30 rounded-full bg-white mr-4">
+                                    <UtensilsIcon className="w-5 h-5 text-gold"/>
                                 </span>
-                                <h3 className="text-2xl font-serif text-amber-100">Gastronomic Experiences</h3>
+                                <h3 className="text-2xl font-heading text-ink">Gastronomic Experiences</h3>
                             </div>
                             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                                 {restaurants.map((restaurant) => (

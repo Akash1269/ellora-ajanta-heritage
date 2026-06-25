@@ -3,6 +3,7 @@ import { ItineraryCard } from '../components/itineraries/ItineraryCard';
 import { ItineraryDetailModal } from '../components/itineraries/ItineraryDetailModal';
 import { fetchItineraryDetails } from '../services/dataService';
 import { ErrorMessage } from '../components/common/ErrorMessage';
+import { SectionHeading } from '../components/common/SectionHeading';
 import type { ItinerarySummary, ItineraryDetail } from '../types';
 
 interface ItinerariesPageProps {
@@ -38,12 +39,13 @@ export const Itineraries: React.FC<ItinerariesPageProps> = ({ itineraries }) => 
     }, [selectedItinerary, handleSelect]);
 
     return (
-        <div className="bg-amber-50 min-h-screen py-16">
+        <div className="bg-parchment-dark min-h-screen py-12 sm:py-20">
              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl text-stone-900 font-heading mb-4">Journeys Through Time</h2>
-                    <div className="divider-ornate max-w-md mx-auto"><span>⚜</span></div>
-                </div>
+                <SectionHeading 
+                    title="Journeys Through Time" 
+                    subtitle="Curated travel plans to make the most of your heritage exploration."
+                    symbol="⚜"
+                />
                 <div className="grid gap-8 md:grid-cols-3">
                     {itineraries.map((item) => (
                         <ItineraryCard key={item.title} itinerary={item} onSelect={handleSelect} />
@@ -58,12 +60,12 @@ export const Itineraries: React.FC<ItinerariesPageProps> = ({ itineraries }) => 
                 />
             )}
             {detailError && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-stone-900/80 p-4">
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/60 backdrop-blur-sm p-4">
                     <div className="max-w-md w-full">
                         <ErrorMessage message={detailError} onRetry={handleRetry} />
                         <button
                             onClick={() => { setSelectedItinerary(null); setDetailError(null); }}
-                            className="mt-4 w-full text-center text-stone-400 hover:text-white transition-colors text-sm"
+                            className="mt-4 w-full text-center text-stone-warm hover:text-ink transition-colors text-sm"
                         >
                             Dismiss
                         </button>

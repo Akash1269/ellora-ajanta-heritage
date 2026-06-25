@@ -10,33 +10,30 @@ interface AttractionCardProps {
 export const AttractionCard: React.FC<AttractionCardProps> = React.memo(({ attraction, onSelect }) => {
   return (
     <div 
-      className="group relative bg-white pb-6 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer border-heritage"
+      className="group card-heritage overflow-hidden cursor-pointer flex flex-col"
       onClick={() => onSelect(attraction)}
     >
       <div className="p-4 pb-0">
-          <div className="relative h-64 overflow-hidden arch-mask shadow-inner bg-stone-200">
-            <img 
+        <div className="relative h-56 sm:h-64 overflow-hidden arch-mask bg-parchment-dark">
+          <img 
             src={attraction.imageUrl} 
             alt={attraction.name} 
             loading="lazy"
             onError={(e) => { (e.target as HTMLImageElement).src = PLACEHOLDER_IMAGE; }}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-            />
-            <div className="absolute inset-0 bg-amber-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
-          </div>
+            className="w-full h-full object-cover img-heritage transition-transform duration-700 group-hover:scale-105" 
+          />
+        </div>
       </div>
       
-      <div className="pt-6 px-6 text-center">
-        <h3 className="text-2xl font-heading text-stone-900 mb-2 group-hover:text-amber-700 transition-colors">
+      <div className="pt-5 px-6 pb-6 text-center flex flex-col flex-grow">
+        <h3 className="text-xl sm:text-2xl font-heading text-ink mb-2 group-hover:text-gold transition-colors duration-300">
           {attraction.name}
         </h3>
-        <div className="divider-ornate opacity-50 w-2/3 mx-auto mb-3"></div>
-        <p className="text-stone-600 line-clamp-3 text-sm leading-relaxed mb-4 font-serif italic">
+        <div className="divider-ornate w-2/3 mx-auto mb-3"><span>◆</span></div>
+        <p className="text-stone-warm line-clamp-3 text-sm leading-relaxed mb-5 font-serif italic flex-grow">
           {attraction.description}
         </p>
-        <button
-          className="text-amber-700 text-xs font-bold uppercase tracking-[0.2em] border-b border-amber-300 pb-1 hover:text-amber-900 hover:border-amber-600 transition-all"
-        >
+        <button className="btn-heritage text-sm py-2 px-6 mx-auto">
           View Details
         </button>
       </div>

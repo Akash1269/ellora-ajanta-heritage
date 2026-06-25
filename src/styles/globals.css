@@ -1,39 +1,57 @@
 @import "tailwindcss";
 
-/* Heritage Color Palette */
+/* Heritage Design System */
 @theme {
-  --color-heritage-paper: #fffaf0;
-  --color-heritage-accent: #b45309;
-  --color-heritage-deep: #431407;
+  --color-parchment: #fdf8f0;
+  --color-parchment-dark: #f5ead6;
+  --color-ink: #2c1810;
+  --color-gold: #b8860b;
+  --color-gold-light: #d4a84b;
+  --color-gold-muted: #b8860b20;
+  --color-terracotta: #a0522d;
+  --color-stone-warm: #8b7d6b;
+  --color-heritage-paper: #fdf8f0;
+  --color-heritage-accent: #b8860b;
+  --color-heritage-deep: #2c1810;
 }
 
 /* Heritage typography */
 @layer base {
   body {
-    font-family: 'Lora', serif;
-    background-color: var(--color-heritage-paper);
-    color: #292524;
+    font-family: 'Spectral', serif;
+    background-color: var(--color-parchment);
+    color: var(--color-ink);
+    line-height: 1.7;
+    letter-spacing: 0.01em;
   }
   h1, h2, h3, h4, h5, .font-heading {
-    font-family: 'Rozha One', serif;
-    font-weight: 400;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
   }
 }
 
 /* Heritage decorative patterns */
 @layer components {
+  /* Parchment section backgrounds */
+  .bg-parchment {
+    background-color: var(--color-parchment);
+  }
+  .bg-parchment-dark {
+    background-color: var(--color-parchment-dark);
+  }
+
+  /* Subtle aged paper texture */
   .bg-heritage-pattern {
-    background-color: #fffaf0;
+    background-color: var(--color-parchment);
     background-image: 
-      radial-gradient(#b45309 0.5px, transparent 0.5px),
-      radial-gradient(#b45309 0.5px, #fffaf0 0.5px);
-    background-size: 20px 20px;
-    background-position: 0 0, 10px 10px;
-    opacity: 1;
+      radial-gradient(ellipse at 20% 50%, rgba(184, 134, 11, 0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 50%, rgba(160, 82, 45, 0.03) 0%, transparent 50%);
   }
 
   .bg-jaali {
-    background-color: #292524;
+    background-color: #1c1512;
     position: relative;
   }
   .bg-jaali::before {
@@ -41,42 +59,139 @@
     position: absolute;
     inset: 0;
     background-image: 
-      radial-gradient(circle, rgba(180, 83, 9, 0.15) 2px, transparent 2.5px);
-    background-size: 24px 24px;
+      radial-gradient(circle, rgba(184, 134, 11, 0.08) 1px, transparent 1px);
+    background-size: 20px 20px;
     pointer-events: none;
   }
 
+  /* Arch clip-path for images */
   .arch-mask {
-    clip-path: polygon(0% 100%, 0% 15%, 50% 0%, 100% 15%, 100% 100%);
-    border-radius: 4px;
+    clip-path: polygon(0% 100%, 0% 12%, 5% 5%, 15% 1%, 50% 0%, 85% 1%, 95% 5%, 100% 12%, 100% 100%);
   }
 
-  .border-heritage {
-    border: 2px solid #b45309; 
-    position: relative;
+  /* Heritage card style */
+  .card-heritage {
+    background: white;
+    border: 1px solid var(--color-gold-muted);
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 20px rgba(44, 24, 16, 0.06);
+    transition: all 0.3s ease;
   }
-  .border-heritage::after {
-    content: '';
-    position: absolute;
-    top: 4px; left: 4px; right: 4px; bottom: 4px;
-    border: 1px solid #b45309;
-    pointer-events: none;
+  .card-heritage:hover {
+    border-color: var(--color-gold);
+    box-shadow: 0 8px 32px rgba(184, 134, 11, 0.12);
   }
 
+  /* Section divider with ornament */
   .divider-ornate {
     display: flex;
     align-items: center;
     text-align: center;
-    color: #b45309;
+    color: var(--color-gold);
   }
   .divider-ornate::before, .divider-ornate::after {
     content: '';
     flex: 1;
-    border-bottom: 2px double #b45309;
+    border-bottom: 1px solid var(--color-gold);
+    opacity: 0.4;
   }
   .divider-ornate span {
-    padding: 0 10px;
-    font-size: 1.5rem;
+    padding: 0 12px;
+    font-size: 1.25rem;
+    opacity: 0.7;
+  }
+
+  /* Heritage pill button */
+  .btn-heritage {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--color-gold);
+    border-radius: 9999px;
+    padding: 0.75rem 2rem;
+    color: var(--color-gold);
+    background: transparent;
+    font-family: 'Spectral', serif;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .btn-heritage:hover {
+    background: var(--color-gold);
+    color: white;
+    box-shadow: 0 4px 16px rgba(184, 134, 11, 0.3);
+  }
+
+  .btn-heritage-filled {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--color-gold);
+    border-radius: 9999px;
+    padding: 0.75rem 2rem;
+    color: white;
+    background: var(--color-gold);
+    font-family: 'Spectral', serif;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .btn-heritage-filled:hover {
+    background: #966f09;
+    border-color: #966f09;
+    box-shadow: 0 4px 16px rgba(184, 134, 11, 0.3);
+  }
+
+  /* Sepia image treatment */
+  .img-heritage {
+    filter: sepia(12%) saturate(1.1) brightness(0.97);
+    transition: filter 0.4s ease;
+  }
+  .img-heritage:hover,
+  .group:hover .img-heritage {
+    filter: sepia(0%) saturate(1.15) brightness(1);
+  }
+
+  /* Fade-in animation */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Section heading style */
+  .section-heading {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+  .section-heading h2 {
+    font-size: 2.75rem;
+    color: var(--color-ink);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+  }
+  .section-heading p {
+    color: var(--color-stone-warm);
+    font-style: italic;
+    font-size: 1.1rem;
+    max-width: 36rem;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  @media (min-width: 640px) {
+    .section-heading h2 {
+      font-size: 3.25rem;
+    }
   }
 }
 
@@ -86,15 +201,27 @@
     width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #fffaf0; 
+    background: var(--color-parchment);
   }
   ::-webkit-scrollbar-thumb {
-    background: #d97706; 
+    background: var(--color-gold);
     border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold-light);
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 
 /* Map container styling */
 .leaflet-container {
-  font-family: 'Lora', serif;
+  font-family: 'Spectral', serif;
+  border-radius: 0.75rem;
 }
