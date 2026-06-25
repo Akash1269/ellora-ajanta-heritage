@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import type { Attraction } from '../../types';
 import { CloseIcon, HistoryIcon, SunIcon, CompassIcon } from '../icons';
 
@@ -8,22 +8,38 @@ interface AttractionDetailModalProps {
 }
 
 export const AttractionDetailModal: React.FC<AttractionDetailModalProps> = ({ attraction, onClose }) => {
-  // Prevent background scrolling when modal is open
+  const modalRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     document.body.style.overflow = 'hidden';
+    // Focus the modal on open
+    modalRef.current?.focus();
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', handleKeyDown);
+
     return () => {
       document.body.style.overflow = 'unset';
+      document.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [onClose]);
 
   return (
     <div 
       className="fixed inset-0 z-50 flex items-center justify-center sm:p-4 md:p-6"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="attraction-modal-title"
+      ref={modalRef}
+      tabIndex={-1}
     >
       {/* Backdrop with blur */}
       <div 
         className="absolute inset-0 bg-stone-950/80 backdrop-blur-sm transition-opacity" 
         onClick={onClose}
+        aria-hidden="true"
       />
 
       {/* Modal Container - Responsive Split Layout */}
@@ -72,7 +88,7 @@ export const AttractionDetailModal: React.FC<AttractionDetailModalProps> = ({ at
            <div className="px-6 pb-12 md:px-10 md:pt-2 md:pb-16 -mt-12 md:mt-0 relative z-0">
                {/* Title Section */}
                <div className="mb-8">
-                   <h2 className="text-3xl md:text-5xl font-heading text-stone-900 mb-3 leading-tight text-shadow-sm">
+                   <h2 id="attraction-modal-title" className="text-3xl md:text-5xl font-heading text-stone-900 mb-3 leading-tight text-shadow-sm">
                     {attraction.name}
                    </h2>
                    <div className="h-1 w-24 bg-amber-500 rounded-full mb-6"></div>

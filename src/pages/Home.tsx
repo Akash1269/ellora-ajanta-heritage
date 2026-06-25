@@ -114,7 +114,7 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
               {content.nearbyPlaces.map((place, idx) => (
                   <div key={idx} className="snap-center shrink-0 w-80 bg-white p-3 shadow-xl transform rotate-1 hover:rotate-0 transition-all duration-300 border border-stone-200">
                       <div className="h-48 overflow-hidden mb-4 bg-stone-200">
-                          <img src={`https://picsum.photos/seed/${place.name}/400/300`} alt={place.name} className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
+                          <img src={`https://picsum.photos/seed/${place.name}/400/300`} alt={place.name} loading="lazy" className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
                       </div>
                       <h3 className="text-2xl font-heading text-stone-800 mb-1">{place.name}</h3>
                       <span className="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-3">{place.distance}</span>
@@ -140,7 +140,7 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
                  {content.foodItems.map((item, idx) => (
                      <div key={idx} className="group">
                          <div className="w-40 h-40 mx-auto rounded-full border-4 border-amber-600/30 overflow-hidden mb-6 group-hover:border-amber-500 transition-colors shadow-2xl">
-                             <img src={`https://picsum.photos/seed/${item.name}food/400/400`} alt={item.name} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+                             <img src={`https://picsum.photos/seed/${item.name}food/400/400`} alt={item.name} loading="lazy" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
                          </div>
                          <h3 className="text-xl font-heading text-amber-200 mb-2 group-hover:text-amber-400">{item.name}</h3>
                          <p className="text-stone-400 text-sm italic px-4">{item.description}</p>
@@ -158,6 +158,7 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
                       <img 
                         src={`https://picsum.photos/seed/aurangabad${i}/600/600`} 
                         alt="Gallery" 
+                        loading="lazy"
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0" 
                       />
                       <div className="absolute inset-0 bg-amber-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -176,7 +177,7 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
         
         <div className="grid md:grid-cols-3 gap-8">
             <Link to="/attractions" className="group relative overflow-hidden rounded-lg shadow-lg aspect-[3/4]">
-                 <img src="https://picsum.photos/seed/bibi-maqbara/600/800" alt="Attractions" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
+                 <img src="https://picsum.photos/seed/bibi-maqbara/600/800" alt="Attractions" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
                      <div>
                          <h3 className="text-2xl text-amber-400 font-heading mb-2">Monuments</h3>
@@ -185,7 +186,7 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
                  </div>
             </Link>
             <Link to="/itineraries" className="group relative overflow-hidden rounded-lg shadow-lg aspect-[3/4]">
-                 <img src="https://picsum.photos/seed/ajanta-paintings/600/800" alt="Itineraries" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
+                 <img src="https://picsum.photos/seed/ajanta-paintings/600/800" alt="Itineraries" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
                      <div>
                          <h3 className="text-2xl text-amber-400 font-heading mb-2">Curated Trips</h3>
@@ -194,7 +195,7 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
                  </div>
             </Link>
              <Link to="/places" className="group relative overflow-hidden rounded-lg shadow-lg aspect-[3/4]">
-                 <img src="https://picsum.photos/seed/aurangabad-hotel/600/800" alt="Stay and Dine" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
+                 <img src="https://picsum.photos/seed/aurangabad-hotel/600/800" alt="Stay and Dine" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
                      <div>
                          <h3 className="text-2xl text-amber-400 font-heading mb-2">Royal Stays</h3>

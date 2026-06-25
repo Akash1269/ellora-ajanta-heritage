@@ -8,69 +8,98 @@ interface MapSectionProps {
   locations: MapLocation[];
 }
 
+function createPopupContent(loc: MapLocation): HTMLDivElement {
+  const container = document.createElement('div');
+  container.style.fontFamily = "'Lora', serif";
+  container.style.width = '200px';
+
+  if (loc.imageUrl) {
+    const imgWrapper = document.createElement('div');
+    imgWrapper.style.cssText = 'width: 100%; height: 120px; overflow: hidden; border-radius: 4px; margin-bottom: 8px;';
+    const img = document.createElement('img');
+    img.src = loc.imageUrl;
+    img.alt = loc.name;
+    img.style.cssText = 'width: 100%; height: 100%; object-fit: cover;';
+    imgWrapper.appendChild(img);
+    container.appendChild(imgWrapper);
+  }
+
+  const title = document.createElement('h3');
+  title.textContent = loc.name;
+  title.style.cssText = "color: #b45309; font-size: 16px; margin: 0 0 4px 0; font-family: 'Rozha One', serif;";
+  container.appendChild(title);
+
+  if (loc.timings) {
+    const timingsP = document.createElement('p');
+    timingsP.style.cssText = 'margin: 0 0 8px 0; font-size: 12px; color: #57534e;';
+    const bold = document.createElement('span');
+    bold.style.fontWeight = 'bold';
+    bold.textContent = 'Open: ';
+    timingsP.appendChild(bold);
+    timingsP.appendChild(document.createTextNode(loc.timings));
+    container.appendChild(timingsP);
+  }
+
+  const link = document.createElement('a');
+  link.href = `https://www.google.com/maps/dir/?api=1&destination=${loc.lat},${loc.lng}`;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  link.textContent = 'Get Directions';
+  link.style.cssText = 'display: block; text-align: center; background-color: #b45309; color: white; padding: 6px 12px; text-decoration: none; border-radius: 2px; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;';
+  container.appendChild(link);
+
+  return container;
+}
+
 export const MapSection: React.FC<MapSectionProps> = ({ locations }) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const leafletMap = useRef<L.Map | null>(null);
+  const markersRef = useRef<L.Marker[]>([]);
 
   useEffect(() => {
-    if (mapRef.current && !leafletMap.current) {
-        // Initialize map centered on Aurangabad
-        const map = L.map(mapRef.current).setView([19.8762, 75.3433], 9);
-        leafletMap.current = map;
+    if (!mapRef.current) return;
 
-        // Add OpenStreetMap tile layer
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+    // Initialize map if not already created
+    if (!leafletMap.current) {
+      const map = L.map(mapRef.current).setView([19.8762, 75.3433], 9);
+      leafletMap.current = map;
 
-        // Fix default marker icon issue in simple setups
-        const defaultIcon = L.icon({
-            iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-            iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-            shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-            iconSize: [25, 41],
-            iconAnchor: [12, 41],
-            popupAnchor: [1, -34],
-            shadowSize: [41, 41]
-        });
-
-        // Add Markers
-        locations.forEach(loc => {
-            const marker = L.marker([loc.lat, loc.lng], { icon: defaultIcon }).addTo(map);
-            
-            const popupContent = `
-                <div style="font-family: 'Lora', serif; width: 200px;">
-                    ${loc.imageUrl ? `
-                        <div style="width: 100%; height: 120px; overflow: hidden; border-radius: 4px; margin-bottom: 8px;">
-                            <img src="${loc.imageUrl}" alt="${loc.name}" style="width: 100%; height: 100%; object-fit: cover;" />
-                        </div>
-                    ` : ''}
-                    <h3 style="color: #b45309; font-size: 16px; margin: 0 0 4px 0; font-family: 'Rozha One', serif;">${loc.name}</h3>
-                    ${loc.timings ? `
-                        <p style="margin: 0 0 8px 0; font-size: 12px; color: #57534e;">
-                            <span style="font-weight: bold;">Open:</span> ${loc.timings}
-                        </p>
-                    ` : ''}
-                    <a href="https://www.google.com/maps/dir/?api=1&destination=${loc.lat},${loc.lng}" 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       style="display: block; text-align: center; background-color: #b45309; color: white; padding: 6px 12px; text-decoration: none; border-radius: 2px; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;">
-                        Get Directions
-                    </a>
-                </div>
-            `;
-            
-            marker.bindPopup(popupContent);
-        });
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
     }
 
+    const map = leafletMap.current;
+
+    // Clear existing markers before adding new ones
+    markersRef.current.forEach((marker) => marker.remove());
+    markersRef.current = [];
+
+    const defaultIcon = L.icon({
+      iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+      iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+      shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+
+    // Add markers using DOM-based popups (XSS-safe)
+    locations.forEach((loc) => {
+      const marker = L.marker([loc.lat, loc.lng], { icon: defaultIcon }).addTo(map);
+      marker.bindPopup(createPopupContent(loc));
+      markersRef.current.push(marker);
+    });
+
     return () => {
-       // Cleanup logic if needed, but for this single page app keeping map instance is usually fine
-       // or remove on unmount to prevent memory leaks if component toggles
-       if (leafletMap.current) {
-         leafletMap.current.remove();
-         leafletMap.current = null;
-       }
+      // Clean up markers on unmount or location change
+      markersRef.current.forEach((marker) => marker.remove());
+      markersRef.current = [];
+      if (leafletMap.current) {
+        leafletMap.current.remove();
+        leafletMap.current = null;
+      }
     };
   }, [locations]);
 

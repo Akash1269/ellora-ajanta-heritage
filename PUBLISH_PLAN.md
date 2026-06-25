@@ -6,24 +6,24 @@ This document tracks all issues, improvements, and tasks required to make the pr
 
 ## 🔴 Critical Issues (Must Fix Before Publishing)
 
-- [ ] **Remove API key from client bundle** — `vite.config.ts` injects `GEMINI_API_KEY` into the browser bundle via `define`. Remove it or proxy through a backend.
-- [ ] **Fix XSS in map popups** — `MapSection.tsx` uses unsanitized template literals for Leaflet popup HTML. Sanitize with DOMPurify or use DOM methods.
-- [ ] **Add React Error Boundary** — No error boundary exists. If any component throws, the entire app white-screens. Wrap routes in an ErrorBoundary component.
-- [ ] **Fix Leaflet memory leak** — `MapSection.tsx` doesn't properly clean up old map instances/markers when `locations` prop changes. Tile layers and event listeners accumulate.
-- [ ] **Add mobile hamburger menu** — `Header.tsx` uses `hidden md:flex` on nav — mobile users cannot navigate to any page.
+- [x] **Remove API key from client bundle** — Removed `define` block from `vite.config.ts`. Service layer is fully static.
+- [x] **Fix XSS in map popups** — `MapSection.tsx` now uses DOM methods (`createElement`, `textContent`) instead of template literals.
+- [x] **Add React Error Boundary** — `ErrorBoundary` component wraps all routes in `App.tsx`.
+- [x] **Fix Leaflet memory leak** — `MapSection.tsx` properly cleans up markers via `markersRef` before re-adding and on unmount.
+- [x] **Add mobile hamburger menu** — `Header.tsx` now has a responsive mobile nav with toggle button.
 
 ---
 
 ## 🟠 High Severity (Should Fix Before Publishing)
 
-- [ ] **Install Tailwind CSS properly** — Replace CDN script (~100KB runtime) with PostCSS/CLI build-time integration with CSS purging.
-- [ ] **Add SEO meta tags** — `index.html` is missing `<meta name="description">`, Open Graph, and Twitter Card tags.
-- [ ] **Fix modal accessibility** — Modals lack `role="dialog"`, `aria-modal="true"`, `aria-labelledby`, ESC key close, and focus trapping (WCAG violations).
-- [ ] **Add 404 route** — Invalid routes show blank content. Add a catch-all "Not Found" page.
-- [ ] **Add `loading="lazy"` to images** — All images load upfront, hurting Largest Contentful Paint (LCP).
-- [ ] **Fix silent error catching** — `Itineraries.tsx` swallows errors with `console.error()` only. Show user feedback and retry option.
-- [ ] **Add `@types/leaflet`** — Missing from devDependencies; Leaflet usage is untyped.
-- [ ] **Add `.env.example`** — No documentation of required environment variables for developers.
+- [x] **Install Tailwind CSS properly** — Installed via `@tailwindcss/vite` plugin with CSS in `src/styles/globals.css`.
+- [x] **Add SEO meta tags** — Added `<meta name="description">`, Open Graph, and Twitter Card tags to `index.html`.
+- [x] **Fix modal accessibility** — Both modals now have `role="dialog"`, `aria-modal="true"`, `aria-labelledby`, ESC key close, and focus on open.
+- [x] **Add 404 route** — Catch-all `NotFound` page added with `<Route path="*">` in App.tsx.
+- [x] **Add `loading="lazy"` to images** — All `<img>` elements now have `loading="lazy"` for better LCP.
+- [x] **Fix silent error catching** — `Itineraries.tsx` now shows `ErrorMessage` with retry option on failure.
+- [x] **Add `@types/leaflet`** — Installed as devDependency.
+- [x] **Add `.env.example`** — Created with `VITE_GEMINI_API_KEY` documentation.
 
 ---
 
@@ -41,7 +41,7 @@ This document tracks all issues, improvements, and tasks required to make the pr
 
 ## 🔵 Low Severity (Polish)
 
-- [ ] **Deduplicate inline SVG icons** — Icons repeated across components. Create shared icon components or use a library.
+- [x] **Deduplicate inline SVG icons** — All icons consolidated in `src/components/icons/index.tsx`.
 - [ ] **Add loading delay simulation** — Instant data resolution causes UI flicker. Add minimum display time for loading states.
 - [ ] **Hardcoded strings (i18n)** — All text in English with no translation support.
 - [ ] **No data refresh mechanism** — Data loaded once on mount; stale if app stays open for hours.
@@ -62,8 +62,8 @@ This document tracks all issues, improvements, and tasks required to make the pr
 
 ### Quality Assurance
 
-- [ ] Add ESLint configuration (`.eslintrc.json`)
-- [ ] Add Prettier configuration (`.prettierrc`)
+- [x] Add ESLint configuration (`.eslintrc.json`)
+- [x] Add Prettier configuration (`.prettierrc`)
 - [ ] Add pre-commit hooks (Husky + lint-staged)
 - [ ] Set up Vitest with basic component tests
 - [ ] Add Lighthouse CI performance budgets
@@ -71,7 +71,7 @@ This document tracks all issues, improvements, and tasks required to make the pr
 
 ### Performance Optimization
 
-- [ ] Install Tailwind via PostCSS (replace CDN)
+- [x] Install Tailwind via PostCSS (replace CDN)
 - [ ] Add code splitting for route-level components
 - [ ] Add image lazy loading (`loading="lazy"`)
 - [ ] Optimize font loading (font-display: swap, preconnect)

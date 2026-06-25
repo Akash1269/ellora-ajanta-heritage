@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import type { ItineraryDetail } from '../../types';
 import { LoadingSpinner } from '../common/LoadingSpinner';
 import { CloseIcon, ActivityIcon } from '../icons';
@@ -11,10 +11,32 @@ interface ItineraryDetailModalProps {
 }
 
 export const ItineraryDetailModal: React.FC<ItineraryDetailModalProps> = ({ itinerary, loading, onClose }) => {
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    modalRef.current?.focus();
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = 'unset';
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
+
   return (
     <div 
       className="fixed inset-0 bg-stone-900/90 backdrop-blur-md z-50 flex items-center justify-center p-0 sm:p-4 overflow-hidden"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="itinerary-modal-title"
+      ref={modalRef}
+      tabIndex={-1}
     >
       <div 
         className="relative bg-[#fffaf0] w-full max-w-4xl h-full sm:h-[90vh] flex flex-col shadow-2xl border-x-0 sm:border-x-8 border-amber-800"
@@ -25,7 +47,7 @@ export const ItineraryDetailModal: React.FC<ItineraryDetailModalProps> = ({ itin
            <div className="absolute inset-0 bg-heritage-pattern opacity-5"></div>
            <div className="relative z-10 pr-10">
                {itinerary && <span className="text-amber-500 uppercase tracking-widest text-xs font-bold mb-1 block">Your Curated Journey</span>}
-               <h2 className="text-2xl sm:text-4xl font-heading leading-tight">
+               <h2 id="itinerary-modal-title" className="text-2xl sm:text-4xl font-heading leading-tight">
                    {loading ? 'Loading...' : itinerary?.title || 'Details'}
                </h2>
            </div>
@@ -115,6 +137,7 @@ export const ItineraryDetailModal: React.FC<ItineraryDetailModalProps> = ({ itin
                                                     <img 
                                                         src={activity.imageUrl} 
                                                         alt={activity.title} 
+                                                        loading="lazy"
                                                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                                     />
                                                 </div>

@@ -17,6 +17,7 @@ export const AttractionCard: React.FC<AttractionCardProps> = ({ attraction, onSe
             <img 
             src={attraction.imageUrl} 
             alt={attraction.name} 
+            loading="lazy"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
             />
             <div className="absolute inset-0 bg-amber-900/10 group-hover:bg-transparent transition-colors duration-300"></div>

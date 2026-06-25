@@ -17,6 +17,7 @@ export const ItineraryCard: React.FC<ItineraryCardProps> = ({ itinerary, onSelec
         <img 
             src={itinerary.imageUrl || `https://picsum.photos/seed/${itinerary.title}/400/300`} 
             alt={itinerary.title}
+            loading="lazy"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
         />
         <div className="absolute top-2 right-2 bg-stone-900/80 text-amber-400 text-xs font-bold px-3 py-1 uppercase tracking-widest border border-amber-500">
