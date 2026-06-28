@@ -39,7 +39,7 @@ export const Itineraries: React.FC<ItinerariesPageProps> = ({ itineraries }) => 
     }, [selectedItinerary, handleSelect]);
 
     return (
-        <div className="bg-parchment-dark min-h-screen py-8 sm:py-12 lg:py-20">
+        <div className="bg-parchment min-h-screen py-8 sm:py-12 lg:py-20">
              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionHeading 
                     title="Journeys Through Time" 

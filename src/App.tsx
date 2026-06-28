@@ -12,6 +12,7 @@ const Attractions = lazy(() => import('./pages/Attractions').then(m => ({ defaul
 const Itineraries = lazy(() => import('./pages/Itineraries').then(m => ({ default: m.Itineraries })));
 const Places = lazy(() => import('./pages/Places').then(m => ({ default: m.Places })));
 const History = lazy(() => import('./pages/History').then(m => ({ default: m.History })));
+const Credits = lazy(() => import('./pages/Credits').then(m => ({ default: m.Credits })));
 const NotFound = lazy(() => import('./pages/NotFound').then(m => ({ default: m.NotFound })));
 
 const App: React.FC = () => {
@@ -38,6 +39,7 @@ const App: React.FC = () => {
                   <Route path="/itineraries" element={<Itineraries itineraries={itineraries} />} />
                   <Route path="/places" element={<Places hotels={hotels} restaurants={restaurants} streetFood={streetFood} />} />
                   <Route path="/history" element={<History />} />
+                  <Route path="/credits" element={<Credits />} />
                   <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>

@@ -15,12 +15,12 @@ export const Header: React.FC = () => {
 
   const linkClasses = ({ isActive }: { isActive: boolean }) =>
     `text-sm tracking-wide font-serif transition-colors duration-300 relative group py-2 uppercase tracking-wider ${
-      isActive ? 'text-gold' : 'text-ink/70 hover:text-gold'
+      isActive ? 'text-gold' : 'text-parchment/70 hover:text-gold'
     }`;
 
   const mobileLinkClasses = ({ isActive }: { isActive: boolean }) =>
     `block px-6 py-4 text-base font-serif transition-colors ${
-      isActive ? 'text-gold bg-parchment-dark' : 'text-ink/70 hover:text-gold hover:bg-parchment-dark'
+      isActive ? 'text-gold bg-white/10' : 'text-parchment/70 hover:text-gold hover:bg-white/10'
     }`;
 
   const linkDecorator = (
@@ -28,7 +28,7 @@ export const Header: React.FC = () => {
   );
 
   return (
-    <header className="bg-parchment/95 backdrop-blur-md border-b border-gold/20 shadow-sm sticky top-0 z-50">
+    <header className="bg-ink/95 backdrop-blur-md border-b border-gold/30 shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-18 lg:h-20">
           <NavLink to="/" className="flex items-center space-x-2 sm:space-x-3 group" onClick={closeMenu}>
@@ -36,7 +36,7 @@ export const Header: React.FC = () => {
                 <LandmarkIcon className="h-5 w-5 sm:h-6 sm:w-6 text-gold" />
              </div>
             <div className="flex flex-col">
-                <span className="text-lg sm:text-xl lg:text-2xl text-ink font-heading tracking-wide leading-none">
+                <span className="text-lg sm:text-xl lg:text-2xl text-parchment font-heading tracking-wide leading-none">
                   Ellora Ajanta
                 </span>
                 <span className="text-gold text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] leading-none mt-0.5 sm:mt-1">
@@ -86,7 +86,7 @@ export const Header: React.FC = () => {
 
       {/* Mobile Navigation Menu */}
       {mobileMenuOpen && (
-        <nav className="md:hidden bg-parchment border-t border-gold/10 pb-2">
+        <nav className="md:hidden bg-ink border-t border-gold/20 pb-2">
           <NavLink to="/" className={mobileLinkClasses} onClick={closeMenu}><HomeIcon className="w-4 h-4 inline-block mr-3 opacity-70" />Home</NavLink>
           <NavLink to="/history" className={mobileLinkClasses} onClick={closeMenu}><ScrollIcon className="w-4 h-4 inline-block mr-3 opacity-70" />History</NavLink>
           <NavLink to="/attractions" className={mobileLinkClasses} onClick={closeMenu}><ColumnsIcon className="w-4 h-4 inline-block mr-3 opacity-70" />Attractions</NavLink>
