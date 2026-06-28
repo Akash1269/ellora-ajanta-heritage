@@ -29,7 +29,7 @@ export async function fetchAttractionImage(attractionName: string): Promise<stri
   return Promise.resolve(imageMap[attractionName] || IMAGES.ajantaCaves);
 }
 
-export async function fetchPlaces(placeType: 'hotels' | 'restaurants'): Promise<Place[]> {
+export async function fetchPlaces(placeType: 'hotels' | 'restaurants' | 'streetFood'): Promise<Place[]> {
     return Promise.resolve(FALLBACK_PLACES[placeType] || []);
 }
 

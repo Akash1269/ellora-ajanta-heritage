@@ -7,6 +7,7 @@ interface AppData {
   attractions: Attraction[];
   hotels: Place[];
   restaurants: Place[];
+  streetFood: Place[];
   itineraries: ItinerarySummary[];
   homeContent: HomeContent | null;
   loading: boolean;
@@ -17,6 +18,7 @@ export function useAppData(): AppData {
   const [attractions, setAttractions] = useState<Attraction[]>([]);
   const [hotels, setHotels] = useState<Place[]>([]);
   const [restaurants, setRestaurants] = useState<Place[]>([]);
+  const [streetFood, setStreetFood] = useState<Place[]>([]);
   const [itineraries, setItineraries] = useState<ItinerarySummary[]>([]);
   const [homeContent, setHomeContent] = useState<HomeContent | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -29,17 +31,19 @@ export function useAppData(): AppData {
 
       const minDelay = new Promise((r) => setTimeout(r, 400));
 
-      const [homeData, itins, h, r] = await Promise.all([
+      const [homeData, itins, h, r, sf] = await Promise.all([
         fetchHomeContent(),
         fetchItinerarySummaries(),
         fetchPlaces('hotels'),
-        fetchPlaces('restaurants')
+        fetchPlaces('restaurants'),
+        fetchPlaces('streetFood')
       ]);
 
       setHomeContent(homeData);
       setItineraries(itins);
       setHotels(h);
       setRestaurants(r);
+      setStreetFood(sf);
 
       const attractionData = await Promise.all(
         ATTRACTION_NAMES.map(async (name) => {
@@ -66,5 +70,5 @@ export function useAppData(): AppData {
     loadData();
   }, [loadData]);
 
-  return { attractions, hotels, restaurants, itineraries, homeContent, loading, error };
+  return { attractions, hotels, restaurants, streetFood, itineraries, homeContent, loading, error };
 }

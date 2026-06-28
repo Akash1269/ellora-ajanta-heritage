@@ -44,4 +44,7 @@ export const IMAGES = {
   fortLandscape: IMG + 'fort-landscape.jpg',
   shirdiTemple: IMG + 'shirdi-temple.jpg',
   elloraSunset: IMG + 'ellora-sunset.jpg',
+  jayakwadiDam: IMG + 'jayakwadi-dam.jpg',
+  mhaismalHills: IMG + 'mhaismal-hills.jpg',
+  gautalaSanctuary: IMG + 'gautala-sanctuary.jpg',
 };

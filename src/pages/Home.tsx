@@ -14,7 +14,11 @@ const NEARBY_IMAGES: Record<string, string> = {
   'Ellora Caves': IMAGES.elloraKailasa,
   'Daulatabad Fort': IMAGES.daulatabad,
   'Grishneshwar Temple': IMAGES.grishneshwar,
-  'Paithan': IMAGES.paithaniWeaving
+  'Shirdi': IMAGES.shirdiTemple,
+  'Jayakwadi Dam': IMAGES.jayakwadiDam,
+  'Paithan': IMAGES.paithaniWeaving,
+  'Mhaismal': IMAGES.mhaismalHills,
+  'Gautala Sanctuary': IMAGES.gautalaSanctuary
 };
 
 const FOOD_IMAGES: Record<string, string> = {

@@ -45,6 +45,12 @@ describe('dataService', () => {
     expect(restaurants.length).toBeGreaterThan(0);
   });
 
+  it('fetchPlaces returns streetFood array', async () => {
+    const streetFood = await fetchPlaces('streetFood');
+    expect(Array.isArray(streetFood)).toBe(true);
+    expect(streetFood.length).toBeGreaterThan(0);
+  });
+
   it('fetchItinerarySummaries returns non-empty array', async () => {
     const summaries = await fetchItinerarySummaries();
     expect(Array.isArray(summaries)).toBe(true);

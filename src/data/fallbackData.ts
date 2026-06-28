@@ -42,7 +42,11 @@ export const FALLBACK_HOME_CONTENT: HomeContent = {
     { name: "Ellora Caves", distance: "29 km", description: "Monumental rock-cut caves featuring the monolithic Kailasa Temple." },
     { name: "Daulatabad Fort", distance: "16 km", description: "A formidable hill fortress with a complex defense system and dark passages." },
     { name: "Grishneshwar Temple", distance: "30 km", description: "One of the 12 sacred Jyotirlinga shrines dedicated to Lord Shiva." },
-    { name: "Paithan", distance: "56 km", description: "Ancient capital known for the Jayakwadi Dam and exquisite Paithani sarees." }
+    { name: "Shirdi", distance: "112 km", description: "Home of the revered Sai Baba Temple — one of India's most visited pilgrimage sites." },
+    { name: "Jayakwadi Dam", distance: "56 km", description: "One of the largest earthen dams in Asia, on the Godavari River near Paithan." },
+    { name: "Paithan", distance: "56 km", description: "Ancient capital known for the Jayakwadi Dam and exquisite Paithani sarees." },
+    { name: "Mhaismal", distance: "70 km", description: "A serene hill station in the Sahyadri range offering panoramic views and cool climate." },
+    { name: "Gautala Sanctuary", distance: "75 km", description: "A wildlife sanctuary in the Satmala hills, home to leopards, deer, and diverse birdlife." }
   ],
   foodItems: [
     { name: "Sheer Khurma", description: "A festive vermicelli pudding made with milk, dates, nuts, and saffron — a beloved Aurangabad dessert." },
@@ -148,18 +152,36 @@ export const FALLBACK_ATTRACTIONS: Record<string, Omit<Attraction, 'imageUrl'>> 
   }
 };
 
-export const FALLBACK_PLACES: { hotels: Place[], restaurants: Place[] } = {
+export const FALLBACK_PLACES: { hotels: Place[], restaurants: Place[], streetFood: Place[] } = {
   hotels: [
     { name: "Vivanta Aurangabad", description: "A palace-style hotel set in landscaped gardens, offering a blend of Mughal architecture and modern luxury.", specialty: "Heritage Luxury" },
     { name: "WelcomHotel Rama International", description: "Sprawling property with lush greenery, providing a resort-like feel in the heart of the city.", specialty: "Wellness & Spa" },
     { name: "Lemon Tree Hotel", description: "Contemporary hotel with fresh interiors, known for its efficiency and close proximity to the airport.", specialty: "Modern Comfort" },
-    { name: "The Meadows Resort", description: "A boutique resort offering a tranquil escape with cottage-style accommodations.", specialty: "Nature Retreat" }
+    { name: "The Meadows Resort", description: "A boutique resort offering a tranquil escape with cottage-style accommodations.", specialty: "Nature Retreat" },
+    { name: "Keys Select by Lemon Tree", description: "Budget-friendly property near the railway station with clean rooms and reliable service.", specialty: "Value Stay" },
+    { name: "Hotel Panchavati", description: "A well-known mid-range hotel with rooftop dining and convenient city-center location.", specialty: "Rooftop Dining" },
+    { name: "MTDC Ajanta T-Junction", description: "Maharashtra Tourism Development Corporation resort near Ajanta Caves with comfortable cottages.", specialty: "Cave-Side Stay" },
+    { name: "Hotel Kailas", description: "Budget hotel at Ellora crossroads, ideal base for early morning cave visits.", specialty: "Ellora Proximity" },
+    { name: "Ambassador Ajanta", description: "Classic heritage property with a regal facade, offering old-world charm and modern amenities.", specialty: "Classic Heritage" }
   ],
   restaurants: [
     { name: "Bhoj Thali Restaurant", description: "Famous for its unlimited Rajasthani and Gujarati thalis, offering a true feast.", specialty: "Vegetarian Thali" },
     { name: "Green Leaf", description: "A popular choice for pure vegetarian fine dining with a wide variety of North Indian dishes.", specialty: "North Indian Veg" },
     { name: "Khandani Rajdhani", description: "Authentic Rajasthani thali experience with traditional flavors and a festive dining atmosphere.", specialty: "Rajasthani Veg Thali" },
-    { name: "Naivedya", description: "Known for its consistent quality and elegant ambiance, serving a mix of Indian and Continental.", specialty: "Multi-Cuisine" }
+    { name: "Naivedya", description: "Known for its consistent quality and elegant ambiance, serving a mix of Indian and Continental.", specialty: "Multi-Cuisine" },
+    { name: "Swad Restaurant", description: "Pure vegetarian restaurant famous for its South Indian breakfast and Gujarati specials.", specialty: "South Indian & Gujarati" },
+    { name: "Foodlovers", description: "Modern cafe-restaurant with a diverse menu including pizza, pasta, and Indian favorites.", specialty: "Fusion & Continental" },
+    { name: "Tandoor Restaurant", description: "Rooftop dining with a panoramic city view, known for fresh tandoori rotis and paneer dishes.", specialty: "Tandoori Veg" },
+    { name: "Angeethi", description: "Elegant fine dining specializing in North Indian cuisine with a heritage-inspired ambiance.", specialty: "North Indian Fine Dine" },
+    { name: "Great Punjab", description: "Hearty Punjabi vegetarian fare — generous portions of dal makhani, chole bhature, and lassi.", specialty: "Punjabi Veg" }
+  ],
+  streetFood: [
+    { name: "Tara Pan Centre", description: "A legendary 80-year-old paan shop near Gul Mandi. Their meetha paan with gulkand and saffron is an Aurangabad institution.", specialty: "Meetha Paan" },
+    { name: "Noor Bakery", description: "Iconic bakery in City Chowk serving flaky Mughlai-style biscuits, khari, and the famous Aurangabadi naan since the 1940s.", specialty: "Mughlai Bakes & Naan" },
+    { name: "Gul Mandi Jalebi Wala", description: "Open-air stall frying crispy jalebis in pure ghee right before your eyes — best enjoyed hot at sunrise.", specialty: "Hot Jalebi & Imarti" },
+    { name: "Bhagat Tarachand", description: "A decades-old vegetarian eatery famous for its thali, dal fry, and fresh rotis served on banana leaves.", specialty: "Veg Thali & Dal Fry" },
+    { name: "Shahganj Chaat Corner", description: "Bustling street corner known for tangy sev puri, dahi puri, and pani puri with a spicy Marathwada twist.", specialty: "Chaat & Pani Puri" },
+    { name: "Mhaismal Corn Stall", description: "Roadside vendors on the Mhaismal ghat serving roasted bhutta (corn) with lemon, salt, and red chili.", specialty: "Roasted Bhutta" }
   ]
 };
 

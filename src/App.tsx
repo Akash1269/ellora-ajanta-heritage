@@ -15,7 +15,7 @@ const History = lazy(() => import('./pages/History').then(m => ({ default: m.His
 const NotFound = lazy(() => import('./pages/NotFound').then(m => ({ default: m.NotFound })));
 
 const App: React.FC = () => {
-  const { attractions, hotels, restaurants, itineraries, homeContent, loading, error } = useAppData();
+  const { attractions, hotels, restaurants, streetFood, itineraries, homeContent, loading, error } = useAppData();
 
   if (loading) {
       return (
@@ -36,7 +36,7 @@ const App: React.FC = () => {
                   <Route path="/" element={<Home content={homeContent} />} />
                   <Route path="/attractions" element={<Attractions attractions={attractions} loading={attractions.length === 0} error={error} />} />
                   <Route path="/itineraries" element={<Itineraries itineraries={itineraries} />} />
-                  <Route path="/places" element={<Places hotels={hotels} restaurants={restaurants} />} />
+                  <Route path="/places" element={<Places hotels={hotels} restaurants={restaurants} streetFood={streetFood} />} />
                   <Route path="/history" element={<History />} />
                   <Route path="*" element={<NotFound />} />
               </Routes>

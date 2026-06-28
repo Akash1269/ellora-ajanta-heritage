@@ -6,9 +6,10 @@ import type { Place } from '../types';
 interface PlacesPageProps {
     hotels: Place[];
     restaurants: Place[];
+    streetFood: Place[];
 }
 
-export const Places: React.FC<PlacesPageProps> = ({ hotels, restaurants }) => {
+export const Places: React.FC<PlacesPageProps> = ({ hotels, restaurants, streetFood }) => {
     return (
         <div className="bg-parchment min-h-screen py-8 sm:py-12 lg:py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,6 +36,16 @@ export const Places: React.FC<PlacesPageProps> = ({ hotels, restaurants }) => {
                         </h3>
                         <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                              {restaurants.map(r => <PlaceCard key={r.name} place={r} />)}
+                        </div>
+                     </section>
+
+                     <section>
+                        <h3 className="text-xl sm:text-2xl font-heading text-ink mb-5 sm:mb-8 flex items-center gap-2 sm:gap-3">
+                            <span className="w-1 h-6 sm:h-8 bg-gold rounded-full"></span>
+                            Street Food & Iconic Shops
+                        </h3>
+                        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                             {streetFood.map(sf => <PlaceCard key={sf.name} place={sf} />)}
                         </div>
                      </section>
                 </div>
