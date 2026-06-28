@@ -10,8 +10,14 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-6.4-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Tests](https://img.shields.io/badge/Tests-17_passing-brightgreen?logo=vitest&logoColor=white)](src/test/)
 
 </div>
+
+<p align="center">
+  <img src="public/screenshots/hero.png" alt="Ellora Ajanta Heritage — Hero" width="100%" />
+</p>
 
 ---
 
@@ -28,11 +34,25 @@ Built with a component-driven architecture, strict TypeScript, and performance-f
 ## What You'll Find
 
 - **6 Heritage Attractions** — Bibi Ka Maqbara, Ajanta Caves, Ellora Caves, Daulatabad Fort, Grishneshwar Temple, Panchakki
-- **Interactive Map** — Explore all sites with markers, directions, and timings
+- **Interactive Map** — Explore all sites with custom markers, directions, and timings
 - **Curated Itineraries** — 4 multi-day travel plans with activity timelines
-- **Places Directory** — Recommended hotels and restaurants
+- **Places Directory** — 9 hotels, 9 restaurants, and 6 street food spots
+- **8 Nearby Excursions** — Lonar Lake, Shirdi, Jayakwadi Dam, Mhaismal Hills, and more
 - **Rich History** — From ancient dynasties to the modern era
 - **Works Offline** — Full content available without internet
+
+---
+
+## Screenshots
+
+<p align="center">
+  <img src="public/screenshots/hero2.png" alt="Heritage Hero Section" width="48%" />
+  <img src="public/screenshots/attractions.png" alt="Attractions Page" width="48%" />
+</p>
+<p align="center">
+  <img src="public/screenshots/imageGalary.png" alt="Image Gallery" width="48%" />
+  <img src="public/screenshots/PlanYourVisit.png" alt="Plan Your Visit" width="48%" />
+</p>
 
 ---
 
@@ -87,6 +107,42 @@ npm run dev
 
 Open [http://localhost:5175](http://localhost:5175) in your browser.
 
+### Available Scripts
+
+| Script | Description |
+|--------|-------------|
+| `npm run dev` | Start dev server on port 5175 |
+| `npm run build` | Production build |
+| `npm run preview` | Preview production build |
+| `npm run lint` | ESLint check |
+| `npm test` | Run all tests (Vitest) |
+| `npm run test:watch` | Watch mode for tests |
+
+---
+
+## Testing
+
+```bash
+npm test     # 17 tests passing (Vitest + React Testing Library)
+```
+
+Covers constants, all data service functions, and fallback data integrity.
+
+---
+
+## Project Structure
+
+```
+src/
+├── components/          # UI components (attractions, common, icons, layout, places)
+├── pages/               # Route pages — lazy-loaded (Home, Attractions, History, etc.)
+├── hooks/useAppData.ts  # Global data loading hook
+├── services/            # Data access layer
+├── data/                # Static fallback content (offline-ready)
+├── styles/globals.css   # Tailwind config + heritage theme
+└── test/                # Vitest test suites
+```
+
 ---
 
 ## Documentation
@@ -107,7 +163,7 @@ The UI is built on a heritage-inspired design system defined in [`src/styles/glo
 - **8 reusable components** — `Hero`, `SectionHeading`, `SectionDivider`, `HeritageButton`, `LoadingSpinner`, `ErrorMessage`, `ErrorBoundary`, `MapSection`
 - **20+ SVG icons** — Navigation, utility, transport, weather, and activity type icons
 - **Visual treatments** — Sepia image filter (`.img-heritage`), Mughal jaali dot pattern (`.bg-jaali`), arch clip-path (`.arch-mask`), ornate dividers
-- **Local image assets** — 23 free-license photos from Pexels/Unsplash served from `public/images/`
+- **Local image assets** — 28 curated photos (Wikimedia Commons + Pexels) served from `public/images/`, with a dedicated [credits page](#/credits)
 
 ---
 
@@ -143,7 +199,16 @@ Open an [issue](https://github.com/Akash1269/ellora-ajanta-heritage/issues) to p
 
 ## Author
 
-**Akash** — [GitHub](https://github.com/Akash1269)
+**Akash Bhayekar**
+
+[![GitHub](https://img.shields.io/badge/GitHub-Akash1269-181717?logo=github)](https://github.com/Akash1269)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-akashbhayekar-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/akashbhayekar/)
+
+---
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
