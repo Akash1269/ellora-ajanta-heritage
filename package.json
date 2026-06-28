@@ -1,8 +1,28 @@
 {
   "name": "ellora-ajanta-heritage",
+  "version": "1.0.0",
+  "description": "Interactive tourism web app exploring Aurangabad's UNESCO World Heritage Sites — Ellora Caves, Ajanta Caves, and more",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "license": "MIT",
+  "author": "Akash Bhayekar (https://github.com/Akash1269)",
+  "homepage": "https://akash1269.github.io/ellora-ajanta-heritage/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Akash1269/ellora-ajanta-heritage.git"
+  },
+  "keywords": [
+    "react",
+    "typescript",
+    "tourism",
+    "heritage",
+    "ellora",
+    "ajanta",
+    "aurangabad",
+    "tailwindcss",
+    "vite",
+    "leaflet"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
