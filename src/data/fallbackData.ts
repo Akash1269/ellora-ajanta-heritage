@@ -51,54 +51,54 @@ export const FALLBACK_HOME_CONTENT: HomeContent = {
     { name: "Mawa Jalebi", description: "A rich, dark brown variation of Jalebi made with condensed milk (khoya)." }
   ],
   mapLocations: [
-    { 
-        name: "Bibi Ka Maqbara", 
-        lat: 19.901509, 
-        lng: 75.320194, 
-        timings: "8:00 AM - 8:00 PM",
-        imageUrl: IMAGES.bibiKaMaqbara
+    {
+      name: "Bibi Ka Maqbara",
+      lat: 19.901509,
+      lng: 75.320194,
+      timings: "8:00 AM - 8:00 PM",
+      imageUrl: IMAGES.bibiKaMaqbara
     },
-    { 
-        name: "Ajanta Caves", 
-        lat: 20.55186, 
-        lng: 75.703252, 
-        timings: "9:00 AM - 5:00 PM (Mon Closed)",
-        imageUrl: IMAGES.ajantaCaves
+    {
+      name: "Ajanta Caves",
+      lat: 20.55186,
+      lng: 75.703252,
+      timings: "9:00 AM - 5:00 PM (Mon Closed)",
+      imageUrl: IMAGES.ajantaCaves
     },
-    { 
-        name: "Ellora Caves", 
-        lat: 20.026838, 
-        lng: 75.177144, 
-        timings: "6:00 AM - 6:00 PM (Tue Closed)",
-        imageUrl: IMAGES.elloraKailasa
+    {
+      name: "Ellora Caves",
+      lat: 20.026838,
+      lng: 75.177144,
+      timings: "6:00 AM - 6:00 PM (Tue Closed)",
+      imageUrl: IMAGES.elloraKailasa
     },
-    { 
-        name: "Daulatabad Fort", 
-        lat: 19.944813, 
-        lng: 75.214828, 
-        timings: "8:00 AM - 6:00 PM",
-        imageUrl: IMAGES.daulatabad
+    {
+      name: "Daulatabad Fort",
+      lat: 19.944813,
+      lng: 75.214828,
+      timings: "8:00 AM - 6:00 PM",
+      imageUrl: IMAGES.daulatabad
     },
-    { 
-        name: "Grishneshwar Temple", 
-        lat: 20.023415, 
-        lng: 75.168962, 
-        timings: "5:30 AM - 9:30 PM",
-        imageUrl: IMAGES.grishneshwar
+    {
+      name: "Grishneshwar Temple",
+      lat: 20.023415,
+      lng: 75.168962,
+      timings: "5:30 AM - 9:30 PM",
+      imageUrl: IMAGES.grishneshwar
     },
-    { 
-        name: "Panchakki", 
-        lat: 19.886419, 
-        lng: 75.316828, 
-        timings: "7:00 AM - 9:00 PM",
-        imageUrl: IMAGES.panchakki
+    {
+      name: "Panchakki",
+      lat: 19.886419,
+      lng: 75.316828,
+      timings: "7:00 AM - 9:00 PM",
+      imageUrl: IMAGES.panchakki
     },
-    { 
-        name: "Aurangabad Airport", 
-        lat: 19.8633, 
-        lng: 75.3992, 
-        timings: "24 Hours",
-        imageUrl: IMAGES.fortLandscape
+    {
+      name: "Aurangabad Airport",
+      lat: 19.8633,
+      lng: 75.3992,
+      timings: "24 Hours",
+      imageUrl: IMAGES.fortLandscape
     }
   ]
 };
@@ -164,22 +164,22 @@ export const FALLBACK_PLACES: { hotels: Place[], restaurants: Place[] } = {
 };
 
 export const FALLBACK_ITINERARIES: ItinerarySummary[] = [
-  { 
-    title: "The Classic Heritage", 
+  {
+    title: "The Classic Heritage",
     summary: "A focused weekend trip covering the UNESCO sites of Ajanta and Ellora along with Daulatabad Fort.",
     duration: "2 Days",
     theme: "History & Architecture",
     imageUrl: IMAGES.elloraKailasa
   },
-  { 
-    title: "Spiritual Sojourn", 
+  {
+    title: "Spiritual Sojourn",
     summary: "A blend of devotion and history, visiting Grishneshwar, Shirdi, and the Mughal monuments.",
     duration: "3 Days",
     theme: "Spiritual",
     imageUrl: IMAGES.grishneshwar
   },
-  { 
-    title: "The Leisure Traveler", 
+  {
+    title: "The Leisure Traveler",
     summary: "A relaxed exploration including Paithan, local craft markets, food tours, and all major monuments.",
     duration: "4 Days",
     theme: "Culture & Leisure",
@@ -198,9 +198,9 @@ export const FALLBACK_ITINERARY_DETAILS: Record<string, ItineraryDetail> = {
   "The Classic Heritage": {
     title: "The Classic Heritage",
     days: [
-      { 
-        day: 1, 
-        title: "The Ajanta Odyssey", 
+      {
+        day: 1,
+        title: "The Ajanta Odyssey",
         activities: [
           { time: "07:00 AM", title: "Depart for Ajanta", description: "Start early to beat the heat. The drive is approximately 100km (2.5 hours).", type: "travel", duration: "2.5 Hrs" },
           { time: "09:30 AM", title: "Arrival at Ajanta Viewpoint", description: "Stop at the viewpoint for a panoramic shot of the horseshoe-shaped gorge.", type: "sightseeing", imageUrl: IMAGES.ajantaCaves },
@@ -209,54 +209,54 @@ export const FALLBACK_ITINERARY_DETAILS: Record<string, ItineraryDetail> = {
           { time: "02:30 PM", title: "Explore Caves 16, 17, 26", description: "See the Reclining Buddha statue and intricate Jataka tales.", type: "sightseeing" },
           { time: "05:00 PM", title: "Return Journey", description: "Drive back to Aurangabad city.", type: "travel", duration: "2.5 Hrs" },
           { time: "08:00 PM", title: "Dinner at Green Leaf", description: "Relax with authentic vegetarian North Indian cuisine.", type: "meal" }
-        ] 
+        ]
       },
-      { 
-        day: 2, 
-        title: "Ellora & The Fort", 
+      {
+        day: 2,
+        title: "Ellora & The Fort",
         activities: [
-            { time: "08:00 AM", title: "Travel to Daulatabad", description: "A short 30 min drive to the fortress.", type: "travel" },
-            { time: "08:30 AM", title: "Daulatabad Fort Trek", description: "Climb the Chand Minar and navigate the dark passages (Andhari).", type: "sightseeing", imageUrl: IMAGES.daulatabad },
-            { time: "11:30 AM", title: "Travel to Ellora", description: "Proceed to Ellora Caves (30 mins away).", type: "travel" },
-            { time: "12:00 PM", title: "Kailasa Temple (Cave 16)", description: "Spend dedicated time at the world's largest monolithic excavation.", type: "sightseeing", imageUrl: IMAGES.elloraKailasa },
-            { time: "02:00 PM", title: "Lunch", description: "Local Maharashtrian cuisine at a dhaba nearby.", type: "meal" },
-            { time: "04:30 PM", title: "Bibi Ka Maqbara", description: "Return to city and visit the 'Mini Taj' at golden hour.", type: "sightseeing", imageUrl: IMAGES.bibiKaMaqbara },
-            { time: "07:30 PM", title: "Shopping at Gul Mandi", description: "Explore the local market for Himroo shawls.", type: "shopping" }
-        ] 
+          { time: "08:00 AM", title: "Travel to Daulatabad", description: "A short 30 min drive to the fortress.", type: "travel" },
+          { time: "08:30 AM", title: "Daulatabad Fort Trek", description: "Climb the Chand Minar and navigate the dark passages (Andhari).", type: "sightseeing", imageUrl: IMAGES.daulatabad },
+          { time: "11:30 AM", title: "Travel to Ellora", description: "Proceed to Ellora Caves (30 mins away).", type: "travel" },
+          { time: "12:00 PM", title: "Kailasa Temple (Cave 16)", description: "Spend dedicated time at the world's largest monolithic excavation.", type: "sightseeing", imageUrl: IMAGES.elloraKailasa },
+          { time: "02:00 PM", title: "Lunch", description: "Local Maharashtrian cuisine at a dhaba nearby.", type: "meal" },
+          { time: "04:30 PM", title: "Bibi Ka Maqbara", description: "Return to city and visit the 'Mini Taj' at golden hour.", type: "sightseeing", imageUrl: IMAGES.bibiKaMaqbara },
+          { time: "07:30 PM", title: "Shopping at Gul Mandi", description: "Explore the local market for Himroo shawls.", type: "shopping" }
+        ]
       }
     ]
   },
   "Spiritual Sojourn": {
     title: "Spiritual Sojourn",
     days: [
-      { 
-        day: 1, 
-        title: "The Jyotirlinga Darshan", 
+      {
+        day: 1,
+        title: "The Jyotirlinga Darshan",
         activities: [
-            { time: "06:00 AM", title: "Travel to Grishneshwar", description: "Early morning drive to avoid queues.", type: "travel" },
-            { time: "07:00 AM", title: "Grishneshwar Temple", description: "Darshan at one of the 12 Jyotirlingas.", type: "sightseeing", imageUrl: IMAGES.grishneshwar },
-            { time: "10:00 AM", title: "Bhadra Maruti", description: "Visit the reclining Hanuman temple at Khuldabad.", type: "sightseeing" },
-            { time: "01:00 PM", title: "Lunch", description: "Simple satvik meal.", type: "meal" },
-            { time: "03:00 PM", title: "Valley of Sufi Saints", description: "Visit the tombs of Aurangzeb and Malik Ambar.", type: "sightseeing" }
-        ] 
+          { time: "06:00 AM", title: "Travel to Grishneshwar", description: "Early morning drive to avoid queues.", type: "travel" },
+          { time: "07:00 AM", title: "Grishneshwar Temple", description: "Darshan at one of the 12 Jyotirlingas.", type: "sightseeing", imageUrl: IMAGES.grishneshwar },
+          { time: "10:00 AM", title: "Bhadra Maruti", description: "Visit the reclining Hanuman temple at Khuldabad.", type: "sightseeing" },
+          { time: "01:00 PM", title: "Lunch", description: "Simple satvik meal.", type: "meal" },
+          { time: "03:00 PM", title: "Valley of Sufi Saints", description: "Visit the tombs of Aurangzeb and Malik Ambar.", type: "sightseeing" }
+        ]
       },
-      { 
-        day: 2, 
-        title: "Shirdi Sai Baba", 
+      {
+        day: 2,
+        title: "Shirdi Sai Baba",
         activities: [
-            { time: "06:00 AM", title: "Depart for Shirdi", description: "Approx 110km drive (3 hours).", type: "travel" },
-            { time: "10:00 AM", title: "Sai Baba Temple", description: "Darshan and visit to Dwarkamai.", type: "sightseeing", imageUrl: IMAGES.shirdiTemple },
-            { time: "02:00 PM", title: "Prasad/Lunch", description: "Lunch at the temple Bhojanalaya.", type: "meal" },
-            { time: "06:00 PM", title: "Return to Aurangabad", description: "Relaxing drive back.", type: "travel" }
-        ] 
+          { time: "06:00 AM", title: "Depart for Shirdi", description: "Approx 110km drive (3 hours).", type: "travel" },
+          { time: "10:00 AM", title: "Sai Baba Temple", description: "Darshan and visit to Dwarkamai.", type: "sightseeing", imageUrl: IMAGES.shirdiTemple },
+          { time: "02:00 PM", title: "Prasad/Lunch", description: "Lunch at the temple Bhojanalaya.", type: "meal" },
+          { time: "06:00 PM", title: "Return to Aurangabad", description: "Relaxing drive back.", type: "travel" }
+        ]
       },
       {
         day: 3,
         title: "City Spirituals",
         activities: [
-            { time: "09:00 AM", title: "Panchakki", description: "Visit the ancient water mill and attached Dargah.", type: "sightseeing", imageUrl: IMAGES.panchakki },
-            { time: "11:00 AM", title: "Siddharth Garden", description: "A peaceful stroll and visit to the Zoo.", type: "rest" },
-            { time: "01:00 PM", title: "Farewell Lunch", description: "Try the famous Mawa Jalebi and Sheer Khurma.", type: "meal", imageUrl: IMAGES.jalebi }
+          { time: "09:00 AM", title: "Panchakki", description: "Visit the ancient water mill and attached Dargah.", type: "sightseeing", imageUrl: IMAGES.panchakki },
+          { time: "11:00 AM", title: "Siddharth Garden", description: "A peaceful stroll and visit to the Zoo.", type: "rest" },
+          { time: "01:00 PM", title: "Farewell Lunch", description: "Try the famous Mawa Jalebi and Sheer Khurma.", type: "meal", imageUrl: IMAGES.jalebi }
         ]
       }
     ]
@@ -264,18 +264,18 @@ export const FALLBACK_ITINERARY_DETAILS: Record<string, ItineraryDetail> = {
   "The Leisure Traveler": {
     title: "The Leisure Traveler",
     days: [
-        { day: 1, title: "Arrival & Ease", activities: [{time: "02:00 PM", title: "Check-in", description: "Relax at Vivanta or Rama International.", type: "rest"}, {time: "05:00 PM", title: "Salim Ali Lake", description: "Bird watching and sunset.", type: "sightseeing"}, {time: "08:00 PM", title: "Fine Dining", description: "Dinner at the hotel.", type: "meal"}]},
-        { day: 2, title: "Weaves & Water", activities: [{time: "09:00 AM", title: "Drive to Paithan", description: "Scenic drive to the ancient capital.", type: "travel"}, {time: "11:00 AM", title: "Paithani Center", description: "Watch master weavers create gold-threaded sarees.", type: "shopping", imageUrl: IMAGES.paithaniWeaving}, {time: "01:00 PM", title: "Jayakwadi Dam", description: "Picnic lunch by the Nath Sagar reservoir.", type: "meal"}, {time: "04:00 PM", title: "Dnyneshwar Garden", description: "Stroll through the gardens inspired by Vrindavan.", type: "rest"}]},
-        { day: 3, title: "Caves & History", activities: [{time: "09:00 AM", title: "Ellora Caves", description: "Leisurely tour of the key caves.", type: "sightseeing"}, {time: "02:00 PM", title: "Lunch", description: "Local cuisine.", type: "meal"}, {time: "05:00 PM", title: "Bibi Ka Maqbara", description: "Evening photography session.", type: "sightseeing"}]},
-        { day: 4, title: "Market & Departure", activities: [{time: "10:00 AM", title: "Prozone Mall or Local Markets", description: "Last minute shopping.", type: "shopping"}, {time: "12:00 PM", title: "Departure", description: "Transfer to Airport/Station.", type: "travel"}]}
+      { day: 1, title: "Arrival & Ease", activities: [{ time: "02:00 PM", title: "Check-in", description: "Relax at Vivanta or Rama International.", type: "rest" }, { time: "05:00 PM", title: "Salim Ali Lake", description: "Bird watching and sunset.", type: "sightseeing" }, { time: "08:00 PM", title: "Fine Dining", description: "Dinner at the hotel.", type: "meal" }] },
+      { day: 2, title: "Weaves & Water", activities: [{ time: "09:00 AM", title: "Drive to Paithan", description: "Scenic drive to the ancient capital.", type: "travel" }, { time: "11:00 AM", title: "Paithani Center", description: "Watch master weavers create gold-threaded sarees.", type: "shopping", imageUrl: IMAGES.paithaniWeaving }, { time: "01:00 PM", title: "Jayakwadi Dam", description: "Picnic lunch by the Nath Sagar reservoir.", type: "meal" }, { time: "04:00 PM", title: "Dnyneshwar Garden", description: "Stroll through the gardens inspired by Vrindavan.", type: "rest" }] },
+      { day: 3, title: "Caves & History", activities: [{ time: "09:00 AM", title: "Ellora Caves", description: "Leisurely tour of the key caves.", type: "sightseeing" }, { time: "02:00 PM", title: "Lunch", description: "Local cuisine.", type: "meal" }, { time: "05:00 PM", title: "Bibi Ka Maqbara", description: "Evening photography session.", type: "sightseeing" }] },
+      { day: 4, title: "Market & Departure", activities: [{ time: "10:00 AM", title: "Prozone Mall or Local Markets", description: "Last minute shopping.", type: "shopping" }, { time: "12:00 PM", title: "Departure", description: "Transfer to Airport/Station.", type: "travel" }] }
     ]
   },
   "Photographer's Paradise": {
     title: "Photographer's Paradise",
     days: [
-        { day: 1, title: "Mughal Architecture", activities: [{time: "04:30 PM", title: "Bibi Ka Maqbara", description: "Capture the golden hour lighting on the marble.", type: "sightseeing", imageUrl: IMAGES.bibiKaMaqbara}, {time: "06:30 PM", title: "Soneri Mahal", description: "Blue hour photography at the Golden Palace.", type: "sightseeing"}]},
-        { day: 2, title: "Ellora Textures", activities: [{time: "06:00 AM", title: "Depart for Ellora", description: "Catch early light.", type: "travel"}, {time: "07:00 AM", title: "Kailasa Temple", description: "Shoot the intricate carvings before crowds arrive.", type: "sightseeing", imageUrl: IMAGES.elloraKailasa}, {time: "12:00 PM", title: "Cave 32 (Jain)", description: "Detailed ceiling paintings.", type: "sightseeing"}]},
-        { day: 3, title: "Ajanta Murals", activities: [{time: "09:00 AM", title: "Cave 1 & 2", description: "Tripods permitted with permission. Focus on mural details.", type: "sightseeing", imageUrl: IMAGES.cavePaintings}, {time: "02:00 PM", title: "Viewpoint Trek", description: "Wide angle landscape shots of the waghur river and caves.", type: "sightseeing"}]}
+      { day: 1, title: "Mughal Architecture", activities: [{ time: "04:30 PM", title: "Bibi Ka Maqbara", description: "Capture the golden hour lighting on the marble.", type: "sightseeing", imageUrl: IMAGES.bibiKaMaqbara }, { time: "06:30 PM", title: "Soneri Mahal", description: "Blue hour photography at the Golden Palace.", type: "sightseeing" }] },
+      { day: 2, title: "Ellora Textures", activities: [{ time: "06:00 AM", title: "Depart for Ellora", description: "Catch early light.", type: "travel" }, { time: "07:00 AM", title: "Kailasa Temple", description: "Shoot the intricate carvings before crowds arrive.", type: "sightseeing", imageUrl: IMAGES.elloraKailasa }, { time: "12:00 PM", title: "Cave 32 (Jain)", description: "Detailed ceiling paintings.", type: "sightseeing" }] },
+      { day: 3, title: "Ajanta Murals", activities: [{ time: "09:00 AM", title: "Cave 1 & 2", description: "Tripods permitted with permission. Focus on mural details.", type: "sightseeing", imageUrl: IMAGES.cavePaintings }, { time: "02:00 PM", title: "Viewpoint Trek", description: "Wide angle landscape shots of the waghur river and caves.", type: "sightseeing" }] }
     ]
   }
 };

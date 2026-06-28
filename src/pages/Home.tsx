@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useRef, useCallback } from 'react';
 import { Hero } from '../components/common/Hero';
 import { MapSection } from '../components/common/MapSection';
 import { SectionDivider } from '../components/common/SectionDivider';
@@ -40,6 +40,16 @@ interface HomeProps {
 }
 
 export const Home: React.FC<HomeProps> = ({ content }) => {
+  const nearbyScrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollNearbyLeft = useCallback(() => {
+    nearbyScrollRef.current?.scrollBy({ left: -300, behavior: 'smooth' });
+  }, []);
+
+  const scrollNearbyRight = useCallback(() => {
+    nearbyScrollRef.current?.scrollBy({ left: 300, behavior: 'smooth' });
+  }, []);
+
   if (!content) return <Hero />;
 
   return (
@@ -149,7 +159,7 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
       <SectionDivider />
 
       {/* 3. Nearby Attractions */}
-      <section className="py-12 sm:py-16 lg:py-24 bg-parchment overflow-hidden">
+      <section className="py-12 sm:py-16 lg:py-24 bg-parchment">
         <div className="max-w-7xl mx-auto px-4 mb-6 sm:mb-10">
           <SectionHeading 
             title="Excursions Nearby" 
@@ -157,27 +167,50 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
           />
         </div>
         
-        <div className="flex overflow-x-auto pb-6 sm:pb-8 px-4 sm:px-8 gap-4 sm:gap-6 snap-x hide-scrollbar">
-          {content.nearbyPlaces.map((place, idx) => (
-            <div key={idx} className="snap-center shrink-0 w-64 sm:w-72 lg:w-80 card-heritage overflow-hidden">
-              <div className="h-36 sm:h-44 lg:h-48 overflow-hidden bg-parchment-dark">
-                <img 
-                  src={NEARBY_IMAGES[place.name] || PLACEHOLDER_IMAGE} 
-                  alt={place.name} 
-                  loading="lazy" 
-                  onError={(e) => { (e.target as HTMLImageElement).src = PLACEHOLDER_IMAGE; }} 
-                  className="w-full h-full object-cover img-heritage transition-transform duration-700 hover:scale-105" 
-                />
+        <div className="relative max-w-7xl mx-auto overflow-hidden">
+          {/* Left chevron */}
+          <button
+            onClick={scrollNearbyLeft}
+            aria-label="Scroll left"
+            className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center rounded-full bg-white/90 border border-gold/30 shadow-md text-gold hover:bg-gold hover:text-white transition-colors duration-200"
+          >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><polyline points="13,4 7,10 13,16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </button>
+
+          <div
+            ref={nearbyScrollRef}
+            className="flex overflow-x-auto py-2 pb-6 sm:pb-8 pl-4 sm:pl-14 gap-4 sm:gap-6 snap-x hide-scrollbar scroll-smooth"
+          >
+            {content.nearbyPlaces.map((place, idx) => (
+              <div key={idx} className={`snap-start shrink-0 w-64 sm:w-72 lg:w-80 card-heritage overflow-hidden${idx === content.nearbyPlaces.length - 1 ? ' mr-4 sm:mr-14' : ''}`}>
+                <div className="h-36 sm:h-44 lg:h-48 overflow-hidden bg-parchment-dark">
+                  <img 
+                    src={NEARBY_IMAGES[place.name] || PLACEHOLDER_IMAGE} 
+                    alt={place.name} 
+                    loading="lazy" 
+                    onError={(e) => { (e.target as HTMLImageElement).src = PLACEHOLDER_IMAGE; }} 
+                    className="w-full h-full object-cover img-heritage transition-transform duration-700 hover:scale-105" 
+                  />
+                </div>
+                <div className="p-4 sm:p-5">
+                  <h3 className="text-lg sm:text-xl font-heading text-ink mb-1">{place.name}</h3>
+                  <span className="text-[10px] sm:text-xs font-medium text-gold uppercase tracking-wider block mb-2 sm:mb-3">{place.distance}</span>
+                  <p className="text-stone-warm text-xs sm:text-sm leading-relaxed">
+                    {place.description}
+                  </p>
+                </div>
               </div>
-              <div className="p-4 sm:p-5">
-                <h3 className="text-lg sm:text-xl font-heading text-ink mb-1">{place.name}</h3>
-                <span className="text-[10px] sm:text-xs font-medium text-gold uppercase tracking-wider block mb-2 sm:mb-3">{place.distance}</span>
-                <p className="text-stone-warm text-xs sm:text-sm leading-relaxed">
-                  {place.description}
-                </p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* Right chevron */}
+          <button
+            onClick={scrollNearbyRight}
+            aria-label="Scroll right"
+            className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center rounded-full bg-white/90 border border-gold/30 shadow-md text-gold hover:bg-gold hover:text-white transition-colors duration-200"
+          >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><polyline points="7,4 13,10 7,16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </button>
         </div>
       </section>
 
