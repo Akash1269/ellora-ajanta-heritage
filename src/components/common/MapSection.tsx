@@ -46,7 +46,7 @@ function createPopupContent(loc: MapLocation): HTMLDivElement {
   link.target = '_blank';
   link.rel = 'noopener noreferrer';
   link.textContent = 'Get Directions';
-  link.style.cssText = 'display: block; text-align: center; background-color: #b8860b; color: white; padding: 6px 12px; text-decoration: none; border-radius: 9999px; font-size: 12px; font-weight: 500; letter-spacing: 0.5px;';
+  link.style.cssText = 'display: block; text-align: center; background-color: #8B4513; color: white; padding: 6px 12px; text-decoration: none; border-radius: 9999px; font-size: 12px; font-weight: 500; letter-spacing: 0.5px;';
   container.appendChild(link);
 
   return container;
@@ -96,19 +96,14 @@ export const MapSection: React.FC<MapSectionProps> = ({ locations }) => {
 
       const defaultIcon = L.divIcon({
         className: 'custom-heritage-marker',
-        html: `<svg width="36" height="44" viewBox="0 0 36 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M18 0C8.06 0 0 8.06 0 18c0 13.5 18 26 18 26s18-12.5 18-26C36 8.06 27.94 0 18 0z" fill="#b8860b"/>
-          <path d="M18 2C9.16 2 2 9.16 2 18c0 12 16 23.5 16 23.5S34 30 34 18C34 9.16 26.84 2 18 2z" fill="#d4a84b"/>
-          <rect x="10" y="12" width="3" height="14" rx="1.5" fill="#2c1810"/>
-          <rect x="23" y="12" width="3" height="14" rx="1.5" fill="#2c1810"/>
-          <path d="M10 14 C10 9, 18 7, 18 7 C18 7, 26 9, 26 14" stroke="#2c1810" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-          <rect x="14" y="18" width="8" height="8" rx="0.5" fill="none" stroke="#2c1810" stroke-width="1.5"/>
-          <path d="M18 18v8" stroke="#2c1810" stroke-width="1"/>
-          <path d="M14 22h8" stroke="#2c1810" stroke-width="1"/>
+        html: `<svg width="28" height="36" viewBox="0 0 40 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 0C9 0 0 9 0 20c0 15 20 32 20 32s20-17 20-32C40 9 31 0 20 0z" fill="#8B4513"/>
+          <path d="M20 2C10.1 2 2 10.1 2 20c0 13.5 18 28.5 18 28.5S38 33.5 38 20C38 10.1 29.9 2 20 2z" fill="#CD853F"/>
+          <polyline points="12,22 20,12 28,22" fill="none" stroke="#FFF8DC" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>`,
-        iconSize: [36, 44],
-        iconAnchor: [18, 44],
-        popupAnchor: [0, -40]
+        iconSize: [28, 36],
+        iconAnchor: [14, 36],
+        popupAnchor: [0, -32]
       });
 
       // Add markers using DOM-based popups (XSS-safe)

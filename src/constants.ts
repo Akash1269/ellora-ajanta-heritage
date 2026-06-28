@@ -30,6 +30,8 @@ export const IMAGES = {
   naan: IMG + 'naan.jpg',
   jalebi: IMG + 'jalebi.jpg',
   tahri: IMG + 'tahri.jpg',
+  sheerKhurma: IMG + 'sheer-khurma.jpg',
+  dalPeetha: IMG + 'dal-peetha.jpg',
   lonarLake: IMG + 'lonar-lake.jpg',
   caveInterior: IMG + 'cave-interior.jpg',
   cavePaintings: IMG + 'cave-paintings.jpg',

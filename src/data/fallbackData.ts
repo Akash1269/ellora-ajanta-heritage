@@ -45,8 +45,8 @@ export const FALLBACK_HOME_CONTENT: HomeContent = {
     { name: "Paithan", distance: "56 km", description: "Ancient capital known for the Jayakwadi Dam and exquisite Paithani sarees." }
   ],
   foodItems: [
-    { name: "Naan Qalia", description: "A signature dish of slow-cooked meat curry (Qalia) served with golden, fluffy bread (Naan)." },
-    { name: "Tahri", description: "A fragrant, spiced rice dish with meat, distinct from Biryani, popular in the Marathwada region." },
+    { name: "Sheer Khurma", description: "A festive vermicelli pudding made with milk, dates, nuts, and saffron — a beloved Aurangabad dessert." },
+    { name: "Dal Peetha", description: "Steamed wheat dumplings stuffed with spiced lentils — a traditional Marathwada comfort food." },
     { name: "Imarti", description: "A flower-shaped, deep-fried sweet made from lentil flour and soaked in sugar syrup." },
     { name: "Mawa Jalebi", description: "A rich, dark brown variation of Jalebi made with condensed milk (khoya)." }
   ],
@@ -158,7 +158,7 @@ export const FALLBACK_PLACES: { hotels: Place[], restaurants: Place[] } = {
   restaurants: [
     { name: "Bhoj Thali Restaurant", description: "Famous for its unlimited Rajasthani and Gujarati thalis, offering a true feast.", specialty: "Vegetarian Thali" },
     { name: "Green Leaf", description: "A popular choice for pure vegetarian fine dining with a wide variety of North Indian dishes.", specialty: "North Indian Veg" },
-    { name: "Kareem's", description: "The go-to place for authentic Mughlai cuisine, kebabs, and rich curries.", specialty: "Mughlai Non-Veg" },
+    { name: "Khandani Rajdhani", description: "Authentic Rajasthani thali experience with traditional flavors and a festive dining atmosphere.", specialty: "Rajasthani Veg Thali" },
     { name: "Naivedya", description: "Known for its consistent quality and elegant ambiance, serving a mix of Indian and Continental.", specialty: "Multi-Cuisine" }
   ]
 };
@@ -256,7 +256,7 @@ export const FALLBACK_ITINERARY_DETAILS: Record<string, ItineraryDetail> = {
         activities: [
             { time: "09:00 AM", title: "Panchakki", description: "Visit the ancient water mill and attached Dargah.", type: "sightseeing", imageUrl: IMAGES.panchakki },
             { time: "11:00 AM", title: "Siddharth Garden", description: "A peaceful stroll and visit to the Zoo.", type: "rest" },
-            { time: "01:00 PM", title: "Farewell Lunch", description: "Try the famous Naan Qalia.", type: "meal", imageUrl: IMAGES.naan }
+            { time: "01:00 PM", title: "Farewell Lunch", description: "Try the famous Mawa Jalebi and Sheer Khurma.", type: "meal", imageUrl: IMAGES.jalebi }
         ]
       }
     ]

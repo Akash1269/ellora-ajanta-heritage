@@ -11,16 +11,16 @@ import { PlaneIcon, TrainIcon, BusIcon, WeatherSunIcon, RainIcon } from '../comp
 import { PLACEHOLDER_IMAGE, IMAGES } from '../constants';
 
 const NEARBY_IMAGES: Record<string, string> = {
-  'Shirdi': IMAGES.shirdiTemple,
-  'Lonar Crater Lake': IMAGES.lonarLake,
-  'Paithan': IMAGES.paithaniWeaving,
-  'Khuldabad': IMAGES.daulatadabWalls
+  'Ellora Caves': IMAGES.elloraKailasa,
+  'Daulatabad Fort': IMAGES.daulatabad,
+  'Grishneshwar Temple': IMAGES.grishneshwar,
+  'Paithan': IMAGES.paithaniWeaving
 };
 
 const FOOD_IMAGES: Record<string, string> = {
-  'Naan Qalia': IMAGES.naan,
-  'Tahri': IMAGES.tahri,
-  'Aurangabadi Biryani': IMAGES.biryani,
+  'Sheer Khurma': IMAGES.sheerKhurma,
+  'Dal Peetha': IMAGES.dalPeetha,
+  'Imarti': IMAGES.jalebi,
   'Mawa Jalebi': IMAGES.jalebi
 };
 
