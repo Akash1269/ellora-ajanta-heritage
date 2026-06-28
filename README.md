@@ -46,7 +46,7 @@ Built with a component-driven architecture, strict TypeScript, and performance-f
 ## Screenshots
 
 <p align="center">
-  <img src="public/screenshots/hero.png" alt="Heritage Hero Section" width="48%" />
+  <img src="public/screenshots/map.png" alt="Heritage Hero Section" width="48%" />
   <img src="public/screenshots/attractions.png" alt="Attractions Page" width="48%" />
 </p>
 <p align="center">
