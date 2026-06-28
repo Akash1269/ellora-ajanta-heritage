@@ -10,7 +10,7 @@
 | Routing | React Router DOM | 6.30 (HashRouter) |
 | Styling | Tailwind CSS | 4.x (@tailwindcss/vite plugin) |
 | Maps | Leaflet | 1.9 (lazy-loaded) |
-| Fonts | Google Fonts | Rozha One, Lora |
+| Fonts | Self-hosted WOFF2 | Cormorant Garamond, Spectral |
 | Linting | ESLint + Prettier | Latest |
 | CI | GitHub Actions | Lint → Type-check → Build |
 
@@ -112,7 +112,9 @@ All pages are code-split with `React.lazy()` and wrapped in a `Suspense` boundar
 - **useCallback** — Event handlers maintain stable references
 - **Image lazy loading** — All images use `loading="lazy"`
 - **Image fallback** — SVG placeholder shown if external images fail
-- **Preconnect** — DNS prefetch for Google Fonts, unpkg, picsum CDNs
+- **Local images** — 23 free-license photos served from `public/images/` (no external CDN dependency)
+- **Self-hosted fonts** — WOFF2 files in `public/fonts/` with `@font-face` declarations (no Google Fonts CDN)
+- **Preconnect** — DNS prefetch for unpkg CDN (Leaflet)
 
 ## Security
 

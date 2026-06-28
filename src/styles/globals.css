@@ -1,5 +1,20 @@
 @import "tailwindcss";
 
+/* Self-hosted fonts (Latin subset) */
+@font-face { font-family: 'Cormorant Garamond'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/cormorant-400.woff2') format('woff2'); }
+@font-face { font-family: 'Cormorant Garamond'; font-style: italic; font-weight: 400; font-display: swap; src: url('/fonts/cormorant-400i.woff2') format('woff2'); }
+@font-face { font-family: 'Cormorant Garamond'; font-style: normal; font-weight: 500; font-display: swap; src: url('/fonts/cormorant-500.woff2') format('woff2'); }
+@font-face { font-family: 'Cormorant Garamond'; font-style: italic; font-weight: 500; font-display: swap; src: url('/fonts/cormorant-500i.woff2') format('woff2'); }
+@font-face { font-family: 'Cormorant Garamond'; font-style: normal; font-weight: 600; font-display: swap; src: url('/fonts/cormorant-600.woff2') format('woff2'); }
+@font-face { font-family: 'Cormorant Garamond'; font-style: normal; font-weight: 700; font-display: swap; src: url('/fonts/cormorant-700.woff2') format('woff2'); }
+@font-face { font-family: 'Spectral'; font-style: normal; font-weight: 300; font-display: swap; src: url('/fonts/spectral-300.woff2') format('woff2'); }
+@font-face { font-family: 'Spectral'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/spectral-400.woff2') format('woff2'); }
+@font-face { font-family: 'Spectral'; font-style: italic; font-weight: 400; font-display: swap; src: url('/fonts/spectral-400i.woff2') format('woff2'); }
+@font-face { font-family: 'Spectral'; font-style: normal; font-weight: 500; font-display: swap; src: url('/fonts/spectral-500.woff2') format('woff2'); }
+@font-face { font-family: 'Spectral'; font-style: italic; font-weight: 500; font-display: swap; src: url('/fonts/spectral-500i.woff2') format('woff2'); }
+@font-face { font-family: 'Spectral'; font-style: normal; font-weight: 600; font-display: swap; src: url('/fonts/spectral-600.woff2') format('woff2'); }
+@font-face { font-family: 'Spectral'; font-style: normal; font-weight: 700; font-display: swap; src: url('/fonts/spectral-700.woff2') format('woff2'); }
+
 /* Heritage Design System */
 @theme {
   --color-parchment: #fdf8f0;

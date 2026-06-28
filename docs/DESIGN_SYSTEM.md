@@ -52,7 +52,7 @@ All colors are defined as CSS custom properties in `src/styles/globals.css` unde
 | Headings | Cormorant Garamond | 600 | `h1`–`h5`, `.font-heading` |
 | Body | Spectral | 300–700 | Body text, buttons, captions |
 
-Both loaded via Google Fonts in `index.html`.
+Both self-hosted as WOFF2 files in `public/fonts/` with `@font-face` declarations in `globals.css`.
 
 ### Scale (Mobile → Desktop)
 

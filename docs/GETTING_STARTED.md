@@ -32,6 +32,8 @@ The app runs at **http://localhost:5175**.
 | `npm run preview` | Preview production build locally |
 | `npm run lint` | Run ESLint on all TypeScript files |
 | `npm run format` | Auto-format with Prettier |
+| `npm test` | Run Vitest tests |
+| `npm run test:watch` | Run tests in watch mode |
 
 ## Project Conventions
 
@@ -50,8 +52,8 @@ The app runs at **http://localhost:5175**.
 ### Styling
 - **Tailwind CSS only** — no CSS modules or styled-components
 - Mobile-first: base styles, then `sm:`, `md:`, `lg:` breakpoints
-- Use heritage theme colors: `amber-700`, `stone-900`, `[#fffaf0]`
-- Use `font-heading` for headings (Rozha One), `font-serif` for body (Lora)
+- Use heritage theme colors: `parchment`, `ink`, `gold`, `terracotta`, `stone-warm`
+- Use `font-heading` for headings (Cormorant Garamond), `font-body` for body (Spectral)
 
 ### Adding a New Page
 1. Create component in `src/pages/NewPage.tsx`
@@ -97,6 +99,7 @@ Run these to catch issues:
 ```bash
 npm run lint
 npx tsc --noEmit
+npm test
 npm run build
 ```
 

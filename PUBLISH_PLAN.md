@@ -70,7 +70,7 @@ This document tracks all issues, improvements, and tasks required to make the pr
 - [x] Add ESLint configuration (`.eslintrc.json`)
 - [x] Add Prettier configuration (`.prettierrc`)
 - [x] Add pre-commit hooks (Husky + lint-staged)
-- [ ] Set up Vitest with basic component tests
+- [x] Set up Vitest with basic component tests
 - [ ] Add Lighthouse CI performance budgets
 - [x] Enable strict TypeScript (`strict: true` in tsconfig)
 
@@ -81,14 +81,14 @@ This document tracks all issues, improvements, and tasks required to make the pr
 - [x] Add image lazy loading (`loading="lazy"`)
 - [x] Optimize font loading (font-display: swap, preconnect)
 - [x] Add `<link rel="preconnect">` for external CDNs
-- [ ] Consider self-hosting fonts instead of Google Fonts CDN
+- [x] Self-host fonts (woff2 in `public/fonts/`, Google Fonts CDN removed)
 
 ### PWA & Offline
 
 - [x] Add `manifest.json` for app installation
 - [x] Add `<meta name="theme-color">` tag
 - [ ] Consider service worker for offline caching
-- [ ] Add app icons (192x192, 512x512)
+- [x] Add app icons (192x192, 512x512)
 
 ### Monitoring & Analytics
 
@@ -123,16 +123,16 @@ These items cannot be fully completed by AI and need human decisions, credential
 - [ ] **Enable GitHub Pages** — Go to repo Settings → Pages → Source: GitHub Actions
 
 ### Design Assets
-- [ ] **Create app icons** — Design 192x192 and 512x512 PNG icons for PWA manifest (place in `public/icons/`)
-- [ ] **Replace placeholder favicon** — Replace `vite.svg` with a custom heritage-themed favicon
-- [ ] **Replace picsum.photos images** — Upload real photographs of Ellora/Ajanta to avoid CDN dependency
+- [x] **Create app icons** — Generated 192x192 and 512x512 PNG icons from heritage SVG favicon
+- [x] **Replace placeholder favicon** — Replaced `vite.svg` with custom heritage-themed SVG favicon
+- [x] **Replace picsum.photos images** — 23 free-license photos from Pexels/Unsplash downloaded to `public/images/`
 
 ### Product Decisions
-- [ ] **Self-host fonts vs CDN** — Weigh offline support (self-host) vs caching benefits (Google Fonts CDN)
+- [x] **Self-host fonts** — woff2 files in `public/fonts/`, @font-face in globals.css, Google Fonts CDN link removed
 - [ ] **Service worker scope** — Decide caching strategy (cache-first, network-first) before implementing
 
 ### Testing & Monitoring
-- [ ] **Write Vitest test cases** — Decide what to test (component rendering, hook logic, service functions)
+- [x] **Write Vitest test cases** — 16 tests covering constants and all dataService functions
 - [ ] **Define Lighthouse budgets** — Set target scores (e.g., Performance > 90, Accessibility = 100)
 - [ ] **Set up performance monitoring** — Choose tool (Web Vitals, Sentry Performance, Datadog RUM)
 

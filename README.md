@@ -46,7 +46,7 @@ Built with a component-driven architecture, strict TypeScript, and performance-f
 | Routing | React Router DOM 6.30 (HashRouter) |
 | Styling | Tailwind CSS 4 (@tailwindcss/vite plugin) |
 | Maps | Leaflet 1.9 (lazy-loaded) |
-| Fonts | Google Fonts (Rozha One + Lora) |
+| Fonts | Self-hosted WOFF2 (Cormorant Garamond + Spectral) |
 | CI/CD | GitHub Actions → GitHub Pages |
 | Linting | ESLint + Prettier |
 

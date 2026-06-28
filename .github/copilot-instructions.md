@@ -36,8 +36,8 @@ This is a **React + TypeScript** tourism web application for the Aurangabad (Chh
 
 ### Styling
 - Use **Tailwind CSS classes** exclusively (no CSS modules or styled-components)
-- Heritage color palette: Floral White (`#fffaf0`), Amber 700 (`#b45309`), Warm Brown (`#431407`)
-- Typography: `font-heading` (Rozha One) for headings, `font-body` (Lora) for text
+- Heritage color palette: Parchment (`#fdf8f0`), Gold (`#b8860b`), Ink (`#2c1810`), Terracotta (`#a0522d`)
+- Typography: `font-heading` (Cormorant Garamond) for headings, `font-body` (Spectral) for text
 - Mobile-first responsive design with `sm:`, `md:`, `lg:` breakpoints
 - Decorative patterns: jaali backgrounds, corner borders, gradient overlays
 
