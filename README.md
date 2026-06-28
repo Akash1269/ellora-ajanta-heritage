@@ -94,8 +94,20 @@ Open [http://localhost:5175](http://localhost:5175) in your browser.
 | Document | Description |
 |----------|-------------|
 | [Architecture](docs/ARCHITECTURE.md) | Project structure, data flow, performance details |
+| [Design System](docs/DESIGN_SYSTEM.md) | Color palette, typography, components, icons, imagery |
 | [Features](docs/FEATURES.md) | Feature breakdown and design system |
 | [Getting Started](docs/GETTING_STARTED.md) | Developer setup, conventions, CI/CD guide |
+
+### Design System at a Glance
+
+The UI is built on a heritage-inspired design system defined in [`src/styles/globals.css`](src/styles/globals.css) and documented in [`docs/DESIGN_SYSTEM.md`](docs/DESIGN_SYSTEM.md). Key elements:
+
+- **Palette** — Parchment backgrounds (`#fdf8f0`), ink text (`#2c1810`), gold accents (`#b8860b`), terracotta errors (`#a0522d`)
+- **Typography** — Cormorant Garamond for headings, Spectral for body text
+- **8 reusable components** — `Hero`, `SectionHeading`, `SectionDivider`, `HeritageButton`, `LoadingSpinner`, `ErrorMessage`, `ErrorBoundary`, `MapSection`
+- **20+ SVG icons** — Navigation, utility, transport, weather, and activity type icons
+- **Visual treatments** — Sepia image filter (`.img-heritage`), Mughal jaali dot pattern (`.bg-jaali`), arch clip-path (`.arch-mask`), ornate dividers
+- **Local image assets** — 23 free-license photos from Pexels/Unsplash served from `public/images/`
 
 ---
 
