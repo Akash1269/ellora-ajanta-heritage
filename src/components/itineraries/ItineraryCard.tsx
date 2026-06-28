@@ -1,7 +1,7 @@
 
 import React from 'react';
 import type { ItinerarySummary } from '../../types';
-import { PLACEHOLDER_IMAGE } from '../../constants';
+import { PLACEHOLDER_IMAGE, IMAGES } from '../../constants';
 
 interface ItineraryCardProps {
   itinerary: ItinerarySummary;
@@ -16,7 +16,7 @@ export const ItineraryCard: React.FC<ItineraryCardProps> = React.memo(({ itinera
     >
       <div className="relative h-40 sm:h-44 lg:h-48 overflow-hidden">
         <img 
-            src={itinerary.imageUrl || `https://picsum.photos/seed/${itinerary.title}/400/300`} 
+            src={itinerary.imageUrl || IMAGES.ajantaCaves} 
             alt={itinerary.title}
             loading="lazy"
             onError={(e) => { (e.target as HTMLImageElement).src = PLACEHOLDER_IMAGE; }}

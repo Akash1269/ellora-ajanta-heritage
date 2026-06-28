@@ -8,7 +8,32 @@ import { HeritageButton } from '../components/common/HeritageButton';
 import { Link } from 'react-router-dom';
 import type { HomeContent } from '../types';
 import { PlaneIcon, TrainIcon, BusIcon, WeatherSunIcon, RainIcon } from '../components/icons';
-import { PLACEHOLDER_IMAGE } from '../constants';
+import { PLACEHOLDER_IMAGE, IMAGES } from '../constants';
+
+const NEARBY_IMAGES: Record<string, string> = {
+  'Shirdi': IMAGES.shirdiTemple,
+  'Lonar Crater Lake': IMAGES.lonarLake,
+  'Paithan': IMAGES.paithaniWeaving,
+  'Khuldabad': IMAGES.daulatadabWalls
+};
+
+const FOOD_IMAGES: Record<string, string> = {
+  'Naan Qalia': IMAGES.naan,
+  'Tahri': IMAGES.tahri,
+  'Aurangabadi Biryani': IMAGES.biryani,
+  'Mawa Jalebi': IMAGES.jalebi
+};
+
+const GALLERY_IMAGES = [
+  IMAGES.ajantaCaves,
+  IMAGES.elloraKailasa,
+  IMAGES.bibiKaMaqbara,
+  IMAGES.daulatabad,
+  IMAGES.cavePaintings,
+  IMAGES.grishneshwar,
+  IMAGES.panchakki,
+  IMAGES.paithaniWeaving
+];
 
 interface HomeProps {
   content: HomeContent | null;
@@ -137,7 +162,7 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
             <div key={idx} className="snap-center shrink-0 w-64 sm:w-72 lg:w-80 card-heritage overflow-hidden">
               <div className="h-36 sm:h-44 lg:h-48 overflow-hidden bg-parchment-dark">
                 <img 
-                  src={`https://picsum.photos/seed/${place.name}/400/300`} 
+                  src={NEARBY_IMAGES[place.name] || PLACEHOLDER_IMAGE} 
                   alt={place.name} 
                   loading="lazy" 
                   onError={(e) => { (e.target as HTMLImageElement).src = PLACEHOLDER_IMAGE; }} 
@@ -177,7 +202,7 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
               <div key={idx} className="group">
                 <div className="w-20 h-20 sm:w-28 sm:h-28 lg:w-36 lg:h-36 mx-auto rounded-full border-2 sm:border-3 border-gold/30 overflow-hidden mb-3 sm:mb-4 group-hover:border-gold transition-colors duration-300 shadow-md sm:shadow-lg">
                   <img 
-                    src={`https://picsum.photos/seed/${item.name}food/400/400`} 
+                    src={FOOD_IMAGES[item.name] || PLACEHOLDER_IMAGE} 
                     alt={item.name} 
                     loading="lazy" 
                     onError={(e) => { (e.target as HTMLImageElement).src = PLACEHOLDER_IMAGE; }} 
@@ -197,10 +222,10 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
       {/* 6. Inspiration Gallery */}
       <section className="py-0">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-1 md:gap-1.5">
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+          {GALLERY_IMAGES.map((imgUrl, i) => (
             <div key={i} className="relative group overflow-hidden aspect-square bg-parchment-dark">
               <img 
-                src={`https://picsum.photos/seed/aurangabad${i}/600/600`} 
+                src={imgUrl} 
                 alt="Gallery" 
                 loading="lazy"
                 className="w-full h-full object-cover transition-all duration-700 img-heritage group-hover:scale-105" 
@@ -219,7 +244,7 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
         
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           <Link to="/attractions" className="group relative overflow-hidden rounded-xl shadow-lg aspect-[4/3] sm:aspect-[3/4]">
-            <img src="https://picsum.photos/seed/bibi-maqbara/600/800" alt="Attractions" loading="lazy" className="w-full h-full object-cover img-heritage transition-transform duration-700 group-hover:scale-105"/>
+            <img src={IMAGES.bibiKaMaqbara} alt="Attractions" loading="lazy" className="w-full h-full object-cover img-heritage transition-transform duration-700 group-hover:scale-105"/>
             <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent flex items-end p-4 sm:p-6">
               <div>
                 <h3 className="text-xl sm:text-2xl text-gold-light font-heading mb-1 sm:mb-2">Monuments</h3>
@@ -228,7 +253,7 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
             </div>
           </Link>
           <Link to="/itineraries" className="group relative overflow-hidden rounded-xl shadow-lg aspect-[4/3] sm:aspect-[3/4]">
-            <img src="https://picsum.photos/seed/ajanta-paintings/600/800" alt="Itineraries" loading="lazy" className="w-full h-full object-cover img-heritage transition-transform duration-700 group-hover:scale-105"/>
+            <img src={IMAGES.cavePaintings} alt="Itineraries" loading="lazy" className="w-full h-full object-cover img-heritage transition-transform duration-700 group-hover:scale-105"/>
             <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent flex items-end p-4 sm:p-6">
               <div>
                 <h3 className="text-xl sm:text-2xl text-gold-light font-heading mb-1 sm:mb-2">Curated Trips</h3>
@@ -237,7 +262,7 @@ export const Home: React.FC<HomeProps> = ({ content }) => {
             </div>
           </Link>
           <Link to="/places" className="group relative overflow-hidden rounded-xl shadow-lg aspect-[4/3] sm:aspect-[3/4] sm:col-span-2 md:col-span-1">
-            <img src="https://picsum.photos/seed/aurangabad-hotel/600/800" alt="Stay and Dine" loading="lazy" className="w-full h-full object-cover img-heritage transition-transform duration-700 group-hover:scale-105"/>
+            <img src={IMAGES.daulatabad} alt="Stay and Dine" loading="lazy" className="w-full h-full object-cover img-heritage transition-transform duration-700 group-hover:scale-105"/>
             <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent flex items-end p-4 sm:p-6">
               <div>
                 <h3 className="text-xl sm:text-2xl text-gold-light font-heading mb-1 sm:mb-2">Royal Stays</h3>

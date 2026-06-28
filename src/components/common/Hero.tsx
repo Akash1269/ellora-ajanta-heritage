@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { IMAGES } from '../../constants';
 
 export const Hero: React.FC = () => {
   return (
@@ -7,7 +8,7 @@ export const Hero: React.FC = () => {
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center" 
-        style={{ backgroundImage: `url('https://picsum.photos/seed/ellora-caves-sunrise/1920/1080')` }}
+        style={{ backgroundImage: `url('${IMAGES.hero}')` }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/20 to-ink/80"></div>
       </div>

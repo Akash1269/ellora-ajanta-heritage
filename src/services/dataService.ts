@@ -1,5 +1,6 @@
 
 import type { Attraction, Place, ItinerarySummary, ItineraryDetail, HistoryContent, HomeContent } from '../types';
+import { IMAGES } from '../constants';
 import { 
   FALLBACK_HOME_CONTENT, 
   FALLBACK_ATTRACTIONS, 
@@ -17,8 +18,15 @@ export async function fetchAttractionDetails(attractionName: string): Promise<Om
 }
 
 export async function fetchAttractionImage(attractionName: string): Promise<string> {
-  // Use high-quality static seed images
-  return Promise.resolve(`https://picsum.photos/seed/${encodeURIComponent(attractionName)}/800/600`);
+  const imageMap: Record<string, string> = {
+    'Bibi Ka Maqbara': IMAGES.bibiKaMaqbara,
+    'Ajanta Caves': IMAGES.ajantaCaves,
+    'Ellora Caves': IMAGES.elloraKailasa,
+    'Daulatabad Fort': IMAGES.daulatabad,
+    'Grishneshwar Jyotirlinga Temple': IMAGES.grishneshwar,
+    'Panchakki (Water Mill)': IMAGES.panchakki
+  };
+  return Promise.resolve(imageMap[attractionName] || IMAGES.ajantaCaves);
 }
 
 export async function fetchPlaces(placeType: 'hotels' | 'restaurants'): Promise<Place[]> {
