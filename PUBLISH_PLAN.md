@@ -4,139 +4,84 @@ This document tracks all issues, improvements, and tasks required to make the pr
 
 ---
 
-## 🔴 Critical Issues (Must Fix Before Publishing)
+## 📌 Open Items
 
-- [x] **Remove API key from client bundle** — Removed `define` block from `vite.config.ts`. Service layer is fully static.
-- [x] **Fix XSS in map popups** — `MapSection.tsx` now uses DOM methods (`createElement`, `textContent`) instead of template literals.
-- [x] **Add React Error Boundary** — `ErrorBoundary` component wraps all routes in `App.tsx`.
-- [x] **Fix Leaflet memory leak** — `MapSection.tsx` properly cleans up markers via `markersRef` before re-adding and on unmount.
-- [x] **Add mobile hamburger menu** — `Header.tsx` now has a responsive mobile nav with toggle button.
-
----
-
-## 🟠 High Severity (Should Fix Before Publishing)
-
-- [x] **Install Tailwind CSS properly** — Installed via `@tailwindcss/vite` plugin with CSS in `src/styles/globals.css`.
-- [x] **Add SEO meta tags** — Added `<meta name="description">`, Open Graph, and Twitter Card tags to `index.html`.
-- [x] **Fix modal accessibility** — Both modals now have `role="dialog"`, `aria-modal="true"`, `aria-labelledby`, ESC key close, and focus on open.
-- [x] **Add 404 route** — Catch-all `NotFound` page added with `<Route path="*">` in App.tsx.
-- [x] **Add `loading="lazy"` to images** — All `<img>` elements now have `loading="lazy"` for better LCP.
-- [x] **Fix silent error catching** — `Itineraries.tsx` now shows `ErrorMessage` with retry option on failure.
-- [x] **Add `@types/leaflet`** — Installed as devDependency.
-- [x] **Add `.env.example`** — Created with `VITE_GEMINI_API_KEY` documentation.
-
----
-
-## 🟡 Medium Severity (Production Quality)
-
-- [x] **Add `React.memo()` on card components** — All three card components wrapped with `React.memo()` to prevent unnecessary re-renders.
-- [x] **Add code splitting with `React.lazy()`** — All 5 pages lazy-loaded with `Suspense` fallback. Each page is a separate chunk.
-- [x] **Extract magic numbers to constants** — Map center coordinates and zoom level moved to `constants.ts` (`MAP_CENTER`, `MAP_ZOOM`).
-- [x] **Standardize error handling** — All pages now use `ErrorMessage` component with retry functionality.
-- [x] **Add image fallback/placeholder** — `onError` handler with SVG placeholder on all images. `PLACEHOLDER_IMAGE` constant exported.
-- [x] **Fix modal scroll lock edge cases** — Modals save/restore original `overflow` value instead of hardcoding `'unset'`.
-- [x] **Add `useCallback` for event handlers** — `handleSelect` wrapped with `useCallback` in Attractions and Itineraries pages.
-
----
-
-## 🔵 Low Severity (Polish)
-
-- [x] **Deduplicate inline SVG icons** — All icons consolidated in `src/components/icons/index.tsx`.
-- [x] **Add loading delay simulation** — 400ms minimum display time for loading state prevents UI flicker.
-- [x] **Unused CSS styles** — Removed unused `.bg-mandala-opacity`. `.arch-mask` is used and retained.
+| # | Status | Task | Priority | Category | Details |
+|:--|:------:|------|:--------:|----------|---------|
+| 1 | ⬜ | Enable GitHub Pages | High | Infrastructure | Repo Settings → Pages → Source: GitHub Actions |
+| 2 | ⬜ | Add build config for staging/production | Medium | Infrastructure | Environment-specific variables |
+| 3 | ⬜ | Add Lighthouse CI performance budgets | Medium | QA | Target: Performance > 90, Accessibility = 100 |
+| 4 | ⬜ | Service worker for offline caching | Medium | PWA | Decide cache strategy (cache-first vs network-first) first |
+| 5 | ⬜ | Create Sentry project | Low | Monitoring | Sign up at sentry.io, add DSN to `.env` |
+| 6 | ⬜ | Set up analytics | Low | Monitoring | Choose provider (Plausible / Umami / GA) |
+| 7 | ⬜ | Set up performance monitoring | Low | Monitoring | Web Vitals, Sentry Performance, or Datadog RUM |
+| 8 | ⬜ | Staging environment | Low | Infrastructure | Decide if needed; preview deploy URLs |
+| 9 | ⬜ | Custom domain | Low | Infrastructure | Purchase and configure DNS if not using `*.github.io` |
+| 10 | ⬜ | Gemini API integration | Low | Infrastructure | If re-enabling AI features, set up API key management |
 
 ---
 
 ## 🔮 Future Plans (Post-Release)
 
-- [ ] **i18n / Translations** — Add Marathi/Hindi support with react-i18next or similar
-- [ ] **Data refresh mechanism** — Auto-refresh or manual trigger for long-lived sessions
+| # | Status | Task | Priority | Category | Details |
+|:--|:------:|------|:--------:|----------|---------|
+| 1 | ⬜ | i18n / Translations | — | Feature | Add Marathi/Hindi support with react-i18next or similar |
+| 2 | ⬜ | Data refresh mechanism | — | Feature | Auto-refresh or manual trigger for long-lived sessions |
 
 ---
 
-## 📋 Production Readiness Checklist
+## ✅ Completed
 
-### Infrastructure & Deployment
-
-- [x] Set up GitHub Actions CI (lint + type-check + build)
-- [ ] Add build configuration for staging/production environments
-- [x] Configure deployment target (Vercel, Netlify, GitHub Pages, etc.)
-- [x] Add `robots.txt` to `/public`
-- [x] Add basic `sitemap.xml` to `/public`
-- [x] Add security headers (CSP, X-Frame-Options, HSTS) in deployment config
-
-### Quality Assurance
-
-- [x] Add ESLint configuration (`.eslintrc.json`)
-- [x] Add Prettier configuration (`.prettierrc`)
-- [x] Add pre-commit hooks (Husky + lint-staged)
-- [x] Set up Vitest with basic component tests
-- [ ] Add Lighthouse CI performance budgets
-- [x] Enable strict TypeScript (`strict: true` in tsconfig)
-
-### Performance Optimization
-
-- [x] Install Tailwind via PostCSS (replace CDN)
-- [x] Add code splitting for route-level components
-- [x] Add image lazy loading (`loading="lazy"`)
-- [x] Optimize font loading (font-display: swap, preconnect)
-- [x] Add `<link rel="preconnect">` for external CDNs
-- [x] Self-host fonts (woff2 in `public/fonts/`, Google Fonts CDN removed)
-
-### PWA & Offline
-
-- [x] Add `manifest.json` for app installation
-- [x] Add `<meta name="theme-color">` tag
-- [ ] Consider service worker for offline caching
-- [x] Add app icons (192x192, 512x512)
-
-### Monitoring & Analytics
-
-- [ ] Add error tracking (Sentry)
-- [ ] Add analytics (Google Analytics / Plausible)
-- [ ] Add performance monitoring
-
----
-
-## ✅ Already Done
-
-- [x] Comprehensive fallback data (offline-ready content)
-- [x] Responsive layout (except mobile nav)
-- [x] Heritage-themed UI with consistent design system
-- [x] HashRouter for static deployment compatibility
-- [x] TypeScript throughout the codebase
-- [x] Interactive map with Leaflet
-- [x] Modal system for detailed views
-- [x] Multi-page routing with React Router
-- [x] README documentation
-- [x] Copilot instructions & AGENTS.md
-
----
-
-## 🧑‍💻 Manual Tasks (Requires Developer Action)
-
-These items cannot be fully completed by AI and need human decisions, credentials, or external setup.
-
-### Account & Service Setup
-- [ ] **Create Sentry project** — Sign up at sentry.io, create a React project, add DSN to `.env`
-- [ ] **Set up analytics** — Choose provider (Google Analytics / Plausible / Umami), create property, add tracking snippet
-- [ ] **Enable GitHub Pages** — Go to repo Settings → Pages → Source: GitHub Actions
-
-### Design Assets
-- [x] **Create app icons** — Generated 192x192 and 512x512 PNG icons from heritage SVG favicon
-- [x] **Replace placeholder favicon** — Replaced `vite.svg` with custom heritage-themed SVG favicon
-- [x] **Replace picsum.photos images** — 23 free-license photos from Pexels/Unsplash downloaded to `public/images/`
-
-### Product Decisions
-- [x] **Self-host fonts** — woff2 files in `public/fonts/`, @font-face in globals.css, Google Fonts CDN link removed
-- [ ] **Service worker scope** — Decide caching strategy (cache-first, network-first) before implementing
-
-### Testing & Monitoring
-- [x] **Write Vitest test cases** — 16 tests covering constants and all dataService functions
-- [ ] **Define Lighthouse budgets** — Set target scores (e.g., Performance > 90, Accessibility = 100)
-- [ ] **Set up performance monitoring** — Choose tool (Web Vitals, Sentry Performance, Datadog RUM)
-
-### Infrastructure
-- [ ] **Staging environment** — Decide if needed; configure separate deployment branch/preview URLs
-- [ ] **Custom domain** — Purchase and configure DNS if not using `*.github.io`
-- [ ] **Gemini API integration** — If re-enabling AI features, set up API key management and rate limiting
+| # | Status | Task | Priority | Category | Details |
+|:--|:------:|------|:--------:|----------|---------|
+| 1 | ✅ | Remove API key from client bundle | Critical | Security | Removed `define` block from `vite.config.ts`. Service layer is fully static. |
+| 2 | ✅ | Fix XSS in map popups | Critical | Security | `MapSection.tsx` uses DOM methods (`createElement`, `textContent`) instead of template literals. |
+| 3 | ✅ | Add React Error Boundary | Critical | Reliability | `ErrorBoundary` component wraps all routes in `App.tsx`. |
+| 4 | ✅ | Fix Leaflet memory leak | Critical | Reliability | `MapSection.tsx` cleans up markers via `markersRef` before re-adding and on unmount. |
+| 5 | ✅ | Add mobile hamburger menu | Critical | UI/UX | `Header.tsx` has responsive mobile nav with toggle button. |
+| 6 | ✅ | Install Tailwind via PostCSS | High | Performance | Installed via `@tailwindcss/vite` plugin with CSS in `src/styles/globals.css`. |
+| 7 | ✅ | Add SEO meta tags | High | SEO | `<meta name="description">`, Open Graph, and Twitter Card tags in `index.html`. |
+| 8 | ✅ | Fix modal accessibility | High | Accessibility | ARIA roles, `aria-modal`, `aria-labelledby`, ESC close, focus on open. |
+| 9 | ✅ | Add 404 route | High | UI/UX | Catch-all `NotFound` page with `<Route path="*">`. |
+| 10 | ✅ | Add `loading="lazy"` to images | High | Performance | All `<img>` elements use native lazy loading. |
+| 11 | ✅ | Fix silent error catching | High | Reliability | `Itineraries.tsx` shows `ErrorMessage` with retry option on failure. |
+| 12 | ✅ | Add `@types/leaflet` | High | DX | Installed as devDependency. |
+| 13 | ✅ | Add `.env.example` | High | DX | Created with `VITE_GEMINI_API_KEY` documentation. |
+| 14 | ✅ | Add security headers (CSP, X-Frame-Options, HSTS) | High | Security | Configured in deployment config. |
+| 15 | ✅ | Enable strict TypeScript | High | Code Quality | `strict: true` in tsconfig, zero `any` usage. |
+| 16 | ✅ | Set up GitHub Actions CI | High | DX | Lint → type-check → build on every push + PRs. |
+| 17 | ✅ | Configure GitHub Pages deploy | High | DX | Auto-deploy to GitHub Pages on `main` push. |
+| 18 | ✅ | Add ESLint configuration | High | DX | Flat config format (`eslint.config.js`). |
+| 19 | ✅ | Replace picsum.photos images | High | Design | 23 free-license photos from Pexels/Unsplash in `public/images/`. |
+| 20 | ✅ | Add code splitting with `React.lazy()` | Medium | Performance | All 5 pages lazy-loaded with `Suspense` fallback. Each page is a separate chunk. |
+| 21 | ✅ | Add `React.memo()` on card components | Medium | Performance | All three card components wrapped to prevent unnecessary re-renders. |
+| 22 | ✅ | Add `useCallback` for event handlers | Medium | Performance | `handleSelect` wrapped in Attractions and Itineraries pages. |
+| 23 | ✅ | Add image fallback/placeholder | Medium | UI/UX | `onError` handler with SVG placeholder. `PLACEHOLDER_IMAGE` constant exported. |
+| 24 | ✅ | Self-host fonts (WOFF2) | Medium | Performance | woff2 files in `public/fonts/`, `@font-face` in globals.css, Google Fonts CDN removed. |
+| 25 | ✅ | Optimize font loading | Medium | Performance | `font-display: swap` on all `@font-face` declarations. |
+| 26 | ✅ | Fix modal scroll lock edge cases | Medium | UI/UX | Modals save/restore original `overflow` value. |
+| 27 | ✅ | Standardize error handling | Medium | Reliability | All pages use `ErrorMessage` component with retry functionality. |
+| 28 | ✅ | Extract magic numbers to constants | Medium | Code Quality | `MAP_CENTER`, `MAP_ZOOM` in `constants.ts`. |
+| 29 | ✅ | Add `robots.txt` | Medium | SEO | Added to `/public`. |
+| 30 | ✅ | Add `sitemap.xml` | Medium | SEO | Added to `/public`. |
+| 31 | ✅ | Add `manifest.json` | Medium | PWA | PWA manifest for app installation. |
+| 32 | ✅ | Add app icons (192×192, 512×512) | Medium | PWA | Generated PNG icons from heritage SVG favicon. |
+| 33 | ✅ | Add Prettier configuration | Medium | DX | `.prettierrc.json` with consistent formatting rules. |
+| 34 | ✅ | Add pre-commit hooks (Husky + lint-staged) | Medium | DX | Auto-lint and format on commit. |
+| 35 | ✅ | Set up Vitest with tests | Medium | QA | 16 tests covering constants and all dataService functions. |
+| 36 | ✅ | Replace placeholder favicon | Medium | Design | Custom heritage-themed SVG favicon. |
+| 37 | ✅ | Deduplicate inline SVG icons | Low | Code Quality | All icons consolidated in `src/components/icons/index.tsx`. |
+| 38 | ✅ | Add loading delay simulation | Low | UI/UX | 400ms minimum prevents UI flicker on fast loads. |
+| 39 | ✅ | Remove unused CSS styles | Low | Code Quality | Removed `.bg-mandala-opacity`. `.arch-mask` retained. |
+| 40 | ✅ | Add `<link rel="preconnect">` for CDNs | Low | Performance | DNS prefetch for unpkg (Leaflet). |
+| 41 | ✅ | Add `<meta name="theme-color">` | Low | PWA | Theme color tag in `index.html`. |
+| 42 | ✅ | Comprehensive fallback data | High | Data | Offline-ready static content for all sections. |
+| 43 | ✅ | Responsive layout | High | UI/UX | Mobile-first with breakpoints. |
+| 44 | ✅ | Heritage-themed UI | High | Design | Jaali patterns, arch clip-paths, warm amber palette. |
+| 45 | ✅ | HashRouter for static deploy | Medium | Routing | Compatible with GitHub Pages. |
+| 46 | ✅ | TypeScript throughout | High | Code Quality | Strict mode, all files typed. |
+| 47 | ✅ | Interactive map with Leaflet | High | Feature | Lazy-loaded, markers with popups. |
+| 48 | ✅ | Modal system for detailed views | Medium | Feature | Attraction and itinerary detail modals. |
+| 49 | ✅ | Multi-page routing | Medium | Routing | React Router with 5 routes. |
+| 50 | ✅ | README documentation | Medium | Docs | Project overview, setup, architecture. |
+| 51 | ✅ | Copilot instructions & AGENTS.md | Low | DX | AI-assisted development config. |
